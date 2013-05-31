@@ -1,0 +1,20 @@
+[
+{
+  "modid": "NeoCraft",
+  "name": "NeoCraft",
+  "description": "Bringing the future to Minecraft, one block at a time",
+  "version": "0.0.1",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "scott181182"
+  ],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent": "",
+  "dependencies": [
+  ]
+}
+]
