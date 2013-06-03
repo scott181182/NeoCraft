@@ -9,4 +9,5 @@ public class MagicConglomerate extends MagicElement
 		this.base = base;
 		setHarmony(base.getIcks(), base.getMags());
 	}
+	public MagicElement getBase() { return this.base; }
 }

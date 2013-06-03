@@ -9,4 +9,5 @@ public class MagicStave extends NCitem
 		super(id);
 		this.base = base;
 	}
+	public MagicElement getBase() { return this.base; }
 }

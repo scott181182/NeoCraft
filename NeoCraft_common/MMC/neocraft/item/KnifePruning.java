@@ -27,7 +27,7 @@ public class KnifePruning extends NCitem
     	            double d0 = (double)(par3World.rand.nextFloat() * f) + (double)(1.0F - f) * 0.5D;
     	            double d1 = (double)(par3World.rand.nextFloat() * f) + (double)(1.0F - f) * 0.5D;
     	            double d2 = (double)(par3World.rand.nextFloat() * f) + (double)(1.0F - f) * 0.5D;
-    	            EntityItem entityitem = new EntityItem(par3World, (double)par4 + d0, (double)par5 + d1, (double)par6 + d2, new ItemStack(NCitem.fruitOrange, par3World.rand.nextInt(2) + 1, 0));
+    	            EntityItem entityitem = new EntityItem(par3World, (double)par4 + d0, (double)par5 - d1, (double)par6 + d2, new ItemStack(NCitem.fruitOrange, par3World.rand.nextInt(2) + 1, 0));
     	            entityitem.delayBeforeCanPickup = 10;
     	            par3World.spawnEntityInWorld(entityitem);
     	        }

@@ -27,7 +27,7 @@ public class BlockOrangeLeaves extends NCblock implements IShearable
 	protected BlockOrangeLeaves(int par1)
 	{
 		super(par1, Material.leaves);
-        this.setTickRandomly(true);
+        setTickRandomly(true);
 	}
 	
     @SideOnly(Side.CLIENT)
@@ -180,6 +180,17 @@ public class BlockOrangeLeaves extends NCblock implements IShearable
                 {
                     this.removeLeaves(par1World, par2, par3, par4);
                 }
+            }
+            else
+            {
+            	if((meta & 1) == 0)
+            	{
+            		if(par1World.rand.nextInt(25) == 0) { par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 3); }
+            	}
+            	else if((meta & 1) == 1)
+            	{
+            		if(par1World.rand.nextInt(25) == 0) { par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 3); }		
+            	}
             }
         }
     }

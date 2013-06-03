@@ -5,11 +5,16 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.*;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 import MMC.neocraft.block.NCblock;
+import MMC.neocraft.gen.NCgenerator;
+import MMC.neocraft.gui.NCguiHandler;
 import MMC.neocraft.item.NCitem;
 import MMC.neocraft.lib.*;
+import MMC.neocraft.recipe.NCcrafter;
+import MMC.neocraft.recipe.RecipeRegistry;
 import MMC.neocraft.registry.*;
 
 /**
@@ -24,8 +29,12 @@ public class NeoCraft
 {
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.COMMON_PROXY)
 	public static CommonProxy proxy;
+	@Instance(Reference.MOD_ID)
+	public static NeoCraft instance = new NeoCraft();
 	
-	EventManager manager = new EventManager();
+	NCgenerator worldGen = new NCgenerator();
+	NCcrafter crafter = new NCcrafter();
+	NCguiHandler guiHandler = new NCguiHandler();
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent pie)
@@ -35,6 +44,7 @@ public class NeoCraft
 		
 		BlockRegistry.registerBlocks();
 		BlockRegistry.registerNames();
+		BlockRegistry.registerTileEntities();
 
 		ItemRegistry.registerNames();
 		
@@ -45,7 +55,9 @@ public class NeoCraft
 	@Init
 	public void init(FMLInitializationEvent ie)
 	{
-		GameRegistry.registerWorldGenerator(manager);
+		GameRegistry.registerWorldGenerator(worldGen);
+		GameRegistry.registerCraftingHandler(crafter);
+		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 	}
 	@PostInit
 	public void postInit(FMLPostInitializationEvent pie)

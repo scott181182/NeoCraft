@@ -9,7 +9,7 @@ import net.minecraft.item.Item;
 
 public class NCitem extends Item
 {
-	public static Item fruitOrange, knifePruning, elementSinensium, conglomerateSinensium, staveSinensium;
+	public static Item fruitOrange, seedOrange, rindOrange, pulpOrange, teaOrange, knifePruning, elementSinensium, conglomerateSinensium, staveSinensium;
 	
 	public NCitem(int par1)
 	{
@@ -24,8 +24,15 @@ public class NCitem extends Item
 	{
 		fruitOrange = new FruitOrange(9900).setUnlocalizedName("fruitOrange");
 		knifePruning = new KnifePruning(9901).setUnlocalizedName("knifePruning");
+		rindOrange = new RindOrange(9902).setUnlocalizedName("rindOrange");
+		pulpOrange = new PulpOrange(9903, 2, 0.5f).setUnlocalizedName("pulpOrange");
+		seedOrange = new SeedOrange(9904).setUnlocalizedName("seedOrange");
+		teaOrange = new TeaOrange(9905, 1, 0.1f).setPotionEffect(1, 10, 1, 1).setUnlocalizedName("teaOrange");
+		
 		elementSinensium = new ElementSinensium(10001, 1, 1).setUnlocalizedName("elementSinensium");
+		
 		conglomerateSinensium = new ConglomerateSinensium(10002, (MagicElement)elementSinensium).setUnlocalizedName("conglomerateSinensium");
+
 		staveSinensium = new StaveSinensium(10003, (MagicConglomerate)conglomerateSinensium).setUnlocalizedName("staveSinensium");
 	}
 }
