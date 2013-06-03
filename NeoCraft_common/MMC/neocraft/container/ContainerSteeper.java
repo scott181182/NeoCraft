@@ -8,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class ContainerSteeper extends NCcontainer
@@ -19,12 +20,12 @@ public class ContainerSteeper extends NCcontainer
 	
 	public ContainerSteeper(InventoryPlayer inv, TileEntitySteeper te)
 	{
-		super(inv);
 		steeper = te;
         this.addSlotToContainer(new Slot(te, 0, 44, 8));
         this.addSlotToContainer(new Slot(te, 1, 44, 26));
         this.addSlotToContainer(new Slot(te, 2, 44, 62));
         this.addSlotToContainer(new SlotSteeper(inv.player, te, 3, 116, 35));
+		super.addInventory(inv);
 	}
 	@Override
     public void addCraftingToCrafters(ICrafting par1ICrafting)
@@ -67,19 +68,24 @@ public class ContainerSteeper extends NCcontainer
         {
             ItemStack fromStack = slot.getStack();
             toStack = fromStack.copy();
+            
+            if(!par1EntityPlayer.worldObj.isRemote)
+            {
+            	System.out.println(fromStack.getItemName() + " from " + par2);
+            }
 
             if (par2 == 3)
             {
-                if (!this.mergeItemStack(fromStack, 4, 39, true)) { return null; }
+                if (!this.mergeItemStack(fromStack, 4, 40, true)) { return null; }
                 slot.onSlotChange(fromStack, toStack);
             }
             else if (par2 != 2 && par2 != 1 && par2 != 0)
             {
-            	if(SteeperRecipes.steeping().getSteepingResult(fromStack, steeper.getStackInSlot(1)) != null)
+            	if(SteeperRecipes.steeping().getSteepingResult(fromStack, new ItemStack(Item.bucketWater)) != null)
             	{
                     if (!this.mergeItemStack(fromStack, 0, 1, false)) { return null; }
             	}
-            	else if (SteeperRecipes.steeping().getSteepingResult(steeper.getStackInSlot(0), fromStack) != null)
+            	else if (fromStack.itemID == Item.bucketWater.itemID)
                 {
                     if (!this.mergeItemStack(fromStack, 1, 2, false)) { return null; }
                 }
@@ -87,16 +93,16 @@ public class ContainerSteeper extends NCcontainer
                 {
                     if (!this.mergeItemStack(fromStack, 2, 3, false)) { return null; }
                 }
-                else if (par2 >= 3 && par2 < 30)
+                else if (par2 >= 4 && par2 < 31)
                 {
-                    if (!this.mergeItemStack(fromStack, 30, 39, false)) { return null; }
+                    if (!this.mergeItemStack(fromStack, 31, 40, false)) { return null; }
                 }
-                else if (par2 >= 30 && par2 < 39 && !this.mergeItemStack(fromStack, 3, 30, false))
+                else if (par2 >= 31 && par2 < 40 && !this.mergeItemStack(fromStack, 4, 31, false))
                 {
                     return null;
                 }
             }
-            else if (!this.mergeItemStack(fromStack, 3, 39, false)) { return null; }
+            else if (!this.mergeItemStack(fromStack, 4, 40, false)) { return null; }
             if (fromStack.stackSize == 0) { slot.putStack((ItemStack)null); }
             else { slot.onSlotChanged(); }
             if (fromStack.stackSize == toStack.stackSize) { return null; }

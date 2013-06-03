@@ -8,7 +8,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemHoe;
@@ -17,19 +16,20 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.ForgeDirection;
 
-public class TileEntitySteeper extends TileEntity implements ISidedInventory
+public class TileEntitySteeper extends NCtileentity
 {
-    private ItemStack[] steeperItemStacks = new ItemStack[3];
+    private ItemStack[] steeperItemStacks = new ItemStack[4];
     /** The number of ticks that the steeper will keep burning */
     public int steeperBurnTime = 0;
     /** The number of ticks that a fresh copy of the currently-steeping item would keep the steeper burning for */
     public int currentItemSteepTime = 0;
     /** The number of ticks that the current item has been steeping for */
     public int steeperCookTime = 0;
-    private String invName;
-    
+    public ForgeDirection getOrientation() { return orientation; }
+    public void setOrientation(ForgeDirection orientation) { this.orientation = orientation; }
+    public void setOrientation(int orientation) { this.orientation = ForgeDirection.getOrientation(orientation); }
     public int getSizeInventory() { return this.steeperItemStacks.length; }
     public ItemStack getStackInSlot(int par1) { return this.steeperItemStacks[par1]; }
     /** Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack. */
@@ -72,11 +72,11 @@ public class TileEntitySteeper extends TileEntity implements ISidedInventory
             par2ItemStack.stackSize = this.getInventoryStackLimit();
         }
     }
-    public String getInvName() { return this.isInvNameLocalized() ? this.invName : "Tea Steeper"; }
-    public boolean isInvNameLocalized() { return this.invName != null && this.invName.length() > 0; }
+    @Override public String getInvName() { return this.isInvNameLocalized() ? this.invName : "Tea Steeper"; }
+    @Override public boolean isInvNameLocalized() { return this.invName != null && this.invName.length() > 0; }
     public void setInvName(String par1Str) { this.invName = par1Str; }
     
-    public void readFromNBT(NBTTagCompound par1NBTTagCompound)
+    @Override public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
@@ -92,9 +92,9 @@ public class TileEntitySteeper extends TileEntity implements ISidedInventory
         this.steeperBurnTime = par1NBTTagCompound.getShort("BurnTime");
         this.steeperCookTime = par1NBTTagCompound.getShort("CookTime");
         this.currentItemSteepTime = getItemSteepTime(this.steeperItemStacks[2]);
-        if (par1NBTTagCompound.hasKey("CustomName")) { this.invName = par1NBTTagCompound.getString("CustomName"); }
+        this.worldObj.setBlockMetadataWithNotify(this.xCoord, this.yCoord, this.zCoord, orientation.ordinal() | (steeperBurnTime > 0 ? 1 : 0), 3);
     }
-    public void writeToNBT(NBTTagCompound par1NBTTagCompound)
+    @Override public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setShort("BurnTime", (short)this.steeperBurnTime);
@@ -112,7 +112,6 @@ public class TileEntitySteeper extends TileEntity implements ISidedInventory
             }
         }
         par1NBTTagCompound.setTag("Items", nbttaglist);
-        if (this.isInvNameLocalized()) { par1NBTTagCompound.setString("CustomName", this.invName); }
     }
     public int getInventoryStackLimit() { return 64; }
     @SideOnly(Side.CLIENT) public int getCookProgressScaled(int par1) { return this.steeperCookTime * par1 / 200; }
@@ -144,7 +143,7 @@ public class TileEntitySteeper extends TileEntity implements ISidedInventory
                         --this.steeperItemStacks[2].stackSize;
                         if (this.steeperItemStacks[2].stackSize == 0)
                         {
-                            this.steeperItemStacks[2] = this.steeperItemStacks[2].getItem().getContainerItemStack(steeperItemStacks[1]);
+                            this.steeperItemStacks[2] = this.steeperItemStacks[2].getItem().getContainerItemStack(steeperItemStacks[2]);
                         }
                     }
                 }
@@ -180,9 +179,11 @@ public class TileEntitySteeper extends TileEntity implements ISidedInventory
         else
         {
             ItemStack itemstack = SteeperRecipes.steeping().getSteepingResult(this.steeperItemStacks[0], this.steeperItemStacks[1]);
-            if (itemstack == null) return false;
-            if (this.steeperItemStacks[3] == null) return true;
-            if (!this.steeperItemStacks[3].isItemEqual(itemstack)) return false;
+            int teaAmount = SteeperRecipes.steeping().getTeaRequired(this.steeperItemStacks[0], this.steeperItemStacks[1]);
+            if(itemstack == null) return false;
+            if(this.steeperItemStacks[0].stackSize < teaAmount) { return false; }
+            if(this.steeperItemStacks[3] == null) return true;
+            if(!this.steeperItemStacks[3].isItemEqual(itemstack)) return false;
             int result = steeperItemStacks[3].stackSize + itemstack.stackSize;
             return (result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize());
         }
@@ -192,15 +193,16 @@ public class TileEntitySteeper extends TileEntity implements ISidedInventory
         if (this.canSteep())
         {
             ItemStack itemstack = SteeperRecipes.steeping().getSteepingResult(this.steeperItemStacks[0], this.steeperItemStacks[1]);
-
+            int teaAmount = SteeperRecipes.steeping().getTeaRequired(this.steeperItemStacks[0], this.steeperItemStacks[1]);
+            
             if (this.steeperItemStacks[3] == null) { this.steeperItemStacks[3] = itemstack.copy(); }
             else if (this.steeperItemStacks[3].isItemEqual(itemstack)) { steeperItemStacks[3].stackSize += itemstack.stackSize; }
 
-            --this.steeperItemStacks[0].stackSize;
+            this.steeperItemStacks[0].stackSize -= teaAmount;
             --this.steeperItemStacks[1].stackSize;
 
             if (this.steeperItemStacks[0].stackSize <= 0) { this.steeperItemStacks[0] = null; }
-            if (this.steeperItemStacks[1].stackSize <= 0) { this.steeperItemStacks[1] = null; }
+            if (this.steeperItemStacks[1].stackSize <= 0) { this.steeperItemStacks[1] = this.steeperItemStacks[1].getItem().getContainerItemStack(steeperItemStacks[1]); }
         }
     }
     public static int getItemSteepTime(ItemStack fuel)
@@ -237,8 +239,8 @@ public class TileEntitySteeper extends TileEntity implements ISidedInventory
     @Override public int[] getAccessibleSlotsFromSide(int par1)
     {
     	if(par1 == 0 || par1 == 1) { return par1 == 0 ? new int[]{ 2 } : new int[]{ 0 }; }
-    	int right = (this.blockMetadata & 6) != 5 ? (this.blockMetadata & 6) + 1 : 0;
-    	int left = (this.blockMetadata & 6) != 2 ? (this.blockMetadata & 6) - 1 : 5;
+    	int right = this.orientation.ordinal() != 5 ? this.orientation.ordinal() + 1 : 0;
+    	int left = this.orientation.ordinal() != 2 ? this.orientation.ordinal() - 1 : 5;
     	if(par1 == right) { return new int[]{ 3 }; }
     	if(par1 == left) { return new int[]{ 1 }; }
     	return null;

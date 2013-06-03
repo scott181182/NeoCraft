@@ -14,13 +14,13 @@ public class GuiSteeper extends NCgui
 		super(new ContainerSteeper(inv, te));
 		this.steeperInv = te;
 	}
-    protected void drawGuiContainerForegroundLayer(int par1, int par2)
+    @Override protected void drawGuiContainerForegroundLayer(int par1, int par2)
     {
         String s = this.steeperInv.isInvNameLocalized() ? this.steeperInv.getInvName() : StatCollector.translateToLocal(this.steeperInv.getInvName());
-        this.fontRenderer.drawString(s, this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2, 6, 4210752);
-        this.fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
+        this.fontRenderer.drawString(s, 64 /*(this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2) + 10 */, 6, 4210752);
+        this.fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 64, this.ySize - 96 + 2, 4210752);
     }
-    protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
+    @Override protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.renderEngine.bindTexture("/mods/NeoCraft/gui/steeper.png");

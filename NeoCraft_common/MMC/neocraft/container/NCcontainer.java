@@ -7,7 +7,11 @@ import net.minecraft.inventory.Slot;
 public abstract class NCcontainer extends Container
 {
 	
-	public NCcontainer(InventoryPlayer inv)
+	public NCcontainer()
+	{
+		
+	}
+	public void addInventory(InventoryPlayer inv)
 	{
 		int i;
 	    for (i = 0; i < 3; ++i)
@@ -17,10 +21,6 @@ public abstract class NCcontainer extends Container
 	            this.addSlotToContainer(new Slot(inv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 	        }
 	    }
-	
-	    for (i = 0; i < 9; ++i)
-	    {
-	        this.addSlotToContainer(new Slot(inv, i, 8 + i * 18, 142));
-	    }	
+	    for (i = 0; i < 9; ++i) { this.addSlotToContainer(new Slot(inv, i, 8 + i * 18, 142)); }
 	}
 }

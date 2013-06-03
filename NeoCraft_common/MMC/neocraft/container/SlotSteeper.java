@@ -1,7 +1,6 @@
 package MMC.neocraft.container;
 
 import MMC.neocraft.recipe.SteeperRecipes;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -58,6 +57,5 @@ public class SlotSteeper extends NCslot
             }
         }
         this.expAmount = 0;
-        GameRegistry.onItemSmelted(player, par1ItemStack);
     }
 }
