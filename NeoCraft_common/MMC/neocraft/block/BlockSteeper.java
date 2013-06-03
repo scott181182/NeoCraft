@@ -5,6 +5,7 @@ import MMC.neocraft.NeoCraft;
 import MMC.neocraft.gui.NCguiHandler;
 import MMC.neocraft.lib.Reference;
 import MMC.neocraft.tileentity.TileEntitySteeper;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLiving;
@@ -34,8 +35,8 @@ public class BlockSteeper extends NCcontainerBlock
     public void onBlockAdded(World par1World, int par2, int par3, int par4)
     {
         super.onBlockAdded(par1World, par2, par3, par4);
-        //this.setDefaultDirection(par1World, par2, par3, par4);
-    } /*
+        this.setDefaultDirection(par1World, par2, par3, par4);
+    }
     private void setDefaultDirection(World par1World, int par2, int par3, int par4)
     {
         if (!par1World.isRemote)
@@ -50,9 +51,9 @@ public class BlockSteeper extends NCcontainerBlock
             if (Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l]) { b0 = 2; }
             if (Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1]) { b0 = 5; }
             if (Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1]) { b0 = 4; }
-            if(this.direction == b0) { this.direction = b0; }
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
         }
-    } */
+    }
     @SideOnly(Side.CLIENT)
     public Icon getIcon(int par1, int par2)
     {

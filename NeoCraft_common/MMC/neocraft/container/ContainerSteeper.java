@@ -68,12 +68,6 @@ public class ContainerSteeper extends NCcontainer
         {
             ItemStack fromStack = slot.getStack();
             toStack = fromStack.copy();
-            
-            if(!par1EntityPlayer.worldObj.isRemote)
-            {
-            	System.out.println(fromStack.getItemName() + " from " + par2);
-            }
-
             if (par2 == 3)
             {
                 if (!this.mergeItemStack(fromStack, 4, 40, true)) { return null; }
