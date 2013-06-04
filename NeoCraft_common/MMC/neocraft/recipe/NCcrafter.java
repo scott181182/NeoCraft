@@ -1,5 +1,6 @@
 package MMC.neocraft.recipe;
 
+import MMC.neocraft.block.NCblock;
 import MMC.neocraft.item.NCitem;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,6 +36,18 @@ public class NCcrafter implements ICraftingHandler
 			ItemStack knife = new ItemStack(NCitem.knifePruning, 2, (craftMatrix.getStackInSlot(i).getItemDamage() + 1));
 	        if(knife.getItemDamage() >= knife.getMaxDamage()) { knife.stackSize--; }
 	        craftMatrix.setInventorySlotContents(i, knife);
+		}
+		else if(item.itemID == NCblock.saplingOrange.blockID)
+		{
+			int i;
+			for(i = 0; i < craftMatrix.getSizeInventory(); i++) 
+			{
+				if(craftMatrix.getStackInSlot(i) == null) { continue; }
+				if(craftMatrix.getStackInSlot(i).itemID == NCitem.staveSinensium.itemID) { break; } 
+			}
+			ItemStack stave = new ItemStack(NCitem.staveSinensium, 2, (craftMatrix.getStackInSlot(i).getItemDamage() + 1));
+	        if(stave.getItemDamage() >= stave.getMaxDamage()) { stave.stackSize--; }
+	        craftMatrix.setInventorySlotContents(i, stave);
 		}
 	}
 	@Override
