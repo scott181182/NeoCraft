@@ -23,49 +23,51 @@ import net.minecraftforge.common.ForgeDirection;
 public class KilnBakery extends NCcontainerBlock
 {
 	private static boolean keepBakeryInventory = false;
-    @SideOnly(Side.CLIENT) private Icon iconSide, iconTop, iconFrontOn, iconFrontOff;
+    @SideOnly(Side.CLIENT) private Icon iconSide, iconTop, iconBottom, iconFrontOn, iconFrontOff;
     
 	public KilnBakery(int par1, Material material)
 	{
 		super(par1, material);
 	}
-	
-	 public void onBlockAdded(World par1World, int par2, int par3, int par4)
-	    {
-	        super.onBlockAdded(par1World, par2, par3, par4);
-	        this.setDefaultDirection(par1World, par2, par3, par4);
-	    }
-	    private void setDefaultDirection(World par1World, int par2, int par3, int par4)
-	    {
-	        if (!par1World.isRemote)
-	        {
-	            int l = par1World.getBlockId(par2, par3, par4 - 1);
-	            int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-	            int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-	            int k1 = par1World.getBlockId(par2 + 1, par3, par4);
-	            byte b0 = 3;
-
-	            if (Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1]) { b0 = 3; }
-	            if (Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l]) { b0 = 2; }
-	            if (Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1]) { b0 = 5; }
-	            if (Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1]) { b0 = 4; }
-	            par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
-	        }
-	    }
-	    
-	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2)
+    
+	@Override public void onBlockAdded(World par1World, int par2, int par3, int par4)
     {
-    	if(par1 == 0 || par1 == 1) { return iconTop; }
-    	else if(par1 == (par2 & -9)) { return (par2 & 8) == 8 ? iconFrontOn : iconFrontOff; }
+        super.onBlockAdded(par1World, par2, par3, par4);
+        this.setDefaultDirection(par1World, par2, par3, par4);
+    }
+    private void setDefaultDirection(World par1World, int par2, int par3, int par4)
+    {
+        if (!par1World.isRemote)
+        {
+            int l = par1World.getBlockId(par2, par3, par4 - 1);
+            int i1 = par1World.getBlockId(par2, par3, par4 + 1);
+            int j1 = par1World.getBlockId(par2 - 1, par3, par4);
+            int k1 = par1World.getBlockId(par2 + 1, par3, par4);
+            byte b0 = 3;
+
+            if (Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1]) { b0 = 3; }
+            if (Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l]) { b0 = 2; }
+            if (Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1]) { b0 = 5; }
+            if (Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1]) { b0 = 4; }
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
+        }
+    }
+	@SideOnly(Side.CLIENT) @Override
+	public Icon getIcon(int side, int meta)
+    {
+		int facing = 3;
+		if(meta != 0) { facing = meta; }
+    	if(side == 0) { return iconBottom; }
+    	if(side == 1) { return iconTop; }
+    	else if(side == (facing & -9)) { return (facing & 8) == 8 ? iconFrontOn : iconFrontOff; }
     	else { return iconSide; }
     }
-	
     @SideOnly(Side.CLIENT) @Override
     public void registerIcons(IconRegister par1IconRegister)
     {
         this.iconSide = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "bakerySide");
         this.iconTop = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "bakeryTop");
+        this.iconBottom = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "bakeryBottom");
         this.iconFrontOff = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "bakeryFrontOff");
         this.iconFrontOn = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "bakeryFrontOn");
     }
@@ -107,6 +109,8 @@ public class KilnBakery extends NCcontainerBlock
     	else if(yaw == 3) { facing = ForgeDirection.WEST.ordinal(); }
     	else { facing = 2; }
         par1World.setBlockMetadataWithNotify(par2, par3, par4, facing, 3);
+        TileEntity te = par1World.getBlockTileEntity(par2, par3, par4);
+        if(te != null) { ((TileEntityKilnBakery)te).setOrientation(facing); }
         if (par6ItemStack.hasDisplayName())
         {
             ((TileEntityKilnBakery)par1World.getBlockTileEntity(par2, par3, par4)).setInvName(par6ItemStack.getDisplayName());
@@ -163,8 +167,5 @@ public class KilnBakery extends NCcontainerBlock
         }
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
-    
-    
-	@Override public TileEntity createNewTileEntity(World world) {return new TileEntityKilnBakery();}
-	
+	@Override public TileEntity createNewTileEntity(World world) { return new TileEntityKilnBakery(); }
 }

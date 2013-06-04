@@ -12,7 +12,7 @@ public abstract class NCtileentity extends TileEntity implements ISidedInventory
     
     public NCtileentity()
     {
-    	orientation = ForgeDirection.NORTH;
+    	orientation = ForgeDirection.SOUTH;
     }
     public ForgeDirection getOrientation() { return orientation; }
     public void setOrientation(ForgeDirection orientation) { this.orientation = orientation; }

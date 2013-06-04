@@ -23,7 +23,7 @@ import net.minecraftforge.common.ForgeDirection;
 public class KilnSmeltery extends NCcontainerBlock
 {
     private static boolean keepSmelteryInventory = false;
-    @SideOnly(Side.CLIENT) private Icon iconSide, iconTop, iconFrontOn, iconFrontOff;
+    @SideOnly(Side.CLIENT) private Icon iconSide, iconTop, iconBottom, iconFrontOn, iconFrontOff;
 	
 	public KilnSmeltery(int par1, Material material)
 	{
@@ -52,11 +52,14 @@ public class KilnSmeltery extends NCcontainerBlock
             par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
         }
     }
-    @SideOnly(Side.CLIENT)
-    public Icon getIcon(int par1, int par2)
+	@SideOnly(Side.CLIENT) @Override
+	public Icon getIcon(int side, int meta)
     {
-    	if(par1 == 0 || par1 == 1) { return iconTop; }
-    	else if(par1 == (par2 & -9)) { return (par2 & 8) == 8 ? iconFrontOn : iconFrontOff; }
+		int facing = 3;
+		if(meta != 0) { facing = meta; }
+    	if(side == 0) { return iconBottom; }
+    	if(side == 1) { return iconTop; }
+    	else if(side == (facing & -9)) { return (facing & 8) == 8 ? iconFrontOn : iconFrontOff; }
     	else { return iconSide; }
     }
     @SideOnly(Side.CLIENT) @Override
@@ -64,6 +67,7 @@ public class KilnSmeltery extends NCcontainerBlock
     {
         this.iconSide = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "smelterySide");
         this.iconTop = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "smelteryTop");
+        this.iconBottom = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "smelteryBottom");
         this.iconFrontOff = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "smelteryFrontOff");
         this.iconFrontOn = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "smelteryFrontOn");
     }

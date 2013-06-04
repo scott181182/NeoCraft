@@ -58,6 +58,7 @@ public class NeoCraft
 		GameRegistry.registerWorldGenerator(worldGen);
 		GameRegistry.registerCraftingHandler(crafter);
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
+		
 	}
 	@PostInit
 	public void postInit(FMLPostInitializationEvent pie)
