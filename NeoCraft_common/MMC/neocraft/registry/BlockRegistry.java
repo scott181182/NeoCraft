@@ -20,6 +20,7 @@ public class BlockRegistry
 		GameRegistry.registerBlock(NCblock.teaSteeper, Reference.MOD_ID + "@" + NCblock.teaSteeper.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.kilnCore, Reference.MOD_ID + "@" + NCblock.kilnCore.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.magicSteeper, Reference.MOD_ID + "@" + NCblock.magicSteeper.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(NCblock.kilnBakery, Reference.MOD_ID + "@" + NCblock.kilnBakery.getUnlocalizedName().substring(5));
 	}
 	public static void registerTileEntities()
 	{
@@ -35,5 +36,6 @@ public class BlockRegistry
 		LanguageRegistry.addName(NCblock.teaSteeper, "Tea Steeper");
 		LanguageRegistry.addName(NCblock.kilnCore, "Kiln Core");
 		LanguageRegistry.addName(NCblock.magicSteeper, "Magic Steeper");
+		LanguageRegistry.addName(NCblock.kilnBakery, "Bakery Kiln");
 	}
 }
