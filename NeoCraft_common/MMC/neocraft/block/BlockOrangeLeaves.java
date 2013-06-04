@@ -219,7 +219,7 @@ public class BlockOrangeLeaves extends NCblock implements IShearable
      */
     public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6, int par7)
     {
-        if ((par5 & 1) == 1 && par1World.rand.nextInt(3) == 0)
+        if ((par5 & 1) == 1 && par1World.rand.nextInt(20) == 0)
         {
             this.dropBlockAsItem_do(par1World, par2, par3, par4, new ItemStack(NCitem.fruitOrange, 1, 0));
         }

@@ -27,6 +27,12 @@ public class TileEntitySteeper extends NCtileentity
     public int currentItemSteepTime = 0;
     /** The number of ticks that the current item has been steeping for */
     public int steeperCookTime = 0;
+    
+    public TileEntitySteeper()
+    {
+    	super();
+    }
+    
     public ForgeDirection getOrientation() { return orientation; }
     public void setOrientation(ForgeDirection orientation) { this.orientation = orientation; }
     public void setOrientation(int orientation) { this.orientation = ForgeDirection.getOrientation(orientation); }
@@ -92,7 +98,6 @@ public class TileEntitySteeper extends NCtileentity
         this.steeperBurnTime = par1NBTTagCompound.getShort("BurnTime");
         this.steeperCookTime = par1NBTTagCompound.getShort("CookTime");
         this.currentItemSteepTime = getItemSteepTime(this.steeperItemStacks[2]);
-        this.worldObj.setBlockMetadataWithNotify(this.xCoord, this.yCoord, this.zCoord, orientation.ordinal() | (steeperBurnTime > 0 ? 1 : 0), 3);
     }
     @Override public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {

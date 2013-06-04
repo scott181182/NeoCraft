@@ -97,7 +97,6 @@ public class BlockSteeper extends NCcontainerBlock
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
     {
         int yaw = MathHelper.floor_double((double)(par5EntityLiving.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-        if(!par1World.isRemote) { System.out.println(yaw); }
         int facing = 0;
     	if(yaw == 0) { facing = ForgeDirection.NORTH.ordinal(); }
     	else if(yaw == 1) { facing = ForgeDirection.EAST.ordinal(); }
@@ -105,7 +104,6 @@ public class BlockSteeper extends NCcontainerBlock
     	else if(yaw == 3) { facing = ForgeDirection.WEST.ordinal(); }
     	else { facing = 2; }
         par1World.setBlockMetadataWithNotify(par2, par3, par4, facing, 3);
-        if(!par1World.isRemote) { System.out.println(par1World.getBlockMetadata(par2, par3, par4)); }
         if (par6ItemStack.hasDisplayName())
         {
             ((TileEntitySteeper)par1World.getBlockTileEntity(par2, par3, par4)).setInvName(par6ItemStack.getDisplayName());
