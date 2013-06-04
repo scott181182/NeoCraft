@@ -23,7 +23,7 @@ import MMC.neocraft.registry.*;
  * @author Scott Fasone
  * @license Lesser GNU Public License v3 (http://www.gnu.org/Licenses/lgpl.html)
  */
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME /* , version = Reference.VERSION */ )
 @NetworkMod(clientSideRequired = true, serverSideRequired= false)
 public class NeoCraft
 {

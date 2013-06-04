@@ -3,11 +3,11 @@
   "modid": "NeoCraft",
   "name": "NeoCraft",
   "description": "Bringing the future to Minecraft, one block at a time",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "url": "",
   "updateUrl": "",
   "authorList": [
-    "scott181182"
+    "scott181182", "SilentMutiny", "jedidude84", "WOMBATMAN", "atyone"
   ],
   "credits": "",
   "logoFile": "",
