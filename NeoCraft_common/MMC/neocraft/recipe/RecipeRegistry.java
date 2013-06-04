@@ -19,7 +19,7 @@ public class RecipeRegistry
 		GameRegistry.addRecipe(new ItemStack(NCitem.staveSinensium), "  C", " S ", "G  ", 'C', NCitem.conglomerateSinensium, 'S', Item.stick, 'G', Item.ingotGold);
 		GameRegistry.addRecipe(new ItemStack(NCitem.knifePruning), "HH", " S", "S ", 'H', Item.ingotIron, 'S', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(NCitem.pulpOrange), "K", "O", 'K', new ItemStack(NCitem.knifePruning, 1, OreDictionary.WILDCARD_VALUE), 'O', NCitem.fruitOrange);
-		GameRegistry.addRecipe(new ItemStack(NCblock.magicSteeper), "HBH", "HRH", "FBF", 'H', Item.ingotIron, 'B', Item.bucketEmpty, 'R', Block.fenceIron);
+		GameRegistry.addRecipe(new ItemStack(NCblock.teaSteeper), "HBH", "HRH", "FBF", 'H', Item.ingotIron, 'B', Item.bucketEmpty, 'R', Block.fenceIron);
 		GameRegistry.addRecipe(new ItemStack(NCblock.magicSteeper), "SSS", "FTF", "SVS", 'S', NCitem.elementSinensium, 'F', Block.furnaceIdle, 'T', NCblock.teaSteeper, 'V', NCitem.staveSinensium);
 	}
 	public static void registerShapelessRecipes()
