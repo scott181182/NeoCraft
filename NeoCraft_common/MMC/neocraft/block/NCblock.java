@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 
 public class NCblock extends Block
 {
-	public static Block orangeWood, orangeLeaves, blockTest, saplingOrange, teaSteeper, magicSteeper, kilnCore;
+	public static Block orangeWood, orangeLeaves, blockTest, saplingOrange, teaSteeper, magicSteeper, kilnCore, kilnSmeltery;
 	
 	public NCblock(int id, Material material)
 	{
@@ -31,5 +31,6 @@ public class NCblock extends Block
 		blockTest = new BlockTest(1616, Material.glass).setHardness(0.5F).setUnlocalizedName("blockTest");
 	    magicSteeper = new MagicSteeper(1617, Material.glass).setHardness(1.5F).setStepSound(soundGlassFootstep).setUnlocalizedName("magicSteeper");
 	    kilnCore = new KilnCore(1618, Material.glass).setHardness(1.5F).setStepSound(soundGlassFootstep).setUnlocalizedName("kilnCore");
+	    kilnSmeltery = new KilnCore(1620, Material.iron).setHardness(3F).setStepSound(soundMetalFootstep).setUnlocalizedName("kilnSmeltery");
 	}
 }
