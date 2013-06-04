@@ -27,6 +27,11 @@ public class TileEntitySteeper extends NCtileentity
     /** The number of ticks that the current item has been steeping for */
     public int steeperCookTime = 0;
     
+    public TileEntitySteeper()
+    {
+    	this.setInvName("Tea Steeper");
+    }
+    
     public int getSizeInventory() { return this.steeperItemStacks.length; }
     public ItemStack getStackInSlot(int par1) { return this.steeperItemStacks[par1]; }
     /** Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack. */
