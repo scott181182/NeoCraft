@@ -11,6 +11,7 @@ public class NCguiHandler implements IGuiHandler
 {
 	public static final int steeperID = 0;
 	public static final int magicSteeperID = 1;
+	public static final int bakeryID = 2;
 	public static final int smelteryID = 3;
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -20,8 +21,9 @@ public class NCguiHandler implements IGuiHandler
 		{
 			case steeperID: return new ContainerSteeper(player.inventory, (TileEntitySteeper)te);
 			//case magicSteeperID: return new ContainerSteeper(player.inventory, (TileEntitySteeper)te);
+			case bakeryID: return new ContainerKilnBakery(player.inventory, (TileEntityKilnBakery)te);
 			case smelteryID: return new ContainerKilnSmeltery(player.inventory, (TileEntityKilnSmeltery)te);
-			
+
 			default: return null;
 		}
 	}
@@ -33,6 +35,7 @@ public class NCguiHandler implements IGuiHandler
 		{
 			case steeperID: return new GuiSteeper(player.inventory, (TileEntitySteeper)te);
 			//case magicSteeperID: return new GuiMagicSteeper(player.inventory, (TileEntityMagicSteeper)te);
+			case bakeryID: return new GuiKilnBakery(player.inventory, (TileEntityKilnBakery)te);
 			case smelteryID: return new GuiKilnSmeltery(player.inventory, (TileEntityKilnSmeltery)te);
 			
 			default: return null;
