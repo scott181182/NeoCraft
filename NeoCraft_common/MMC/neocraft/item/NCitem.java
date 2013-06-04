@@ -27,7 +27,7 @@ public class NCitem extends Item
 		rindOrange = new RindOrange(9902).setUnlocalizedName("rindOrange");
 		pulpOrange = new PulpOrange(9903, 2, 0.5f).setUnlocalizedName("pulpOrange");
 		seedOrange = new SeedOrange(9904).setUnlocalizedName("seedOrange");
-		teaOrange = new TeaOrange(9905, 1, 0.1f).setPotionEffect(1, 10, 1, 1).setUnlocalizedName("teaOrange");
+		teaOrange = new TeaOrange(9905, 1, 0.1f).setPotionEffect(1, 10, 0, 1).setAlwaysEdible().setUnlocalizedName("teaOrange");
 		
 		elementSinensium = new ElementSinensium(10001, 1, 1).setUnlocalizedName("elementSinensium");
 		
