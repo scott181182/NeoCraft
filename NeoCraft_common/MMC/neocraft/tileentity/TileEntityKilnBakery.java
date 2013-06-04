@@ -151,7 +151,7 @@ public class TileEntityKilnBakery extends NCtileentity
 	                        --this.bakeryItemStacks[1].stackSize;
 	                        if (this.bakeryItemStacks[1].stackSize == 0)
 	                        {
-	                            this.bakeryItemStacks[1] = this.bakeryItemStacks[2].getItem().getContainerItemStack(bakeryItemStacks[1]);
+	                            this.bakeryItemStacks[1] = this.bakeryItemStacks[1].getItem().getContainerItemStack(bakeryItemStacks[1]);
 	                        }
 	                    }
 	                }
