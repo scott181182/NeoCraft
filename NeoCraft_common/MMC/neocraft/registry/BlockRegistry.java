@@ -6,6 +6,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 import MMC.neocraft.block.*;
 import MMC.neocraft.lib.Reference;
+import MMC.neocraft.tileentity.TileEntityKilnBakery;
 import MMC.neocraft.tileentity.TileEntitySteeper;
 
 public class BlockRegistry
@@ -26,6 +27,7 @@ public class BlockRegistry
 	public static void registerTileEntities()
 	{
 		GameRegistry.registerTileEntity(TileEntitySteeper.class, Reference.MOD_ID + "@" + "tileentity.teaSteeper");
+		GameRegistry.registerTileEntity(TileEntityKilnBakery.class, Reference.MOD_ID + "@" + "tileentity.kilnBakery");
 	}
 	public static void registerNames()
 	{

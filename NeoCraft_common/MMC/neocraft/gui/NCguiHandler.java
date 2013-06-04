@@ -10,6 +10,7 @@ import cpw.mods.fml.common.network.IGuiHandler;
 public class NCguiHandler implements IGuiHandler
 {
 	public static final int steeperID = 0;
+	public static final int bakeryID = 2;
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
@@ -17,7 +18,8 @@ public class NCguiHandler implements IGuiHandler
 		switch(ID)
 		{
 			case steeperID: return new ContainerSteeper(player.inventory, (TileEntitySteeper)te);
-			
+			case bakeryID: return new ContainerKilnBakery(player.inventory, (TileEntityKilnBakery)te);
+
 			default: return null;
 		}
 	}
@@ -28,6 +30,7 @@ public class NCguiHandler implements IGuiHandler
 		switch(ID)
 		{
 			case steeperID: return new GuiSteeper(player.inventory, (TileEntitySteeper)te);
+			case bakeryID: return new GuiKilnBakery(player.inventory, (TileEntityKilnBakery)te);
 			
 			default: return null;
 		}
