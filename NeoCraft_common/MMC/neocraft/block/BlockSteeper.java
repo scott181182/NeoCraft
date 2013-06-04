@@ -1,6 +1,5 @@
 package MMC.neocraft.block;
 
-import java.util.Random;
 import MMC.neocraft.NeoCraft;
 import MMC.neocraft.gui.NCguiHandler;
 import MMC.neocraft.lib.Reference;
@@ -23,14 +22,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSteeper extends NCcontainerBlock
 {
-    private static boolean keepFurnaceInventory = false;
+    private static boolean keepSteeperInventory = false;
     @SideOnly(Side.CLIENT) private Icon iconSide, iconTop, iconFrontOn, iconFrontOff;
     
     protected BlockSteeper(int par1, Material par2)
     {
         super(par1, par2);
     }
-    @Override public int idDropped(int par1, Random par2Random, int par3) { return NCblock.teaSteeper.blockID; }
     @Override
     public void onBlockAdded(World par1World, int par2, int par3, int par4)
     {
@@ -81,12 +79,12 @@ public class BlockSteeper extends NCcontainerBlock
     {
     	int meta = par1World.getBlockMetadata(par2, par3, par4);
         TileEntity tileentity = par1World.getBlockTileEntity(par2, par3, par4);
-        keepFurnaceInventory = true;
+        keepSteeperInventory = true;
 
         if (par0) {  par1World.setBlockMetadataWithNotify(par2, par3, par4, meta | 8, 3); }
         else { par1World.setBlockMetadataWithNotify(par2, par3, par4, meta & -9, 3); }
 
-        keepFurnaceInventory = false;
+        keepSteeperInventory = false;
         if (tileentity != null)
         {
             tileentity.validate();
@@ -112,7 +110,7 @@ public class BlockSteeper extends NCcontainerBlock
     @Override
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
     {
-        if (!keepFurnaceInventory)
+        if (!keepSteeperInventory)
         {
             TileEntitySteeper tileEntity = (TileEntitySteeper)par1World.getBlockTileEntity(par2, par3, par4);
 
@@ -159,7 +157,6 @@ public class BlockSteeper extends NCcontainerBlock
         }
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
-    @SideOnly(Side.CLIENT) @Override public int idPicked(World par1World, int par2, int par3, int par4) { return NCblock.teaSteeper.blockID; }
 	@Override public TileEntity createNewTileEntity(World world) { return new TileEntitySteeper(); }
 
 }

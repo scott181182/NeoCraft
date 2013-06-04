@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 
 public class SteeperRecipes
 {
-    private static final SteeperRecipes smeltingBase = new SteeperRecipes();
+    private static final SteeperRecipes steepingBase = new SteeperRecipes();
 
     /** The list of smelting results. */
     private Map<List<Integer>, ItemStack> steepingList = new HashMap<List<Integer>, ItemStack>();
@@ -23,7 +23,7 @@ public class SteeperRecipes
     /**
      * Used to call methods addSmelting and getSmeltingResult.
      */
-    public static final SteeperRecipes steeping() { return smeltingBase; }
+    public static final SteeperRecipes steeping() { return steepingBase; }
 
     private SteeperRecipes()
     {
