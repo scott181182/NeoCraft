@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 
 public class NCblock extends Block
 {
-	public static Block orangeWood, orangeLeaves, blockTest, saplingOrange, teaSteeper, magicSteeper, kilnCore, kilnSmeltery;
+	public static Block orangeWood, orangeLeaves, blockTest, saplingOrange, teaSteeper, magicSteeper, kilnCore, kilnBakery, kilnSmeltery;
 	
 	public NCblock(int id, Material material)
 	{
@@ -30,7 +30,8 @@ public class NCblock extends Block
 	    teaSteeper = new BlockSteeper(1615, Material.glass).setHardness(1.5F).setStepSound(soundGlassFootstep).setUnlocalizedName("teaSteeper");
 		blockTest = new BlockTest(1616, Material.glass).setHardness(0.5F).setUnlocalizedName("blockTest");
 	    magicSteeper = new MagicSteeper(1617, Material.glass).setHardness(1.5F).setStepSound(soundGlassFootstep).setUnlocalizedName("magicSteeper");
-	    kilnCore = new KilnCore(1618, Material.glass).setHardness(1.5F).setStepSound(soundGlassFootstep).setUnlocalizedName("kilnCore");
-	    kilnSmeltery = new KilnCore(1620, Material.iron).setHardness(3F).setStepSound(soundMetalFootstep).setUnlocalizedName("kilnSmeltery");
+	    kilnCore = new KilnCore(1618, Material.rock).setHardness(2F).setStepSound(soundStoneFootstep).setUnlocalizedName("kilnCore");
+	    kilnBakery = new KilnBakery(1619, Material.rock).setHardness(2.5F).setStepSound(soundStoneFootstep).setUnlocalizedName("kilnBakery");
+	    kilnSmeltery = new KilnSmeltery(1620, Material.iron).setHardness(3F).setStepSound(soundMetalFootstep).setUnlocalizedName("kilnSmeltery");
 	}
 }
