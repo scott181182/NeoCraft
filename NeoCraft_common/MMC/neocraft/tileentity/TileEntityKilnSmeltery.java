@@ -27,7 +27,10 @@ public class TileEntityKilnSmeltery extends NCtileentity
     /** The number of ticks that the current item has been steeping for */
     public int smelteryCookTime = 0;
     
-    
+    public TileEntityKilnSmeltery()
+    {
+    	this.setInvName("Smeltery Kiln");
+    }
 
 	@Override public int getSizeInventory() { return this.smelteryItemStacks.length; }
 	@Override public ItemStack getStackInSlot(int i) { return this.smelteryItemStacks[i]; }
@@ -166,7 +169,7 @@ public class TileEntityKilnSmeltery extends NCtileentity
             ItemStack itemstack = KilnSmelteryRecipes.smelting().getSmeltingResult(this.smelteryItemStacks[0]);
             if(itemstack == null) return false;
             if(this.smelteryItemStacks[2] == null) return true;
-            if(!this.smelteryItemStacks[3].isItemEqual(itemstack)) return false;
+            if(!this.smelteryItemStacks[2].isItemEqual(itemstack)) return false;
             int result = smelteryItemStacks[2].stackSize + itemstack.stackSize;
             return (result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize());
         }

@@ -1,9 +1,7 @@
 package MMC.neocraft.tileentity;
 
-import MMC.neocraft.block.BlockSteeper;
 import MMC.neocraft.block.KilnBakery;
 import MMC.neocraft.recipe.KilnBakeryRecipes;
-import MMC.neocraft.recipe.SteeperRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -18,7 +16,6 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraftforge.common.ForgeDirection;
 
 public class TileEntityKilnBakery extends NCtileentity 
 {
@@ -30,6 +27,11 @@ public class TileEntityKilnBakery extends NCtileentity
 	    public int currentItemBakeTime = 0;
 	    /** The number of ticks that the current item has been steeping for */
 	    public int bakeryCookTime = 0;
+	    
+	    public TileEntityKilnBakery()
+	    {
+	    	this.setInvName("Bakery Kiln");
+	    }
 	    
 	    @Override public int getSizeInventory() { return this.bakeryItemStacks.length; }
 	    

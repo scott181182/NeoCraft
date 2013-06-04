@@ -6,7 +6,6 @@ import MMC.neocraft.NeoCraft;
 import MMC.neocraft.gui.NCguiHandler;
 import MMC.neocraft.lib.Reference;
 import MMC.neocraft.tileentity.TileEntityKilnSmeltery;
-import MMC.neocraft.tileentity.TileEntitySteeper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;

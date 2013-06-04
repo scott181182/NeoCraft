@@ -22,7 +22,7 @@ public class ContainerKilnSmeltery extends NCcontainer
 		smeltery = te;
         this.addSlotToContainer(new Slot(te, 0, 56, 17));
         this.addSlotToContainer(new Slot(te, 1, 56, 53));
-        this.addSlotToContainer(new SlotKilnSmeltery(inv.player, te, 3, 116, 35));
+        this.addSlotToContainer(new SlotKilnSmeltery(inv.player, te, 2, 116, 35));
 		super.addInventory(inv);
 	}
 	@Override

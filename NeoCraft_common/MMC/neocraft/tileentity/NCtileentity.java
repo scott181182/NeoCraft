@@ -29,7 +29,7 @@ public abstract class NCtileentity extends TileEntity implements ISidedInventory
         par1NBTTagCompound.setByte("orientation", (byte)orientation.ordinal());
         if (this.isInvNameLocalized()) { par1NBTTagCompound.setString("CustomName", this.invName); }
     }
-    @Override public String getInvName() { return this.isInvNameLocalized() ? this.invName : "Tea Steeper"; }
+    @Override public String getInvName() { return this.isInvNameLocalized() ? this.invName : "NCtileentity"; }
     @Override public boolean isInvNameLocalized() { return this.invName != null && this.invName.length() > 0; }
     public void setInvName(String par1Str) { this.invName = par1Str; }
 }

@@ -7,7 +7,6 @@ import java.util.Map;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import MMC.neocraft.item.NCitem;
 
 public class KilnBakeryRecipes 
 {
