@@ -18,11 +18,8 @@ public class BlockRegistry
 		GameRegistry.registerBlock(NCblock.blockTest, Reference.MOD_ID + "@" + NCblock.blockTest.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.saplingOrange, Reference.MOD_ID + "@" + NCblock.saplingOrange.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.teaSteeper, Reference.MOD_ID + "@" + NCblock.teaSteeper.getUnlocalizedName().substring(5));
-<<<<<<< HEAD
 		GameRegistry.registerBlock(NCblock.kilnCore, Reference.MOD_ID + "@" + NCblock.kilnCore.getUnlocalizedName().substring(5));
-=======
 		GameRegistry.registerBlock(NCblock.magicSteeper, Reference.MOD_ID + "@" + NCblock.magicSteeper.getUnlocalizedName().substring(5));
->>>>>>> 1c6f3f25b592ba7010d20a775c1e1964f41a5477
 	}
 	public static void registerTileEntities()
 	{
@@ -36,10 +33,7 @@ public class BlockRegistry
 		LanguageRegistry.addName(new ItemStack(NCblock.blockTest, 1, 0), "Test Block");
 		LanguageRegistry.addName(NCblock.saplingOrange, "Orange Tree Sapling");
 		LanguageRegistry.addName(NCblock.teaSteeper, "Tea Steeper");
-<<<<<<< HEAD
 		LanguageRegistry.addName(NCblock.kilnCore, "Kiln Core");
-=======
 		LanguageRegistry.addName(NCblock.magicSteeper, "Magic Steeper");
->>>>>>> 1c6f3f25b592ba7010d20a775c1e1964f41a5477
 	}
 }
