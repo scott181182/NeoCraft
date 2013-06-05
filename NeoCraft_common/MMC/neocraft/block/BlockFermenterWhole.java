@@ -9,6 +9,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import MMC.neocraft.tileentity.TileEntityFermenterBottom;
+import MMC.neocraft.tileentity.TileEntityFermenterTop;
 import MMC.neocraft.tileentity.TileEntityFermenterWhole;
 
 public class BlockFermenterWhole extends NCcontainerBlock
@@ -30,17 +31,21 @@ public class BlockFermenterWhole extends NCcontainerBlock
     @Override
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
     {
-        int yaw = MathHelper.floor_double((double)(par5EntityLiving.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+        int yaw = MathHelper.floor_double((double)(par5EntityLiving.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
         int facing = 0;
     	if(yaw == 0) { facing = ForgeDirection.NORTH.ordinal(); }
     	else if(yaw == 1) { facing = ForgeDirection.EAST.ordinal(); }
     	else if(yaw == 2) { facing = ForgeDirection.SOUTH.ordinal(); }
     	else if(yaw == 3) { facing = ForgeDirection.WEST.ordinal(); }
     	else { facing = 2; }
-        par1World.setBlock(par2, par3, par4, NCblock.fermenterBottom.blockID, facing, 3);
-        par1World.setBlock(par2, par3 + 1, par4, NCblock.fermenterTop.blockID, facing, 3);
+        par1World.setBlock(par2, par3, par4, NCblock.fermenterBottom.blockID, yaw, 3);
+        par1World.setBlock(par2, par3 + 1, par4, NCblock.fermenterTop.blockID, yaw, 3);
+        
         TileEntity te = par1World.getBlockTileEntity(par2, par3, par4);
         if(te != null) { ((TileEntityFermenterBottom)te).setOrientation(facing); }
+        te = par1World.getBlockTileEntity(par2, par3 + 1, par4);
+        if(te != null) { ((TileEntityFermenterTop)te).setOrientation(facing); }
+        
         if (par6ItemStack.hasDisplayName())
         {
             ((TileEntityFermenterBottom)par1World.getBlockTileEntity(par2, par3, par4)).setInvName(par6ItemStack.getDisplayName());

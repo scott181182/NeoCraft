@@ -15,13 +15,13 @@ public class TileEntityRendererFermenterWhole extends TileEntitySpecialRenderer
 	}
 	public void renderAModelAt(TileEntityFermenterWhole te, double x, double y, double z, float par4)
 	{
-		int rotation = 0;
-		if(te.worldObj != null) { rotation = te.getOrientation().ordinal(); }
+		//int rotation = 0;
+		//if(te.worldObj != null) { rotation = te.getOrientation().ordinal(); }
 		this.bindTextureByName("/mods/NeoCraft/textures/models/fermenterWhole.png");
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float)x + .5f, (float)y + .5f, (float)z + .5f);
-		GL11.glScalef(.5f, -.5f, -.5f);
-		GL11.glRotatef(rotation * 90, 0, 1, 0);
+		GL11.glTranslatef((float)x + .5f, (float)y + .55f, (float)z + .5f);
+		GL11.glScalef(.7f, -.7f, -.7f);
+		GL11.glRotatef(270, 0, 1, 0);
 		model.renderAll();
 		GL11.glPopMatrix();
 	}

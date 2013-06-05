@@ -16,7 +16,7 @@ public class TileEntityRendererFermenterTop extends TileEntitySpecialRenderer
 	public void renderAModelAt(TileEntityFermenterTop te, double x, double y, double z, float par4)
 	{
 		int rotation = 0;
-		if(te.worldObj != null) { rotation = te.getOrientation().ordinal(); }
+		if(te.worldObj != null) { rotation = te.getBlockMetadata(); }
 		this.bindTextureByName("/mods/NeoCraft/textures/models/fermenterTop.png");
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + .5f, (float)y + .5f, (float)z + .5f);

@@ -23,6 +23,7 @@ public class BlockFermenterTop extends NCcontainerBlock
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
     {
         super.breakBlock(par1World, par2, par3 - 1, par4, par5, par6);
+        par1World.setBlockToAir(par2, par3 - 1, par4);
     }
 	@Override public TileEntity createNewTileEntity(World world) { return new TileEntityFermenterTop(); }
 }
