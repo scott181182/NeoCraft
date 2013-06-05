@@ -8,6 +8,6 @@ public class Reference
 	public static final String MOD_NAME = "NeoCraft";
 	public static final String VERSION = "0.0.1";
 	
-	public static final String COMMON_PROXY = "MMC.neocraft.lib.CommonProxy";
-	public static final String CLIENT_PROXY = "MMC.neocraft.lib.ClientProxy";
+	public static final String COMMON_PROXY = "MMC.neocraft.registry.proxy.CommonProxy";
+	public static final String CLIENT_PROXY = "MMC.neocraft.registry.proxy.ClientProxy";
 }

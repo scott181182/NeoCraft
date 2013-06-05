@@ -16,19 +16,22 @@ import MMC.neocraft.lib.*;
 import MMC.neocraft.recipe.NCcrafter;
 import MMC.neocraft.recipe.RecipeRegistry;
 import MMC.neocraft.registry.*;
+import MMC.neocraft.registry.proxy.ClientProxy;
+import MMC.neocraft.registry.proxy.CommonProxy;
 
 /**
  * NeoCraft
  * 
  * @author Scott Fasone
- * @license Lesser GNU Public License v3 (http://www.gnu.org/Licenses/lgpl.html)
+ * @license Lesser GNU Public License v3 (http://www.gnu.org/licenses/lgpl.html)
  */
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME /* , version = Reference.VERSION */ )
 @NetworkMod(clientSideRequired = true, serverSideRequired= false)
 public class NeoCraft
 {
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.COMMON_PROXY)
-	public static CommonProxy proxy;
+	public static CommonProxy proxy = new CommonProxy();
+	public static ClientProxy clientProxy = new ClientProxy();
 	@Instance(Reference.MOD_ID)
 	public static NeoCraft instance = new NeoCraft();
 	
@@ -58,6 +61,7 @@ public class NeoCraft
 		GameRegistry.registerWorldGenerator(worldGen);
 		GameRegistry.registerCraftingHandler(crafter);
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
+		clientProxy.registerRenderers();
 		
 	}
 	@PostInit
