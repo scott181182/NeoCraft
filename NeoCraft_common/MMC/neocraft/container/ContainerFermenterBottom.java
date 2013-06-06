@@ -22,7 +22,7 @@ public class ContainerFermenterBottom extends NCcontainer
 		fermenter = te;
         this.addSlotToContainer(new Slot(te, 0, 56, 17));
         this.addSlotToContainer(new Slot(te, 1, 56, 53));
-        this.addSlotToContainer(new SlotFermenter(inv.player, te, 2, 116, 35));
+        this.addSlotToContainer(new SlotFermenterBottom(inv.player, te, 2, 116, 35));
 		super.addInventory(inv);
 	}
     

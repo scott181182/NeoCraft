@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import MMC.neocraft.recipe.FermenterRecipes;
 
-public class SlotFermenterBottom 
+public class SlotFermenterBottom extends NCslot
 {
 
 	EntityPlayer player;
