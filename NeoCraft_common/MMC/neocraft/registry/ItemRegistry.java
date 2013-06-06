@@ -13,6 +13,7 @@ public class ItemRegistry
 		LanguageRegistry.addName(NCitem.pulpOrange, "Orange");
 		LanguageRegistry.addName(NCitem.seedOrange, "Orange Seed");
 		LanguageRegistry.addName(NCitem.teaOrange, "Orange Tea");
+		LanguageRegistry.addName(NCitem.yeast, "Yeast");
 		
 		LanguageRegistry.addName(NCitem.elementSinensium, "Sinensium");
 		LanguageRegistry.addName(NCitem.conglomerateSinensium, "Sinensium Conglomerate");

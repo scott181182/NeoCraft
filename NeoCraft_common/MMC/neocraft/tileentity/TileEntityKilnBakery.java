@@ -19,84 +19,79 @@ import net.minecraft.nbt.NBTTagList;
 
 public class TileEntityKilnBakery extends NCtileentity 
 {
-	
-	 private ItemStack[] bakeryItemStacks = new ItemStack[3];
-	    /** The number of ticks that the steeper will keep burning */
-	    public int bakeryBurnTime = 0;
-	    /** The number of ticks that a fresh copy of the currently-steeping item would keep the steeper burning for */
-	    public int currentItemBakeTime = 0;
-	    /** The number of ticks that the current item has been steeping for */
-	    public int bakeryCookTime = 0;
+	private ItemStack[] bakeryItemStacks = new ItemStack[3];
+	/** The number of ticks that the steeper will keep burning */
+	public int bakeryBurnTime = 0;
+	/** The number of ticks that a fresh copy of the currently-steeping item would keep the steeper burning for */
+	 public int currentItemBakeTime = 0;
+	/** The number of ticks that the current item has been steeping for */
+	public int bakeryCookTime = 0;
 	    
-	    public TileEntityKilnBakery()
-	    {
-	    	this.setInvName("Bakery Kiln");
-	    }
+    public TileEntityKilnBakery()
+    {
+    	this.setInvName("Bakery Kiln");
+    }
+    @Override public int getSizeInventory() { return this.bakeryItemStacks.length; }
+    @Override public ItemStack getStackInSlot(int par1) { return this.bakeryItemStacks[par1]; }
+    /** Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack. */
+    @Override public ItemStack decrStackSize(int par1, int par2)
+    {
+    	if (this.bakeryItemStacks[par1] != null)
+        {
+            ItemStack itemstack;
+            if (this.bakeryItemStacks[par1].stackSize <= par2)
+            {
+                itemstack = this.bakeryItemStacks[par1];
+                this.bakeryItemStacks[par1] = null;
+                return itemstack;
+            }
+            else
+            {
+                itemstack = this.bakeryItemStacks[par1].splitStack(par2);
+                if (this.bakeryItemStacks[par1].stackSize == 0) { this.bakeryItemStacks[par1] = null; }
+                return itemstack;
+            }
+        }
+        else { return null; }
+    }
 	    
-	    @Override public int getSizeInventory() { return this.bakeryItemStacks.length; }
+    @Override public ItemStack getStackInSlotOnClosing(int par1)
+    {
+        if (this.bakeryItemStacks[par1] != null)
+        {
+            ItemStack itemstack = this.bakeryItemStacks[par1];
+            this.bakeryItemStacks[par1] = null;
+            return itemstack;
+        }
+        else { return null; }
+    }
 	    
-	    @Override public ItemStack getStackInSlot(int par1) { return this.bakeryItemStacks[par1]; }
-	    
-	    /** Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack. */
-	    @Override public ItemStack decrStackSize(int par1, int par2)
-	    {
-	    	if (this.bakeryItemStacks[par1] != null)
-	        {
-	            ItemStack itemstack;
-	            if (this.bakeryItemStacks[par1].stackSize <= par2)
-	            {
-	                itemstack = this.bakeryItemStacks[par1];
-	                this.bakeryItemStacks[par1] = null;
-	                return itemstack;
-	            }
-	            else
-	            {
-	                itemstack = this.bakeryItemStacks[par1].splitStack(par2);
-	                if (this.bakeryItemStacks[par1].stackSize == 0) { this.bakeryItemStacks[par1] = null; }
-	                return itemstack;
-	            }
-	        }
-	        else { return null; }
-	    }
-	    
-	    @Override public ItemStack getStackInSlotOnClosing(int par1)
-	    {
-	        if (this.bakeryItemStacks[par1] != null)
-	        {
-	            ItemStack itemstack = this.bakeryItemStacks[par1];
-	            this.bakeryItemStacks[par1] = null;
-	            return itemstack;
-	        }
-	        else { return null; }
-	    }
-	    
-	   @Override public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
-	    {
-	        this.bakeryItemStacks[par1] = par2ItemStack;
+	@Override public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
+	{
+		this.bakeryItemStacks[par1] = par2ItemStack;
+        if (par2ItemStack != null && par2ItemStack.stackSize > this.getInventoryStackLimit())
+        {
+            par2ItemStack.stackSize = this.getInventoryStackLimit();
+        }
+	}
+	@Override 
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
+	{
+        super.readFromNBT(par1NBTTagCompound);
+        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+        this.bakeryItemStacks = new ItemStack[this.getSizeInventory()];
 
-	        if (par2ItemStack != null && par2ItemStack.stackSize > this.getInventoryStackLimit())
-	        {
-	            par2ItemStack.stackSize = this.getInventoryStackLimit();
-	        }
-	    }
-	   
-	   @Override public void readFromNBT(NBTTagCompound par1NBTTagCompound)
-	    {
-	        super.readFromNBT(par1NBTTagCompound);
-	        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
-	        this.bakeryItemStacks = new ItemStack[this.getSizeInventory()];
+        for (int i = 0; i < nbttaglist.tagCount(); ++i)
+        {
+            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
+            byte b0 = nbttagcompound1.getByte("Slot");
+            if (b0 >= 0 && b0 < this.bakeryItemStacks.length) { this.bakeryItemStacks[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1); }
+        }
 
-	        for (int i = 0; i < nbttaglist.tagCount(); ++i)
-	        {
-	            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
-	            byte b0 = nbttagcompound1.getByte("Slot");
-	            if (b0 >= 0 && b0 < this.bakeryItemStacks.length) { this.bakeryItemStacks[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1); }
-	        }
-
-	        this.bakeryBurnTime = par1NBTTagCompound.getShort("BurnTime");
-	        this.bakeryCookTime = par1NBTTagCompound.getShort("CookTime");
-	        this.currentItemBakeTime = getItemBurnTime(this.bakeryItemStacks[2]);
-	    }
+        this.bakeryBurnTime = par1NBTTagCompound.getShort("BurnTime");
+        this.bakeryCookTime = par1NBTTagCompound.getShort("CookTime");
+        this.currentItemBakeTime = getItemBurnTime(this.bakeryItemStacks[1]);
+    }
 	   
 	    @Override public void writeToNBT(NBTTagCompound par1NBTTagCompound)
 	    {

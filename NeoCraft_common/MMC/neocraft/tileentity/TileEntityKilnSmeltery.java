@@ -85,7 +85,7 @@ public class TileEntityKilnSmeltery extends NCtileentity
 
         this.smelteryBurnTime = par1NBTTagCompound.getShort("BurnTime");
         this.smelteryCookTime = par1NBTTagCompound.getShort("CookTime");
-        this.currentItemSmeltTime = getItemBurnTime(this.smelteryItemStacks[2]);
+        this.currentItemSmeltTime = getItemBurnTime(this.smelteryItemStacks[1]);
     }
     @Override public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {

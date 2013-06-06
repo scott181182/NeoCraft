@@ -25,6 +25,7 @@ public class BlockRegistry
 		GameRegistry.registerBlock(NCblock.fermenterBottom, Reference.MOD_ID + "@" + NCblock.fermenterBottom.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.fermenterTop, Reference.MOD_ID + "@" + NCblock.fermenterTop.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.fermenterWhole, Reference.MOD_ID + "@" + NCblock.fermenterWhole.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(NCblock.incubator, Reference.MOD_ID + "@" + NCblock.incubator.getUnlocalizedName().substring(5));
 	}
 	public static void registerTileEntities()
 	{
@@ -34,6 +35,7 @@ public class BlockRegistry
 		GameRegistry.registerTileEntity(TileEntityFermenterBottom.class, Reference.MOD_ID + "@" + "tileentity.fermenterBottom");
 		GameRegistry.registerTileEntity(TileEntityFermenterTop.class, Reference.MOD_ID + "@" + "tileentity.fermenterTop");
 		GameRegistry.registerTileEntity(TileEntityFermenterWhole.class, Reference.MOD_ID + "@" + "tileentity.fermenterWhole");
+		GameRegistry.registerTileEntity(TileEntityIncubator.class, Reference.MOD_ID + "@" + "tileentity.incubator");
 	}
 	public static void registerNames()
 	{
@@ -48,7 +50,6 @@ public class BlockRegistry
 		LanguageRegistry.addName(NCblock.kilnSmeltery, "Smeltery Kiln");
 		LanguageRegistry.addName(NCblock.kilnBakery, "Bakery Kiln");
 		LanguageRegistry.addName(NCblock.fermenterWhole, "Fermenter");
-		
-		LanguageRegistry.addName(NCblock.fermenterBottom, "Bottom Fermenter");
+		LanguageRegistry.addName(NCblock.incubator, "Incubator");
 	}
 }
