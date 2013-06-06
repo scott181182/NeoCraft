@@ -33,11 +33,6 @@ public class KilnSmelteryRecipes
         this.smeltingList.put(Integer.valueOf(par1), result);
         this.experienceList.put(Integer.valueOf(result.itemID), Float.valueOf(experience));
     }
-	public void addSteeping(int par1, int par1Meta, ItemStack result, float experience)
-    {
-		metaSmeltingList.put(Arrays.asList(par1, par1Meta), result);
-        metaExperience.put(Arrays.asList(result.itemID, result.getItemDamage()), experience);
-    }
 
     public Map<Integer, ItemStack> getSmeltingList() { return this.smeltingList; }
     public Map<List<Integer>, ItemStack> getMetaSmeltingList() { return metaSmeltingList; }

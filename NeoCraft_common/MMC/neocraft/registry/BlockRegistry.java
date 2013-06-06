@@ -28,12 +28,12 @@ public class BlockRegistry
 	}
 	public static void registerTileEntities()
 	{
-		GameRegistry.registerTileEntity(TileEntitySteeper.class, Reference.MOD_ID + "@" + "tileentity.teaSteeper");
-		GameRegistry.registerTileEntity(TileEntityKilnSmeltery.class, Reference.MOD_ID + "@" + "tileentity.kilnSmeltery");
-		GameRegistry.registerTileEntity(TileEntityKilnBakery.class, Reference.MOD_ID + "@" + "tileentity.kilnBakery");
-		GameRegistry.registerTileEntity(TileEntityFermenterBottom.class, Reference.MOD_ID + "@" + "tileentity.fermenterBottom");
-		GameRegistry.registerTileEntity(TileEntityFermenterTop.class, Reference.MOD_ID + "@" + "tileentity.fermenterTop");
-		GameRegistry.registerTileEntity(TileEntityFermenterWhole.class, Reference.MOD_ID + "@" + "tileentity.fermenterWhole");
+		GameRegistry.registerTileEntity(TileEntitySteeper.class, Reference.MOD_ID + "@" + "tileentity.tileEntityTeaSteeper");
+		GameRegistry.registerTileEntity(TileEntityKilnSmeltery.class, Reference.MOD_ID + "@" + "tileentity.tileEntityKilnSmeltery");
+		GameRegistry.registerTileEntity(TileEntityKilnBakery.class, Reference.MOD_ID + "@" + "tileentity.tileEntityKilnBakery");
+		GameRegistry.registerTileEntity(TileEntityFermenterBottom.class, Reference.MOD_ID + "@" + "tileentity.tileEntityFermenterBottom");
+		GameRegistry.registerTileEntity(TileEntityFermenterTop.class, Reference.MOD_ID + "@" + "tileentity.tileEntityFermenterTop");
+		GameRegistry.registerTileEntity(TileEntityFermenterWhole.class, Reference.MOD_ID + "@" + "tileentity.tileEntityFermenterWhole");
 	}
 	public static void registerNames()
 	{
@@ -48,5 +48,7 @@ public class BlockRegistry
 		LanguageRegistry.addName(NCblock.kilnSmeltery, "Smeltery Kiln");
 		LanguageRegistry.addName(NCblock.kilnBakery, "Bakery Kiln");
 		LanguageRegistry.addName(NCblock.fermenterWhole, "Fermenter");
+		
+		LanguageRegistry.addName(NCblock.fermenterBottom, "Bottom Fermenter");
 	}
 }
