@@ -48,5 +48,7 @@ public class BlockRegistry
 		LanguageRegistry.addName(NCblock.kilnSmeltery, "Smeltery Kiln");
 		LanguageRegistry.addName(NCblock.kilnBakery, "Bakery Kiln");
 		LanguageRegistry.addName(NCblock.fermenterWhole, "Fermenter");
+		
+		LanguageRegistry.addName(NCblock.fermenterBottom, "Bottom Fermenter");
 	}
 }

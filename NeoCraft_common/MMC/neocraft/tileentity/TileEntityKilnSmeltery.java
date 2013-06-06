@@ -135,7 +135,7 @@ public class TileEntityKilnSmeltery extends NCtileentity
                         --this.smelteryItemStacks[1].stackSize;
                         if (this.smelteryItemStacks[1].stackSize == 0)
                         {
-                            this.smelteryItemStacks[1] = this.smelteryItemStacks[1].getItem().getContainerItemStack(smelteryItemStacks[3]);
+                            this.smelteryItemStacks[1] = this.smelteryItemStacks[1].getItem().getContainerItemStack(smelteryItemStacks[1]);
                         }
                     }
                 }
