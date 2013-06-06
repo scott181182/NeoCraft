@@ -7,12 +7,7 @@ import net.minecraft.world.World;
 import MMC.neocraft.tileentity.TileEntityFermenterBottom;
 import MMC.neocraft.NeoCraft;
 import MMC.neocraft.gui.NCguiHandler;
-import MMC.neocraft.tileentity.TileEntitySteeper;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
-import net.minecraftforge.common.ForgeDirection;
 
 public class BlockFermenterBottom extends NCcontainerBlock
 {
@@ -35,7 +30,7 @@ public class BlockFermenterBottom extends NCcontainerBlock
 	    {
 			TileEntity te = par1World.getBlockTileEntity(x, y, z);
 			if(te == null || player.isSneaking()) { return false; }
-			player.openGui(NeoCraft.instance, NCguiHandler.steeperID, par1World, x, y, z);
+			player.openGui(NeoCraft.instance, NCguiHandler.fermenterBottomID, par1World, x, y, z);
 			return true;
 	    }
 	
@@ -58,23 +53,6 @@ public class BlockFermenterBottom extends NCcontainerBlock
         {
             tileentity.validate();
             par1World.setBlockTileEntity(par2, par3, par4, tileentity);
-        }
-    }
-    
-    @Override
-    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
-    {
-        int yaw = MathHelper.floor_double((double)(par5EntityLiving.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-        int facing = 0;
-    	if(yaw == 0) { facing = ForgeDirection.NORTH.ordinal(); }
-    	else if(yaw == 1) { facing = ForgeDirection.EAST.ordinal(); }
-    	else if(yaw == 2) { facing = ForgeDirection.SOUTH.ordinal(); }
-    	else if(yaw == 3) { facing = ForgeDirection.WEST.ordinal(); }
-    	else { facing = 2; }
-        par1World.setBlockMetadataWithNotify(par2, par3, par4, facing, 3);
-        if (par6ItemStack.hasDisplayName())
-        {
-            ((TileEntitySteeper)par1World.getBlockTileEntity(par2, par3, par4)).setInvName(par6ItemStack.getDisplayName());
         }
     }
     

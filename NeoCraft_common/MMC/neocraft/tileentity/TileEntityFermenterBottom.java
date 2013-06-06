@@ -143,7 +143,7 @@ public class TileEntityFermenterBottom extends NCtileentity
                         --this.fermenterBottomItemStacks[1].stackSize;
                         if (this.fermenterBottomItemStacks[1].stackSize == 0)
                         {
-                            this.fermenterBottomItemStacks[1] = this.fermenterBottomItemStacks[1].getItem().getContainerItemStack(fermenterBottomItemStacks[3]);
+                            this.fermenterBottomItemStacks[1] = this.fermenterBottomItemStacks[1].getItem().getContainerItemStack(fermenterBottomItemStacks[1]);
                         }
                     }
                 }
