@@ -1,6 +1,5 @@
 package MMC.neocraft.tileentity;
 
-import MMC.neocraft.block.BlockFermenterBottom;
 import MMC.neocraft.recipe.FermenterRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -30,7 +29,7 @@ public class TileEntityFermenterBottom extends NCtileentity
 	
     public TileEntityFermenterBottom()
     {
-    	this.setInvName("Bottom Fermenter");
+    	this.setInvName("Fermenter");
     }
 
     @Override public int getSizeInventory() { return this.fermenterBottomItemStacks.length; }
@@ -164,7 +163,6 @@ public class TileEntityFermenterBottom extends NCtileentity
             if (wasBurning != this.fermenterBottomBurnTime > 0)
             {
             	hasChanged = true;
-                BlockFermenterBottom.updateBlockFermenterBottomBlockState(this.fermenterBottomBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
         if (hasChanged) { this.onInventoryChanged(); }
