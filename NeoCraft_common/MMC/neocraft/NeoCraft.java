@@ -16,7 +16,6 @@ import MMC.neocraft.lib.*;
 import MMC.neocraft.recipe.NCcrafter;
 import MMC.neocraft.recipe.RecipeRegistry;
 import MMC.neocraft.registry.*;
-import MMC.neocraft.registry.proxy.ClientProxy;
 import MMC.neocraft.registry.proxy.CommonProxy;
 
 /**

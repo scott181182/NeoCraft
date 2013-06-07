@@ -29,7 +29,7 @@ public class NCcrafter implements ICraftingHandler
 				{
 					float deg = player.rotationYaw;
 					float rad = (float)((deg * Math.PI / 180) + (Math.PI / 2));
-					EntityItem sin = new EntityItem(player.worldObj, player.posX + Math.cos(rad) * 2, player.getEyeHeight(), player.posZ + Math.sin(rad) * 2, new ItemStack(NCitem.elementSinensium));
+					EntityItem sin = new EntityItem(player.worldObj, player.posX + Math.cos(rad) * 2, player.posY, player.posZ + Math.sin(rad) * 2, new ItemStack(NCitem.elementSinensium));
 					player.worldObj.spawnEntityInWorld(sin);
 				}
 			}
