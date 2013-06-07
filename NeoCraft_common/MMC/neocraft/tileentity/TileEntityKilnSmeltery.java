@@ -1,19 +1,12 @@
 package MMC.neocraft.tileentity;
 
 import MMC.neocraft.block.KilnSmeltery;
+import MMC.neocraft.item.NCitem;
 import MMC.neocraft.recipe.KilnSmelteryRecipes;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
@@ -121,7 +114,11 @@ public class TileEntityKilnSmeltery extends NCtileentity
         boolean wasBurning = this.smelteryBurnTime > 0;
         boolean hasChanged = false;
 
-        if (this.smelteryBurnTime > 0) { --this.smelteryBurnTime; }
+        if (this.smelteryBurnTime > 0 && this.canSmelt()) 
+        {
+        	int damage = this.smelteryItemStacks[1].getItemDamage() + 1;
+            this.smelteryItemStacks[1].setItemDamage(damage);
+        } else { this.smelteryBurnTime = 0; }
         if (!this.worldObj.isRemote)
         {
             if (this.smelteryBurnTime == 0 && this.canSmelt())
@@ -132,10 +129,9 @@ public class TileEntityKilnSmeltery extends NCtileentity
                 	hasChanged = true;
                     if (this.smelteryItemStacks[1] != null)
                     {
-                        --this.smelteryItemStacks[1].stackSize;
-                        if (this.smelteryItemStacks[1].stackSize == 0)
+                        if (this.smelteryItemStacks[1].getItemDamage() >= this.smelteryItemStacks[1].getMaxDamage())
                         {
-                            this.smelteryItemStacks[1] = this.smelteryItemStacks[1].getItem().getContainerItemStack(smelteryItemStacks[1]);
+                            this.smelteryItemStacks[1] = new ItemStack(NCitem.capsuleEmpty);
                         }
                     }
                 }
@@ -192,25 +188,8 @@ public class TileEntityKilnSmeltery extends NCtileentity
         if (fuel == null) { return 0; }
         else
         {
-            int i = fuel.getItem().itemID;
-            Item item = fuel.getItem();
-
-            if (fuel.getItem() instanceof ItemBlock && Block.blocksList[i] != null)
-            {
-                Block block = Block.blocksList[i];
-                if (block == Block.woodSingleSlab) { return 150; }
-                if (block.blockMaterial == Material.wood) { return 300; }
-            }
-
-            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
-            if (i == Item.stick.itemID) return 100;
-            if (i == Item.coal.itemID) return 1600;
-            if (i == Item.bucketLava.itemID) return 20000;
-            if (i == Block.sapling.blockID) return 100;
-            if (i == Item.blazeRod.itemID) return 2400;
-            return GameRegistry.getFuelValue(fuel);
+            if(fuel.itemID == NCitem.capsuleAlcohol.itemID) { return fuel.getMaxDamage() - fuel.getItemDamage(); }
+            else { return 0; }
         }
     }
     public static boolean isItemFuel(ItemStack par0ItemStack) { return getItemBurnTime(par0ItemStack) > 0; }

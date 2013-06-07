@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import net.minecraft.item.Item;
+import MMC.neocraft.item.NCitem;
 import net.minecraft.item.ItemStack;
 
 
@@ -25,7 +25,7 @@ public class FermenterRecipes
     
     private FermenterRecipes()
     {
-    	addFermenting(Item.sugar.itemID, new ItemStack(Item.cake, 2), 1.0F);
+    	addFermenting(NCitem.capsuleSugar.itemID, new ItemStack(NCitem.capsuleAlcohol, 1), 1.0F);
     }
     
     public void addFermenting(int par1, ItemStack result, float experience)

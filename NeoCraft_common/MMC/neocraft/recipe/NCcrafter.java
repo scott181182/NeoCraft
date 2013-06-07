@@ -5,6 +5,7 @@ import MMC.neocraft.item.NCitem;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.ICraftingHandler;
 
@@ -20,40 +21,60 @@ public class NCcrafter implements ICraftingHandler
 				EntityItem drop = new EntityItem(player.worldObj, player.posX, player.posY, player.posZ, new ItemStack(NCitem.rindOrange));
 				player.worldObj.spawnEntityInWorld(drop);
 			}
-			if(player.worldObj.rand.nextInt(20) == 0 && !player.worldObj.isRemote)
+			int orange = find(NCitem.fruitOrange.itemID, craftMatrix);
+			int amount = craftMatrix.getStackInSlot(orange).stackSize;
+			for(int i = 0; i < amount; i++)
 			{
-				float deg = player.rotationYaw;
-				float rad = (float)((deg * Math.PI / 180) + (Math.PI / 2));
-				EntityItem sin = new EntityItem(player.worldObj, player.posX + Math.cos(rad) * 2, player.getEyeHeight(), player.posZ + Math.sin(rad) * 2, new ItemStack(NCitem.elementSinensium));
-				player.worldObj.spawnEntityInWorld(sin);
+				if(player.worldObj.rand.nextInt(20) == 0 && !player.worldObj.isRemote)
+				{
+					float deg = player.rotationYaw;
+					float rad = (float)((deg * Math.PI / 180) + (Math.PI / 2));
+					EntityItem sin = new EntityItem(player.worldObj, player.posX + Math.cos(rad) * 2, player.getEyeHeight(), player.posZ + Math.sin(rad) * 2, new ItemStack(NCitem.elementSinensium));
+					player.worldObj.spawnEntityInWorld(sin);
+				}
 			}
-			int i;
-			for(i = 0; i < craftMatrix.getSizeInventory(); i++) 
-			{
-				if(craftMatrix.getStackInSlot(i) == null) { continue; }
-				if(craftMatrix.getStackInSlot(i).itemID == NCitem.knifePruning.itemID) { break; } 
-			}
-			ItemStack knife = new ItemStack(NCitem.knifePruning, 2, (craftMatrix.getStackInSlot(i).getItemDamage() + 1));
-	        if(knife.getItemDamage() >= knife.getMaxDamage()) { knife.stackSize--; }
-	        craftMatrix.setInventorySlotContents(i, knife);
+			this.findAndDamage(NCitem.knifePruning.itemID, 1, craftMatrix);
 		}
-		else if(item.itemID == NCblock.saplingOrange.blockID)
-		{
-			int i;
-			for(i = 0; i < craftMatrix.getSizeInventory(); i++) 
-			{
-				if(craftMatrix.getStackInSlot(i) == null) { continue; }
-				if(craftMatrix.getStackInSlot(i).itemID == NCitem.staveSinensium.itemID) { break; } 
-			}
-			ItemStack stave = new ItemStack(NCitem.staveSinensium, 2, (craftMatrix.getStackInSlot(i).getItemDamage() + 1));
-	        if(stave.getItemDamage() >= stave.getMaxDamage()) { stave.stackSize--; }
-	        craftMatrix.setInventorySlotContents(i, stave);
-		}
+		else if(item.itemID == NCblock.saplingOrange.blockID) { this.findAndDamage(NCitem.staveSinensium.itemID, 1, craftMatrix); }
+		else if(item.itemID == NCitem.yeast.itemID) { this.findAndDamage(NCitem.knifePruning.itemID, 1, craftMatrix); }
+		else if(item.itemID == NCitem.flour.itemID) { this.findAndDamage(NCitem.knifePruning.itemID, 1, craftMatrix); }
+		else if(item.itemID == NCitem.dough.itemID) { this.returnBucket(player, 1); }
 	}
 	@Override
 	public void onSmelting(EntityPlayer player, ItemStack item)
 	{
 		
 	}
-
+	private int find(int item, IInventory inv)
+	{
+		for(int i = 0; i < inv.getSizeInventory(); i++)
+		{
+			if(inv.getStackInSlot(i) == null) { continue; }
+			if(inv.getStackInSlot(i).itemID == item) { return i; }
+		}
+		return 0;
+	}
+	private void findAndDamage(int item, int dam, IInventory inv)
+	{
+		int i, id = 0;
+		for(i = 0; i < inv.getSizeInventory(); i++)
+		{
+			if(inv.getStackInSlot(i) == null) { continue; }
+			id = inv.getStackInSlot(i).itemID;
+			if(id == item) { break; }
+		}
+		if(Item.itemsList[id] == null) { return; }
+		ItemStack damage = new ItemStack(Item.itemsList[id], 2, inv.getStackInSlot(i).getItemDamage() + dam);
+		if(damage.getItemDamage() >= damage.getMaxDamage()) { damage.stackSize--; }
+		inv.setInventorySlotContents(i, damage);
+	}
+	private void returnBucket(EntityPlayer player, int amount)
+	{
+		ItemStack ret = new ItemStack(Item.bucketEmpty, amount);
+		if(!player.inventory.addItemStackToInventory(ret) && !player.worldObj.isRemote)
+		{
+			EntityItem drop = new EntityItem(player.worldObj, player.posX, player.posY, player.posZ, ret);
+			player.worldObj.spawnEntityInWorld(drop);
+		}
+	}
 }

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import MMC.neocraft.item.NCitem;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,7 +25,7 @@ public class KilnBakeryRecipes
 
 	    private KilnBakeryRecipes()
 	    {
-	        this.addBaking(Item.wheat.itemID, new ItemStack(Item.bread), 0.1F);
+	        this.addBaking(NCitem.dough.itemID, new ItemStack(Item.bread, 2), 0.1F);
 	    }
 
 	    public void addBaking(int par1, ItemStack result, float experience)

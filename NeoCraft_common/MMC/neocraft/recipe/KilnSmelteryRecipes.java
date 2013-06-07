@@ -26,6 +26,7 @@ public class KilnSmelteryRecipes
     private KilnSmelteryRecipes()
     {
     	addSmelting(Block.oreIron.blockID, new ItemStack(Item.ingotIron, 2), 0.7F);
+    	addSmelting(Block.oreGold.blockID, new ItemStack(Item.ingotGold, 2), 0.7F);
     }
 
     public void addSmelting(int par1, ItemStack result, float experience)

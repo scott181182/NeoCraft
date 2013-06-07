@@ -9,7 +9,9 @@ import net.minecraft.item.Item;
 
 public class NCitem extends Item
 {
-	public static Item fruitOrange, seedOrange, rindOrange, pulpOrange, teaOrange, yeast, knifePruning, elementSinensium, conglomerateSinensium, staveSinensium;
+	public static Item fruitOrange, seedOrange, rindOrange, pulpOrange, teaOrange, yeast, dough, flour, knifePruning;
+	public static Item fuelBox, capsuleEmpty, capsuleAlcohol, capsuleSugar;
+	public static Item elementSinensium, conglomerateSinensium, staveSinensium;
 	
 	public NCitem(int par1)
 	{
@@ -28,7 +30,14 @@ public class NCitem extends Item
 		pulpOrange = new PulpOrange(9903, 2, 0.5f).setUnlocalizedName("pulpOrange");
 		seedOrange = new SeedOrange(9904).setUnlocalizedName("seedOrange");
 		teaOrange = new TeaOrange(9905, 1, 0.1f).setPotionEffect(1, 10, 0, 1).setAlwaysEdible().setUnlocalizedName("teaOrange");
-		yeast = new ItemYeast(9907).setUnlocalizedName("yeast");
+		yeast = new ItemYeast(9906).setUnlocalizedName("yeast");
+		dough = new ItemDough(9907).setUnlocalizedName("dough");
+		flour = new ItemFlour(9908).setUnlocalizedName("flour");
+		
+		fuelBox = new ItemFuelBox(9909).setUnlocalizedName("fuelBox");
+		capsuleEmpty = new CapsuleEmpty(9910).setUnlocalizedName("capsuleEmpty");
+		capsuleAlcohol = new CapsuleAlcohol(9911).setUnlocalizedName("capsuleAlcohol");
+		capsuleSugar = new CapsuleSugar(9912).setUnlocalizedName("capsuleSugar");
 		
 		elementSinensium = new ElementSinensium(10001, 1, 1).setUnlocalizedName("elementSinensium");
 		

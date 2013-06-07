@@ -1,19 +1,12 @@
 package MMC.neocraft.tileentity;
 
 import MMC.neocraft.block.KilnBakery;
+import MMC.neocraft.item.NCitem;
 import MMC.neocraft.recipe.KilnBakeryRecipes;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
@@ -132,7 +125,11 @@ public class TileEntityKilnBakery extends NCtileentity
 	        boolean wasBurning = this.bakeryBurnTime > 0;
 	        boolean hasChanged = false;
 
-	        if (this.bakeryBurnTime > 0) { --this.bakeryBurnTime; }
+	        if (this.bakeryBurnTime > 0 && this.canBake()) 
+	        {
+            	int damage = this.bakeryItemStacks[1].getItemDamage() + 1;
+                this.bakeryItemStacks[1].setItemDamage(damage);
+	        } else { this.bakeryBurnTime = 0; }
 	        if (!this.worldObj.isRemote)
 	        {
 	            if (this.bakeryBurnTime == 0 && this.canBake())
@@ -143,10 +140,9 @@ public class TileEntityKilnBakery extends NCtileentity
 	                	hasChanged = true;
 	                    if (this.bakeryItemStacks[1] != null)
 	                    {
-	                        --this.bakeryItemStacks[1].stackSize;
-	                        if (this.bakeryItemStacks[1].stackSize == 0)
+	                        if (this.bakeryItemStacks[1].getItemDamage() >= this.bakeryItemStacks[1].getMaxDamage())
 	                        {
-	                            this.bakeryItemStacks[1] = this.bakeryItemStacks[1].getItem().getContainerItemStack(bakeryItemStacks[1]);
+	                            this.bakeryItemStacks[1] = new ItemStack(NCitem.capsuleEmpty);
 	                        }
 	                    }
 	                }
@@ -156,7 +152,7 @@ public class TileEntityKilnBakery extends NCtileentity
 	            {
 	                ++this.bakeryCookTime;
 
-	                if (this.bakeryCookTime == 200)
+	                if (this.bakeryCookTime == 100)
 	                {
 	                    this.bakeryCookTime = 0;
 	                    this.bakeItem();
@@ -209,25 +205,8 @@ public class TileEntityKilnBakery extends NCtileentity
 	        if (fuel == null) { return 0; }
 	        else
 	        {
-	            int i = fuel.getItem().itemID;
-	            Item item = fuel.getItem();
-
-	            if (fuel.getItem() instanceof ItemBlock && Block.blocksList[i] != null)
-	            {
-	                Block block = Block.blocksList[i];
-	                if (block == Block.woodSingleSlab) { return 150; }
-	                if (block.blockMaterial == Material.wood) { return 300; }
-	            }
-
-	            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
-	            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-	            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
-	            if (i == Item.stick.itemID) return 100;
-	            if (i == Item.coal.itemID) return 1600;
-	            if (i == Item.bucketLava.itemID) return 20000;
-	            if (i == Block.sapling.blockID) return 100;
-	            if (i == Item.blazeRod.itemID) return 2400;
-	            return GameRegistry.getFuelValue(fuel);
+	            if(fuel.itemID == NCitem.capsuleAlcohol.itemID) { return fuel.getMaxDamage() - fuel.getItemDamage(); }
+	            else { return 0; }
 	        }
 	    }
 	    

@@ -14,6 +14,13 @@ public class ItemRegistry
 		LanguageRegistry.addName(NCitem.seedOrange, "Orange Seed");
 		LanguageRegistry.addName(NCitem.teaOrange, "Orange Tea");
 		LanguageRegistry.addName(NCitem.yeast, "Yeast");
+		LanguageRegistry.addName(NCitem.dough, "Bread Dough");
+		LanguageRegistry.addName(NCitem.flour, "Wheat Flour");
+
+		LanguageRegistry.addName(NCitem.fuelBox, "Fuel Box");
+		LanguageRegistry.addName(NCitem.capsuleEmpty, "Empty Capsule");
+		LanguageRegistry.addName(NCitem.capsuleAlcohol, "Alcohol Capsule");
+		LanguageRegistry.addName(NCitem.capsuleSugar, "Sugar Capsule");
 		
 		LanguageRegistry.addName(NCitem.elementSinensium, "Sinensium");
 		LanguageRegistry.addName(NCitem.conglomerateSinensium, "Sinensium Conglomerate");
