@@ -31,7 +31,6 @@ public class NeoCraft
 {
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.COMMON_PROXY)
 	public static CommonProxy proxy = new CommonProxy();
-	public static ClientProxy clientProxy = new ClientProxy();
 	@Instance(Reference.MOD_ID)
 	public static NeoCraft instance = new NeoCraft();
 	
@@ -61,7 +60,7 @@ public class NeoCraft
 		GameRegistry.registerWorldGenerator(worldGen);
 		GameRegistry.registerCraftingHandler(crafter);
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
-		clientProxy.registerRenderers();
+		proxy.registerRenderers();
 		
 	}
 	@PostInit
