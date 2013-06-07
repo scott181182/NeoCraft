@@ -108,7 +108,7 @@ public class TileEntityKilnBakery extends NCtileentity
 	    
 	    public int getInventoryStackLimit() { return 64; }
 	    
-	    @SideOnly(Side.CLIENT) public int getCookProgressScaled(int par1) { return this.bakeryCookTime * par1 / 200; }
+	    @SideOnly(Side.CLIENT) public int getCookProgressScaled(int par1) { return this.bakeryCookTime * par1 / 100; }
 
 	    @SideOnly(Side.CLIENT)
 	    public int getBurnTimeRemainingScaled(int par1)

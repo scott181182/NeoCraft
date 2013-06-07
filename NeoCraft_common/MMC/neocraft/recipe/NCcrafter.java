@@ -21,17 +21,12 @@ public class NCcrafter implements ICraftingHandler
 				EntityItem drop = new EntityItem(player.worldObj, player.posX, player.posY, player.posZ, new ItemStack(NCitem.rindOrange));
 				player.worldObj.spawnEntityInWorld(drop);
 			}
-			int orange = find(NCitem.fruitOrange.itemID, craftMatrix);
-			int amount = craftMatrix.getStackInSlot(orange).stackSize;
-			for(int i = 0; i < amount; i++)
+			if(player.worldObj.rand.nextInt(20) == 0 && !player.worldObj.isRemote)
 			{
-				if(player.worldObj.rand.nextInt(20) == 0 && !player.worldObj.isRemote)
-				{
-					float deg = player.rotationYaw;
-					float rad = (float)((deg * Math.PI / 180) + (Math.PI / 2));
-					EntityItem sin = new EntityItem(player.worldObj, player.posX + Math.cos(rad) * 2, player.posY, player.posZ + Math.sin(rad) * 2, new ItemStack(NCitem.elementSinensium));
-					player.worldObj.spawnEntityInWorld(sin);
-				}
+				float deg = player.rotationYaw;
+				float rad = (float)((deg * Math.PI / 180) + (Math.PI / 2));
+				EntityItem sin = new EntityItem(player.worldObj, player.posX + Math.cos(rad) * 2, player.posY, player.posZ + Math.sin(rad) * 2, new ItemStack(NCitem.elementSinensium));
+				player.worldObj.spawnEntityInWorld(sin);
 			}
 			this.findAndDamage(NCitem.knifePruning.itemID, 1, craftMatrix);
 		}
