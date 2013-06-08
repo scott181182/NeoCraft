@@ -29,8 +29,8 @@ public class RecipeRegistry
 		GameRegistry.addRecipe(new ItemStack(NCblock.incubator), "HSH", "SRG", "HRH", 'S', Block.stone, 'H', Item.ingotIron, 'R', Item.redstone, 'G', Block.glass);
 		GameRegistry.addRecipe(new ItemStack(NCitem.capsuleEmpty, 8), " C ", "H H", " C ", 'C', Item.clay, 'H', Item.ingotIron);
 		GameRegistry.addRecipe(new ItemStack(NCitem.fuelBox), "HHH", "HFH", "HCH", 'H', Item.ingotIron, 'F', Block.furnaceIdle, 'C', NCitem.capsuleEmpty);
-		GameRegistry.addRecipe(new ItemStack(NCblock.kilnBakery), "SPS", "PFP", "SBS", 'S', Block.stoneBrick, 'P', Block.planks, 'F', Block.furnaceIdle, 'B', NCitem.fuelBox);
-		GameRegistry.addRecipe(new ItemStack(NCblock.kilnSmeltery), "HSH", "SFS", "HBH", 'H', Item.ingotIron, 'F', Block.furnaceIdle, 'S', Block.stoneBrick, 'B', NCitem.fuelBox);
+		GameRegistry.addRecipe(new ItemStack(NCblock.kilnBakery), "SPS", "PKP", "SBS", 'S', Block.stoneBrick, 'P', Block.planks, 'K', NCblock.kilnCore, 'B', NCitem.fuelBox);
+		GameRegistry.addRecipe(new ItemStack(NCblock.kilnSmeltery), "HSH", "SKS", "HBH", 'H', Item.ingotIron, 'K', NCblock.kilnCore, 'S', Block.stoneBrick, 'B', NCitem.fuelBox);
 		GameRegistry.addRecipe(new ItemStack(NCblock.fermenterWhole), "HHH", "HCH", "HCH", 'H', Item.ingotIron, 'C', NCitem.capsuleEmpty);
 	}
 	public static void registerShapelessRecipes()

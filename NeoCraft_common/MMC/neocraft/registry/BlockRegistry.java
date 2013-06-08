@@ -15,7 +15,6 @@ public class BlockRegistry
 	{
 		GameRegistry.registerBlock(NCblock.orangeWood, Reference.MOD_ID + "@" + NCblock.orangeWood.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.orangeLeaves, ItemBlockOrangeLeaves.class, Reference.MOD_ID + "@" + NCblock.orangeLeaves.getUnlocalizedName().substring(5));
-		GameRegistry.registerBlock(NCblock.blockTest, Reference.MOD_ID + "@" + NCblock.blockTest.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.saplingOrange, Reference.MOD_ID + "@" + NCblock.saplingOrange.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.teaSteeper, Reference.MOD_ID + "@" + NCblock.teaSteeper.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.kilnCore, Reference.MOD_ID + "@" + NCblock.kilnCore.getUnlocalizedName().substring(5));
@@ -26,6 +25,8 @@ public class BlockRegistry
 		GameRegistry.registerBlock(NCblock.fermenterTop, Reference.MOD_ID + "@" + NCblock.fermenterTop.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.fermenterWhole, Reference.MOD_ID + "@" + NCblock.fermenterWhole.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.incubator, Reference.MOD_ID + "@" + NCblock.incubator.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(NCblock.oreTitanium, Reference.MOD_ID + "@" + NCblock.oreTitanium.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(NCblock.oreBauxite, Reference.MOD_ID + "@" + NCblock.oreBauxite.getUnlocalizedName().substring(5));
 	}
 	public static void registerTileEntities()
 	{
@@ -42,7 +43,6 @@ public class BlockRegistry
 		LanguageRegistry.addName(NCblock.orangeWood, "Orange Wood");
 		LanguageRegistry.addName(new ItemStack(NCblock.orangeLeaves, 1, 0), "Orange Leaves");
 		LanguageRegistry.addName(new ItemStack(NCblock.orangeLeaves, 1, 1), "Orange Leaves");
-		LanguageRegistry.addName(new ItemStack(NCblock.blockTest, 1, 0), "Test Block");
 		LanguageRegistry.addName(NCblock.saplingOrange, "Orange Tree Sapling");
 		LanguageRegistry.addName(NCblock.teaSteeper, "Tea Steeper");
 		LanguageRegistry.addName(NCblock.kilnCore, "Kiln Core");
@@ -51,5 +51,7 @@ public class BlockRegistry
 		LanguageRegistry.addName(NCblock.kilnBakery, "Bakery Kiln");
 		LanguageRegistry.addName(NCblock.fermenterWhole, "Fermenter");
 		LanguageRegistry.addName(NCblock.incubator, "Incubator");
+		LanguageRegistry.addName(NCblock.oreTitanium, "Titanium Ore");
+		LanguageRegistry.addName(NCblock.oreBauxite, "Bauxite Ore");
 	}
 }

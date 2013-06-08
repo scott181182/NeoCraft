@@ -175,7 +175,7 @@ public class TileEntityKilnBakery extends NCtileentity
 	    
 	    private boolean canBake()
 	    {
-	        if (this.bakeryItemStacks[0] == null) { return false; }
+	        if (this.bakeryItemStacks[0] == null || this.bakeryItemStacks[1] == null) { return false; }
 	        else
 	        {
 	            ItemStack itemstack = KilnBakeryRecipes.baking().getBakingResult(this.bakeryItemStacks[0]);

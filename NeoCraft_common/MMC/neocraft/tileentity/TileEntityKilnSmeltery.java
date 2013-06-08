@@ -159,7 +159,7 @@ public class TileEntityKilnSmeltery extends NCtileentity
     }
     private boolean canSmelt()
     {
-        if (this.smelteryItemStacks[0] == null) { return false; }
+        if (this.smelteryItemStacks[0] == null || this.smelteryItemStacks[1] == null) { return false; }
         else
         {
             ItemStack itemstack = KilnSmelteryRecipes.smelting().getSmeltingResult(this.smelteryItemStacks[0]);

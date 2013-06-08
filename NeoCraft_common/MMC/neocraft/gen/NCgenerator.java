@@ -28,7 +28,9 @@ public class NCgenerator implements IWorldGenerator
 		{
 			spawnTree(world, rand, x, z);
 		}
-		
+		NCoreGen oreGen = new NCoreGen();
+		oreGen.generateOreVein(NCblock.oreTitanium, world, rand, x, z, 8, 30, 0, 64);
+		oreGen.generateOreVein(NCblock.oreBauxite, world, rand, x, z, 8, 30, 0, 64);
 	}
 	private void spawnTree(World world, Random rand, int x, int z)
 	{

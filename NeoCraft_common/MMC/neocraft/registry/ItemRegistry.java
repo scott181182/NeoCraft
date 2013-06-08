@@ -10,7 +10,7 @@ public class ItemRegistry
 		LanguageRegistry.addName(NCitem.fruitOrange, "Orange");
 		LanguageRegistry.addName(NCitem.knifePruning, "Pruning Knife");
 		LanguageRegistry.addName(NCitem.rindOrange, "Orange Rind");
-		LanguageRegistry.addName(NCitem.pulpOrange, "Orange");
+		LanguageRegistry.addName(NCitem.pulpOrange, "Orange Pulp");
 		LanguageRegistry.addName(NCitem.seedOrange, "Orange Seed");
 		LanguageRegistry.addName(NCitem.teaOrange, "Orange Tea");
 		LanguageRegistry.addName(NCitem.yeast, "Yeast");
