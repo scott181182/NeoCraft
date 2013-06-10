@@ -6,7 +6,6 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 import MMC.neocraft.block.*;
 import MMC.neocraft.lib.Reference;
-import MMC.neocraft.tileentity.*;
 
 public class BlockRegistry
 {
@@ -27,16 +26,6 @@ public class BlockRegistry
 		GameRegistry.registerBlock(NCblock.incubator, Reference.MOD_ID + "@" + NCblock.incubator.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.oreTitanium, Reference.MOD_ID + "@" + NCblock.oreTitanium.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.oreBauxite, Reference.MOD_ID + "@" + NCblock.oreBauxite.getUnlocalizedName().substring(5));
-	}
-	public static void registerTileEntities()
-	{
-		GameRegistry.registerTileEntity(TileEntitySteeper.class, Reference.MOD_ID + "@" + "tileentity.teaSteeper");
-		GameRegistry.registerTileEntity(TileEntityKilnSmeltery.class, Reference.MOD_ID + "@" + "tileentity.kilnSmeltery");
-		GameRegistry.registerTileEntity(TileEntityKilnBakery.class, Reference.MOD_ID + "@" + "tileentity.kilnBakery");
-		GameRegistry.registerTileEntity(TileEntityFermenterBottom.class, Reference.MOD_ID + "@" + "tileentity.fermenterBottom");
-		GameRegistry.registerTileEntity(TileEntityFermenterTop.class, Reference.MOD_ID + "@" + "tileentity.fermenterTop");
-		GameRegistry.registerTileEntity(TileEntityFermenterWhole.class, Reference.MOD_ID + "@" + "tileentity.fermenterWhole");
-		GameRegistry.registerTileEntity(TileEntityIncubator.class, Reference.MOD_ID + "@" + "tileentity.incubator");
 	}
 	public static void registerNames()
 	{

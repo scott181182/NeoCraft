@@ -27,6 +27,8 @@ public class TileEntitySteeper extends NCtileentity
     /** The number of ticks that the current item has been steeping for */
     public int steeperCookTime = 0;
     
+    private boolean wasFull;
+    
     public TileEntitySteeper()
     {
     	this.setInvName("Tea Steeper");
@@ -89,7 +91,7 @@ public class TileEntitySteeper extends NCtileentity
 
         this.steeperBurnTime = par1NBTTagCompound.getShort("BurnTime");
         this.steeperCookTime = par1NBTTagCompound.getShort("CookTime");
-        this.currentItemSteepTime = getItemBurnTime(this.steeperItemStacks[2]);
+        this.currentItemSteepTime = getItemBurnTime(this.steeperItemStacks[1]);
     }
     @Override public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
@@ -120,6 +122,7 @@ public class TileEntitySteeper extends NCtileentity
         return this.steeperBurnTime * par1 / this.currentItemSteepTime;
     }
     public boolean isBurning() { return this.steeperBurnTime > 0; }
+    public boolean isFull() { return this.steeperItemStacks[1] == null ? false : this.steeperItemStacks[1].itemID == Item.bucketWater.itemID ? true : false; }
     @Override
     public void updateEntity()
     {
@@ -161,14 +164,14 @@ public class TileEntitySteeper extends NCtileentity
             {
                 this.steeperCookTime = 0;
             }
-
-            if (wasBurning != this.steeperBurnTime > 0)
+            if (wasBurning != this.steeperBurnTime > 0 || wasFull != isFull())
             {
             	hasChanged = true;
-                BlockSteeper.updateSteeperBlockState(this.steeperBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                BlockSteeper.updateSteeperBlockState(this.steeperBurnTime > 0, this.isFull(), this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
         if (hasChanged) { this.onInventoryChanged(); }
+        wasFull = isFull();
     }
     private boolean canSteep()
     {
@@ -257,6 +260,4 @@ public class TileEntitySteeper extends NCtileentity
     {
         return par1 == 3;
     }
-
-	
 }

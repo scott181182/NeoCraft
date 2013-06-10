@@ -8,6 +8,7 @@ public class MagicStave extends NCitem
 	{
 		super(id);
 		this.base = base;
+		this.setMaxStackSize(1);
 	}
 	public MagicElement getBase() { return this.base; }
 }

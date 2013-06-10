@@ -23,7 +23,7 @@ public class NCguiHandler implements IGuiHandler
 		switch(ID)
 		{
 			case steeperID: return new ContainerSteeper(player.inventory, (TileEntitySteeper)te);
-			//case magicSteeperID: return new ContainerSteeper(player.inventory, (TileEntitySteeper)te);
+			case magicSteeperID: return new ContainerMagicSteeper(player.inventory, (TileEntityMagicSteeper)te);
 			case bakeryID: return new ContainerKilnBakery(player.inventory, (TileEntityKilnBakery)te);
 			case smelteryID: return new ContainerKilnSmeltery(player.inventory, (TileEntityKilnSmeltery)te);
 			case fermenterBottomID: return new ContainerFermenterBottom(player.inventory, (TileEntityFermenterBottom)te);
@@ -39,7 +39,7 @@ public class NCguiHandler implements IGuiHandler
 		switch(ID)
 		{
 			case steeperID: return new GuiSteeper(player.inventory, (TileEntitySteeper)te);
-			//case magicSteeperID: return new GuiMagicSteeper(player.inventory, (TileEntityMagicSteeper)te);
+			case magicSteeperID: return new GuiMagicSteeper(player.inventory, (TileEntityMagicSteeper)te);
 			case bakeryID: return new GuiKilnBakery(player.inventory, (TileEntityKilnBakery)te);
 			case smelteryID: return new GuiKilnSmeltery(player.inventory, (TileEntityKilnSmeltery)te);
 			case fermenterBottomID: return new GuiFermenterBottom(player.inventory, (TileEntityFermenterBottom)te);

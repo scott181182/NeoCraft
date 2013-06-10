@@ -23,7 +23,7 @@ public class ContainerKilnSmeltery extends NCcontainer
         this.addSlotToContainer(new Slot(te, 0, 56, 17));
         this.addSlotToContainer(new Slot(te, 1, 56, 53));
         this.addSlotToContainer(new SlotKilnSmeltery(inv.player, te, 2, 116, 35));
-		super.addInventory(inv);
+		super.addInventory(inv, 0, 0);
 	}
 	@Override
     public void addCraftingToCrafters(ICrafting par1ICrafting)

@@ -11,16 +11,16 @@ public abstract class NCcontainer extends Container
 	{
 		
 	}
-	public void addInventory(InventoryPlayer inv)
+	public void addInventory(InventoryPlayer inv, int xShift, int yShift)
 	{
 		int i;
 	    for (i = 0; i < 3; ++i)
 	    {
 	        for (int j = 0; j < 9; ++j)
 	        {
-	            this.addSlotToContainer(new Slot(inv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+	            this.addSlotToContainer(new Slot(inv, j + i * 9 + 9, (8 + j * 18) + xShift, (84 + i * 18) + yShift));
 	        }
 	    }
-	    for (i = 0; i < 9; ++i) { this.addSlotToContainer(new Slot(inv, i, 8 + i * 18, 142)); }
+	    for (i = 0; i < 9; ++i) { this.addSlotToContainer(new Slot(inv, i, (8 + i * 18) + xShift, 142 + yShift)); }
 	}
 }

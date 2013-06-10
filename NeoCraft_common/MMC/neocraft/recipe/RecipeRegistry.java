@@ -24,8 +24,8 @@ public class RecipeRegistry
 		GameRegistry.addRecipe(new ItemStack(NCitem.staveSinensium), "  C", " S ", "G  ", 'C', NCitem.conglomerateSinensium, 'S', Item.stick, 'G', Item.ingotGold);
 		GameRegistry.addRecipe(new ItemStack(NCitem.knifePruning), "HH", " S", "S ", 'H', Item.ingotIron, 'S', Item.stick);
 		GameRegistry.addRecipe(new ItemStack(NCblock.kilnCore), "SCS", "C C", "SCS", 'S', Block.sandStone, 'C', Block.cobblestone);
-		GameRegistry.addRecipe(new ItemStack(NCblock.teaSteeper), "HBH", "HRH", "FBF", 'H', Item.ingotIron, 'B', Item.bucketEmpty, 'R', Block.fenceIron, 'F', Block.furnaceIdle);
-		GameRegistry.addRecipe(new ItemStack(NCblock.magicSteeper), "SSS", "FTF", "SVS", 'S', NCitem.elementSinensium, 'F', Block.furnaceIdle, 'T', NCblock.teaSteeper, 'V', NCitem.staveSinensium);
+		GameRegistry.addRecipe(new ItemStack(NCblock.teaSteeper), "CBC", "CRC", "FBF", 'C', Block.cobblestone, 'B', Item.bucketEmpty, 'R', Block.fenceIron, 'F', Block.furnaceIdle);
+		GameRegistry.addRecipe(new ItemStack(NCblock.magicSteeper), "SSS", "FTF", "OVO", 'S', NCitem.elementSinensium, 'F', Block.furnaceIdle, 'T', NCblock.teaSteeper, 'O', Block.obsidian, 'V', new ItemStack(NCitem.staveSinensium, 1, OreDictionary.WILDCARD_VALUE));
 		GameRegistry.addRecipe(new ItemStack(NCblock.incubator), "HSH", "SRG", "HRH", 'S', Block.stone, 'H', Item.ingotIron, 'R', Item.redstone, 'G', Block.glass);
 		GameRegistry.addRecipe(new ItemStack(NCitem.capsuleEmpty, 8), " C ", "H H", " C ", 'C', Item.clay, 'H', Item.ingotIron);
 		GameRegistry.addRecipe(new ItemStack(NCitem.fuelBox), "HHH", "HFH", "HCH", 'H', Item.ingotIron, 'F', Block.furnaceIdle, 'C', NCitem.capsuleEmpty);

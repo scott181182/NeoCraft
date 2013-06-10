@@ -33,13 +33,15 @@ public class NCcrafter implements ICraftingHandler
 		else if(item.itemID == NCblock.saplingOrange.blockID) { this.findAndDamage(NCitem.staveSinensium.itemID, 1, craftMatrix); }
 		else if(item.itemID == NCitem.yeast.itemID) { this.findAndDamage(NCitem.knifePruning.itemID, 1, craftMatrix); }
 		else if(item.itemID == NCitem.flour.itemID) { this.findAndDamage(NCitem.knifePruning.itemID, 1, craftMatrix); }
-		else if(item.itemID == NCitem.dough.itemID) { this.returnBucket(player, 1); }
+		else if(item.itemID == NCitem.dough.itemID) { this.returnItem(Item.bucketEmpty, player, 1); }
+		else if(item.itemID == NCblock.magicSteeper.blockID) { this.findAndDamage(NCitem.staveSinensium.itemID, 1, craftMatrix); }
 	}
 	@Override
 	public void onSmelting(EntityPlayer player, ItemStack item)
 	{
 		
 	}
+	/*
 	private int find(int item, IInventory inv)
 	{
 		for(int i = 0; i < inv.getSizeInventory(); i++)
@@ -48,7 +50,7 @@ public class NCcrafter implements ICraftingHandler
 			if(inv.getStackInSlot(i).itemID == item) { return i; }
 		}
 		return 0;
-	}
+	} */
 	private void findAndDamage(int item, int dam, IInventory inv)
 	{
 		int i, id = 0;
@@ -63,9 +65,9 @@ public class NCcrafter implements ICraftingHandler
 		if(damage.getItemDamage() >= damage.getMaxDamage()) { damage.stackSize--; }
 		inv.setInventorySlotContents(i, damage);
 	}
-	private void returnBucket(EntityPlayer player, int amount)
+	private void returnItem(Item item, EntityPlayer player, int amount)
 	{
-		ItemStack ret = new ItemStack(Item.bucketEmpty, amount);
+		ItemStack ret = new ItemStack(item, amount);
 		if(!player.inventory.addItemStackToInventory(ret) && !player.worldObj.isRemote)
 		{
 			EntityItem drop = new EntityItem(player.worldObj, player.posX, player.posY, player.posZ, ret);

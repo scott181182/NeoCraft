@@ -21,7 +21,7 @@ public class ContainerIncubator extends NCcontainer
 		incubator = te;
         this.addSlotToContainer(new SlotIncubator(inv.player, te, 0, 80, 24));
         this.addSlotToContainer(new Slot(te, 1, 80, 57));
-		super.addInventory(inv);
+		super.addInventory(inv, 0, 0);
 	}
 	@Override
     public void addCraftingToCrafters(ICrafting par1ICrafting)

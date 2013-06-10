@@ -45,9 +45,11 @@ public class NeoCraft
 		
 		BlockRegistry.registerBlocks();
 		BlockRegistry.registerNames();
-		BlockRegistry.registerTileEntities();
-
+		
 		ItemRegistry.registerNames();
+
+		EntitiesRegistry.registerTileEntities();
+		EntitiesRegistry.registerEntities();
 		
 		RecipeRegistry.registerRecipes();
 		RecipeRegistry.registerShapelessRecipes();

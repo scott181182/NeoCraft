@@ -11,7 +11,10 @@ public class NCitem extends Item
 {
 	public static Item fruitOrange, seedOrange, rindOrange, pulpOrange, teaOrange, yeast, dough, flour, knifePruning;
 	public static Item fuelBox, capsuleEmpty, capsuleAlcohol, capsuleSugar;
-	public static Item elementSinensium, conglomerateSinensium, staveSinensium;
+	public static Item scorchedSinensium, pyroniumChunk;
+	public static Item elementSinensium, elementPyronium, elementSiliscene;
+	public static Item conglomerateSinensium, conglomeratePyronium, conglomerateSiliscene;
+	public static Item staveSinensium, stavePyronium, staveSiliscene;
 	
 	public NCitem(int par1)
 	{
@@ -38,11 +41,19 @@ public class NCitem extends Item
 		capsuleEmpty = new CapsuleEmpty(9910).setUnlocalizedName("capsuleEmpty");
 		capsuleAlcohol = new CapsuleAlcohol(9911).setUnlocalizedName("capsuleAlcohol");
 		capsuleSugar = new CapsuleSugar(9912).setUnlocalizedName("capsuleSugar");
+		scorchedSinensium = new ScorchedSinensium(9913).setUnlocalizedName("scorchedSinensium");
+		pyroniumChunk = new PyroniumChunk(9914).setUnlocalizedName("pyroniumChunk");
 		
 		elementSinensium = new ElementSinensium(10001, 1, 1).setUnlocalizedName("elementSinensium");
+		elementPyronium = new ElementPyronium(10002, 1, 2).setUnlocalizedName("elementPyronium");
+		elementSiliscene = new ElementSiliscene(10003, 2, 1).setUnlocalizedName("elementSiliscene");
 		
-		conglomerateSinensium = new ConglomerateSinensium(10002, (MagicElement)elementSinensium).setUnlocalizedName("conglomerateSinensium");
+		conglomerateSinensium = new ConglomerateSinensium(10101, (MagicElement)elementSinensium).setUnlocalizedName("conglomerateSinensium");
+		conglomeratePyronium = new ConglomeratePyronium(10102, (MagicElement)elementPyronium).setUnlocalizedName("conglomeratePyronium");
+		conglomerateSiliscene = new ConglomerateSiliscene(10103, (MagicElement)elementSiliscene).setUnlocalizedName("conglomerateSiliscene");
 
-		staveSinensium = new StaveSinensium(10003, (MagicConglomerate)conglomerateSinensium).setUnlocalizedName("staveSinensium");
+		staveSinensium = new StaveSinensium(10201, (MagicElement)elementSinensium).setUnlocalizedName("staveSinensium");
+		stavePyronium = new StavePyronium(10202, (MagicElement)elementPyronium).setUnlocalizedName("stavePyronium");
+		staveSiliscene = new StaveSiliscene(10203, (MagicElement)elementSiliscene).setUnlocalizedName("staveSiliscene");
 	}
 }

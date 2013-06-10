@@ -25,7 +25,7 @@ public class ContainerSteeper extends NCcontainer
         this.addSlotToContainer(new Slot(te, 1, 44, 26));
         this.addSlotToContainer(new Slot(te, 2, 44, 62));
         this.addSlotToContainer(new SlotSteeper(inv.player, te, 3, 116, 35));
-		super.addInventory(inv);
+		super.addInventory(inv, 0, 0);
 	}
 	@Override
     public void addCraftingToCrafters(ICrafting par1ICrafting)
