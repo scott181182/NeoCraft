@@ -31,5 +31,10 @@ public class EntitySiliscene extends EntityThrowable
 		if(!this.worldObj.isRemote) { this.setDead(); }
 	}
 	@Override public float getGravityVelocity() { return 0; }
-	
+	@Override
+	public void onUpdate()
+	{
+		super.onUpdate();
+		if(this.posX == this.prevPosX && this.posY == this.prevPosY && this.posZ == this.prevPosZ) { this.setDead(); }
+	}
 }

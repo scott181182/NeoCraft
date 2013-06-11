@@ -50,6 +50,9 @@ public class NeoCraft
 
 		EntitiesRegistry.registerTileEntities();
 		EntitiesRegistry.registerEntities();
+
+		DictionaryRegistry.registerBlocks();
+		DictionaryRegistry.registerItems();
 		
 		RecipeRegistry.registerRecipes();
 		RecipeRegistry.registerShapelessRecipes();
@@ -62,7 +65,6 @@ public class NeoCraft
 		GameRegistry.registerCraftingHandler(crafter);
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 		proxy.registerRenderers();
-		
 	}
 	@PostInit
 	public void postInit(FMLPostInitializationEvent pie)

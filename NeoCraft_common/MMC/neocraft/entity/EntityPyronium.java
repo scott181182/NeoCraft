@@ -34,4 +34,11 @@ public class EntityPyronium extends EntityThrowable
 	@Override public float getGravityVelocity() { return 0; }
     @SideOnly(Side.CLIENT) @Override public float getShadowSize() { return 0.0F; }
     @Override public float getBrightness(float par1) { return 1.0F; }
+    @Override
+    public void onUpdate()
+    {
+    	super.onUpdate();
+    	if(this.inWater) { this.setDead(); }
+    	else if(this.posX == this.prevPosX && this.posY == this.prevPosY && this.posZ == this.prevPosZ) { this.setDead(); }
+    }
 }

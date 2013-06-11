@@ -26,6 +26,7 @@ public class KilnBakeryRecipes
 	    private KilnBakeryRecipes()
 	    {
 	        this.addBaking(NCitem.dough.itemID, new ItemStack(Item.bread, 2), 0.1F);
+	        this.addBaking(NCitem.elementSinensium.itemID, new ItemStack(NCitem.scorchedSinensium, 1), 0.0F);
 	    }
 
 	    public void addBaking(int par1, ItemStack result, float experience)

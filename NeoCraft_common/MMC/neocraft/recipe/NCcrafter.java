@@ -35,6 +35,9 @@ public class NCcrafter implements ICraftingHandler
 		else if(item.itemID == NCitem.flour.itemID) { this.findAndDamage(NCitem.knifePruning.itemID, 1, craftMatrix); }
 		else if(item.itemID == NCitem.dough.itemID) { this.returnItem(Item.bucketEmpty, player, 1); }
 		else if(item.itemID == NCblock.magicSteeper.blockID) { this.findAndDamage(NCitem.staveSinensium.itemID, 1, craftMatrix); }
+		else if(item.itemID == NCitem.elementSinensium.itemID) { this.findAndDamage(NCitem.staveSinensium.itemID, 1, craftMatrix); }
+		else if(item.itemID == NCitem.elementPyronium.itemID) { this.findAndDamage(NCitem.staveSinensium.itemID, 1, craftMatrix); }
+		else if(item.itemID == NCitem.elementSiliscene.itemID) { this.findAndDamage(NCitem.staveSinensium.itemID, 1, craftMatrix); }
 	}
 	@Override
 	public void onSmelting(EntityPlayer player, ItemStack item)

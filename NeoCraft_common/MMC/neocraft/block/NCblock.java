@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 
 public class NCblock extends Block
 {
-	public static Block oreTitanium, oreBauxite, orangeWood, orangeLeaves, saplingOrange, teaSteeper, magicSteeper, kilnCore, kilnBakery, kilnSmeltery, fermenterBottom, fermenterTop, fermenterWhole, incubator;
+	public static Block oreTitanium, oreBauxite, orangeWood, orangePlank, orangeLeaves, saplingOrange, teaSteeper, magicSteeper, kilnCore, kilnBakery, kilnSmeltery, fermenterBottom, fermenterTop, fermenterWhole, incubator;
 	
 	public NCblock(int id, Material material)
 	{
@@ -28,7 +28,8 @@ public class NCblock extends Block
 		orangeWood = new BlockOrangeWood(253, Material.wood).setHardness(2.0F).setStepSound(soundWoodFootstep).setUnlocalizedName("orangeWood");
 		orangeLeaves = new BlockOrangeLeaves(254).setHardness(0.2F).setLightOpacity(1).setStepSound(soundGrassFootstep).setUnlocalizedName("orangeLeaves");
 	    saplingOrange = new SaplingOrange(255, Material.leaves).setHardness(0.0F).setStepSound(soundGrassFootstep).setUnlocalizedName("orangeSapling");
-
+	    
+	    orangePlank = new BlockOrangePlank(1625, Material.wood).setHardness(2.0F).setResistance(5.0F).setStepSound(soundWoodFootstep).setUnlocalizedName("orangePlank");
 	    teaSteeper = new BlockSteeper(1615, Material.glass).setHardness(1.5F).setStepSound(soundGlassFootstep).setUnlocalizedName("teaSteeper");
 	    magicSteeper = new BlockMagicSteeper(1617, Material.glass).setHardness(1.5F).setStepSound(soundGlassFootstep).setUnlocalizedName("magicSteeper");
 	   

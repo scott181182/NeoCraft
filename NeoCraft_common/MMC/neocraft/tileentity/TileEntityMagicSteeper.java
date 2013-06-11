@@ -20,6 +20,7 @@ public class TileEntityMagicSteeper extends NCtileentity
     public int magicSteepTime = 0;
     
     private int tick;
+    private static int steepTime = 800;
     private boolean isBurning = false;
     
     public TileEntityMagicSteeper()
@@ -104,7 +105,7 @@ public class TileEntityMagicSteeper extends NCtileentity
         par1NBTTagCompound.setTag("Items", nbttaglist);
     }
     public int getInventoryStackLimit() { return 64; }
-    @SideOnly(Side.CLIENT) public int getCookProgressScaled(int par1) { return this.magicSteepTime * par1 / 800; }
+    @SideOnly(Side.CLIENT) public int getCookProgressScaled(int par1) { return this.magicSteepTime * par1 / steepTime; }
 
     public boolean isSteeping() 
     {
@@ -135,7 +136,7 @@ public class TileEntityMagicSteeper extends NCtileentity
             {
                 ++this.magicSteepTime;
 
-                if (this.magicSteepTime == 800)
+                if (this.magicSteepTime == steepTime)
                 {
                     this.magicSteepTime = 0;
                     this.steepItem();
@@ -163,6 +164,7 @@ public class TileEntityMagicSteeper extends NCtileentity
         {
             ItemStack itemstack = MagicSteeperRecipes.steeping().getSteepingResult(Arrays.asList(this.steeperItemStacks[0], this.steeperItemStacks[1], this.steeperItemStacks[2], this.steeperItemStacks[3], this.steeperItemStacks[4], this.steeperItemStacks[5], this.steeperItemStacks[6], this.steeperItemStacks[7]));
             if(itemstack == null) { return false; }
+            steepTime = MagicSteeperRecipes.steeping().getTime(itemstack);
             if(this.steeperItemStacks[9] == null) { return true; }
             if(!this.steeperItemStacks[9].isItemEqual(itemstack)) return false;
             int result = steeperItemStacks[9].stackSize + itemstack.stackSize;

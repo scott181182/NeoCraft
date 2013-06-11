@@ -106,7 +106,7 @@ public class TileEntityFermenterBottom extends NCtileentity
     }
     
     @Override public int getInventoryStackLimit() { return 64; }
-    @SideOnly(Side.CLIENT) public int getCookProgressScaled(int par1) { return this.fermenterBottomCookTime * par1 / 200; }
+    @SideOnly(Side.CLIENT) public int getCookProgressScaled(int par1) { return this.fermenterBottomCookTime * par1 / 1600; }
     @SideOnly(Side.CLIENT)
     public int getBurnTimeRemainingScaled(int par1)
     {
@@ -145,7 +145,7 @@ public class TileEntityFermenterBottom extends NCtileentity
             {
                 ++this.fermenterBottomCookTime;
 
-                if (this.fermenterBottomCookTime == 200)
+                if (this.fermenterBottomCookTime == 1600)
                 {
                     this.fermenterBottomCookTime = 0;
                     this.fermentItem();

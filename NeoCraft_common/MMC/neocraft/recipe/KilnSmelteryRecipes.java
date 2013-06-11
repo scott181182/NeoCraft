@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import MMC.neocraft.block.NCblock;
+import MMC.neocraft.item.NCitem;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,8 +27,10 @@ public class KilnSmelteryRecipes
 
     private KilnSmelteryRecipes()
     {
-    	addSmelting(Block.oreIron.blockID, new ItemStack(Item.ingotIron, 2), 0.7F);
-    	addSmelting(Block.oreGold.blockID, new ItemStack(Item.ingotGold, 2), 0.7F);
+    	addSmelting(Block.oreIron.blockID, new ItemStack(Item.ingotIron, 2), 1F);
+    	addSmelting(Block.oreGold.blockID, new ItemStack(Item.ingotGold, 2), 1F);
+    	addSmelting(NCblock.oreTitanium.blockID, new ItemStack(NCitem.ingotTitanium, 1), 0.7F);
+    	addSmelting(NCblock.oreBauxite.blockID, new ItemStack(NCitem.ingotAluminum, 1), 0.7F);
     }
 
     public void addSmelting(int par1, ItemStack result, float experience)

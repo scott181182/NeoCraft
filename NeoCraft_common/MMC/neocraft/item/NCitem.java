@@ -12,6 +12,7 @@ public class NCitem extends Item
 	public static Item fruitOrange, seedOrange, rindOrange, pulpOrange, teaOrange, yeast, dough, flour, knifePruning;
 	public static Item fuelBox, capsuleEmpty, capsuleAlcohol, capsuleSugar;
 	public static Item scorchedSinensium, pyroniumChunk;
+	public static Item ingotTitanium, ingotAluminum;
 	public static Item elementSinensium, elementPyronium, elementSiliscene;
 	public static Item conglomerateSinensium, conglomeratePyronium, conglomerateSiliscene;
 	public static Item staveSinensium, stavePyronium, staveSiliscene;
@@ -43,6 +44,9 @@ public class NCitem extends Item
 		capsuleSugar = new CapsuleSugar(9912).setUnlocalizedName("capsuleSugar");
 		scorchedSinensium = new ScorchedSinensium(9913).setUnlocalizedName("scorchedSinensium");
 		pyroniumChunk = new PyroniumChunk(9914).setUnlocalizedName("pyroniumChunk");
+		
+		ingotTitanium = new IngotTitanium(9915).setUnlocalizedName("ingotTitanium");
+		ingotAluminum = new IngotAluminum(9916).setUnlocalizedName("ingotAluminum");
 		
 		elementSinensium = new ElementSinensium(10001, 1, 1).setUnlocalizedName("elementSinensium");
 		elementPyronium = new ElementPyronium(10002, 1, 2).setUnlocalizedName("elementPyronium");

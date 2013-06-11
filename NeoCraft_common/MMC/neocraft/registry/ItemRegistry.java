@@ -23,6 +23,9 @@ public class ItemRegistry
 		LanguageRegistry.addName(NCitem.capsuleSugar, "Sugar Capsule");
 		LanguageRegistry.addName(NCitem.scorchedSinensium, "Scorched Sinensium");
 		LanguageRegistry.addName(NCitem.pyroniumChunk, "Pyronium Chunk");
+
+		LanguageRegistry.addName(NCitem.ingotTitanium, "Titanium Ingot");
+		LanguageRegistry.addName(NCitem.ingotAluminum, "Aluminum Ingot");
 		
 		LanguageRegistry.addName(NCitem.elementSinensium, "Sinensium");
 		LanguageRegistry.addName(NCitem.elementPyronium, "Pyronium");

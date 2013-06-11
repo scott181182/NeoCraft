@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import MMC.neocraft.item.NCitem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class MagicSteeperRecipes
@@ -18,7 +19,11 @@ public class MagicSteeperRecipes
     private HashMap<List<List<Integer>>, ItemStack> metaMagicSteepingList = new HashMap<List<List<Integer>>, ItemStack>();
     private HashMap<List<Integer>, Float> metaExperience = new HashMap<List<Integer>, Float>();
     
+    private Map<Integer, Integer> tickList = new HashMap<Integer, Integer>();
+    private HashMap<List<Integer>, Integer> metaTickList = new HashMap<List<Integer>, Integer>();
+    
     List<Integer> pyroniumInput = Arrays.asList(NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID);
+    List<Integer> silisceneInput = Arrays.asList(NCitem.elementPyronium.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID);
     /**
      * Used to call methods addSmelting and getSmeltingResult.
      */
@@ -26,20 +31,23 @@ public class MagicSteeperRecipes
 
     private MagicSteeperRecipes()
     {
-    	addMagicSteeping(pyroniumInput, new ItemStack(NCitem.pyroniumChunk), 0);
-    	addMagicSteeping(Arrays.asList(NCitem.pyroniumChunk.itemID, NCitem.pyroniumChunk.itemID), new ItemStack(NCitem.conglomeratePyronium), 1.0f);
+    	addMagicSteeping(pyroniumInput, new ItemStack(NCitem.pyroniumChunk), 0, 800);
+    	addMagicSteeping(Arrays.asList(NCitem.pyroniumChunk.itemID, NCitem.pyroniumChunk.itemID), new ItemStack(NCitem.conglomeratePyronium), 1.0f, 800);
+    	addMagicSteeping(silisceneInput, new ItemStack(NCitem.elementSiliscene), 0, 200);
     }
 
-    public void addMagicSteeping(List<Integer> input, ItemStack result, float experience)
+    public void addMagicSteeping(List<Integer> input, ItemStack result, float experience, int time)
     {
         this.magicSteepingList.put(input, result);
         this.experienceList.put(Integer.valueOf(result.itemID), Float.valueOf(experience));
+        this.tickList.put(Integer.valueOf(result.itemID), Integer.valueOf(time));
     }
     @SuppressWarnings("unchecked")
-	public void addMagicSteeping(List<Integer> input, List<Integer> meta, ItemStack result, float experience)
+	public void addMagicSteeping(List<Integer> input, List<Integer> meta, ItemStack result, float experience, int time)
     {	
     	this.metaMagicSteepingList.put(Arrays.asList(input, meta), result);
     	this.metaExperience.put(Arrays.asList(result.itemID, result.getItemDamage()), experience);
+    	this.metaTickList.put(Arrays.asList(result.itemID, result.getItemDamage()), time);
     }
 
     public Map<List<Integer>, ItemStack> getSmeltingList() { return this.magicSteepingList; }
@@ -81,10 +89,20 @@ public class MagicSteeperRecipes
     /** Grabs the amount of base experience for this item to give when pulled from the furnace slot. */
     public float getExperience(ItemStack item)
     {
-        if (item == null || item.getItem() == null) { return 0; }
+        if (item == null) { return 0; }
+        else if(item.getItem() == null) { return 0; }
         float exp = -1;
         if (exp < 0 && metaExperience.containsKey(Arrays.asList(item.itemID, item.getItemDamage()))) { exp = metaExperience.get(Arrays.asList(item.itemID, item.getItemDamage())); }
         if (exp < 0 && experienceList.containsKey(item.itemID)) { exp = ((Float)experienceList.get(item.itemID)).floatValue(); }
         return (exp < 0 ? 0 : exp);
+    }
+    public int getTime(ItemStack item)
+    {
+        if (item == null) { return 0; }
+        else if(item.getItem() == null) { return 0; }
+        int time = -1;
+        if (time < 0 && metaTickList.containsKey(Arrays.asList(item.itemID, item.getItemDamage()))) { time = metaTickList.get(Arrays.asList(item.itemID, item.getItemDamage())); }
+        if (time < 0 && tickList.containsKey(item.itemID)) { time = tickList.get(item.itemID); }
+        return (time < 0 ? 800 : time);
     }
 }
