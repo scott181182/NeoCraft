@@ -2,15 +2,21 @@ package MMC.neocraft.entity.render;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
-import MMC.neocraft.item.NCitem;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
 import net.minecraft.util.Icon;
 
-public class RenderPyronium extends Render
+public class RenderProjectile extends Render
 {
-	
+	private Item item;
+	private int meta;
+	public RenderProjectile(Item item, int meta)
+	{
+		this.item = item;
+		this.meta = meta;
+	}
 	@Override
 	public void doRender(Entity entity, double d0, double d1, double d2, float f, float f1)
 	{
@@ -19,8 +25,8 @@ public class RenderPyronium extends Render
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         float f2 = 0.5F;
         GL11.glScalef(f2 / 1.0F, f2 / 1.0F, f2 / 1.0F);
-        Icon icon = NCitem.conglomeratePyronium.getIconFromDamage(0);
-        this.loadTexture("/mods/NeoCraft/textures/items/conglomeratePyronium.png");
+        Icon icon = this.item.getIconFromDamage(this.meta);
+        this.loadTexture("/gui/items.png");
         Tessellator tessellator = Tessellator.instance;
         float f3 = icon.getMinU();
         float f4 = icon.getMaxU();
