@@ -7,12 +7,13 @@ import net.minecraftforge.common.ForgeDirection;
 
 public abstract class NCtileentity extends TileEntity implements ISidedInventory
 {
-    protected String invName;
+    protected String invName, unlocalizedName;
     protected ForgeDirection orientation;
     
     public NCtileentity()
     {
     	orientation = ForgeDirection.SOUTH;
+    	unlocalizedName = "invalid_name";
     }
     public ForgeDirection getOrientation() { return orientation; }
     public void setOrientation(ForgeDirection orientation) { this.orientation = orientation; }
@@ -29,7 +30,7 @@ public abstract class NCtileentity extends TileEntity implements ISidedInventory
         par1NBTTagCompound.setByte("orientation", (byte)orientation.ordinal());
         if (this.isInvNameLocalized()) { par1NBTTagCompound.setString("CustomName", this.invName); }
     }
-    @Override public String getInvName() { return this.isInvNameLocalized() ? this.invName : "NCtileentity"; }
+    @Override public String getInvName() { return this.isInvNameLocalized() ? this.invName : unlocalizedName; }
     @Override public boolean isInvNameLocalized() { return this.invName != null && this.invName.length() > 0; }
     public void setInvName(String par1Str) { this.invName = par1Str; }
 }

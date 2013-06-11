@@ -25,7 +25,7 @@ public class TileEntityMagicSteeper extends NCtileentity
     
     public TileEntityMagicSteeper()
     {
-    	this.setInvName("Magic Steeper");
+    	this.unlocalizedName = "container.magicSteeper";
     	tick = 0;
     }
     

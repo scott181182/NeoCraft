@@ -22,7 +22,7 @@ public class TileEntityKilnBakery extends NCtileentity
 	    
     public TileEntityKilnBakery()
     {
-    	this.setInvName("Bakery Kiln");
+    	this.unlocalizedName = "container.kilnBakery";
     }
     @Override public int getSizeInventory() { return this.bakeryItemStacks.length; }
     @Override public ItemStack getStackInSlot(int par1) { return this.bakeryItemStacks[par1]; }

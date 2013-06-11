@@ -1,9 +1,6 @@
 package MMC.neocraft.registry;
 
-import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-
 import MMC.neocraft.block.*;
 import MMC.neocraft.lib.Reference;
 
@@ -27,22 +24,5 @@ public class BlockRegistry
 		GameRegistry.registerBlock(NCblock.incubator, Reference.MOD_ID + "@" + NCblock.incubator.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.oreTitanium, Reference.MOD_ID + "@" + NCblock.oreTitanium.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.oreBauxite, Reference.MOD_ID + "@" + NCblock.oreBauxite.getUnlocalizedName().substring(5));
-	}
-	public static void registerNames()
-	{
-		LanguageRegistry.addName(NCblock.orangeWood, "Orange Wood");
-		LanguageRegistry.addName(NCblock.orangePlank, "Orange Planks");
-		LanguageRegistry.addName(new ItemStack(NCblock.orangeLeaves, 1, 0), "Orange Leaves");
-		LanguageRegistry.addName(new ItemStack(NCblock.orangeLeaves, 1, 1), "Orange Leaves");
-		LanguageRegistry.addName(NCblock.saplingOrange, "Orange Tree Sapling");
-		LanguageRegistry.addName(NCblock.teaSteeper, "Tea Steeper");
-		LanguageRegistry.addName(NCblock.kilnCore, "Kiln Core");
-		LanguageRegistry.addName(NCblock.magicSteeper, "Magic Steeper");
-		LanguageRegistry.addName(NCblock.kilnSmeltery, "Smeltery Kiln");
-		LanguageRegistry.addName(NCblock.kilnBakery, "Bakery Kiln");
-		LanguageRegistry.addName(NCblock.fermenterWhole, "Fermenter");
-		LanguageRegistry.addName(NCblock.incubator, "Incubator");
-		LanguageRegistry.addName(NCblock.oreTitanium, "Titanium Ore");
-		LanguageRegistry.addName(NCblock.oreBauxite, "Bauxite Ore");
 	}
 }

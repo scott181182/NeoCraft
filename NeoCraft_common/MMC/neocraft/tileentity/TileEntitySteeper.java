@@ -31,7 +31,7 @@ public class TileEntitySteeper extends NCtileentity
     
     public TileEntitySteeper()
     {
-    	this.setInvName("Tea Steeper");
+    	this.unlocalizedName = "container.teaSteeper";
     }
     
     public int getSizeInventory() { return this.steeperItemStacks.length; }

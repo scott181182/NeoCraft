@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+	<comment>Version Check for NeoCraft. "VERSION_NUMBER@VERSION_LOCATION"</comment>
+	<entry key="Minecraft 1.5.2">1.0.0</entry>
+</properties>

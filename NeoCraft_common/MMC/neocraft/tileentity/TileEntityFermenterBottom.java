@@ -20,12 +20,12 @@ public class TileEntityFermenterBottom extends NCtileentity
     public int currentItemFermentTime = 0;
     /** The number of ticks that the current item has been steeping for */
     public int fermenterBottomCookTime = 0;
-	
+    
     public TileEntityFermenterBottom()
     {
-    	this.setInvName("Fermenter");
-    }
-
+    	this.unlocalizedName = "container.fermenter";
+    }    
+    
     @Override public int getSizeInventory() { return this.fermenterBottomItemStacks.length; }
 	@Override public ItemStack getStackInSlot(int i) { return this.fermenterBottomItemStacks[i]; }
 	

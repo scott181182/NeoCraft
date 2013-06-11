@@ -22,7 +22,7 @@ public class TileEntityKilnSmeltery extends NCtileentity
     
     public TileEntityKilnSmeltery()
     {
-    	this.setInvName("Smeltery Kiln");
+    	this.unlocalizedName = "container.kilnSmeltery";
     }
 
 	@Override public int getSizeInventory() { return this.smelteryItemStacks.length; }

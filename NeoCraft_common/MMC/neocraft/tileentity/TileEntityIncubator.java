@@ -22,7 +22,7 @@ public class TileEntityIncubator extends NCtileentity
     
     public TileEntityIncubator()
     {
-    	this.setInvName("Incubator");
+    	this.unlocalizedName = "container.incubator";
     }
 
 	@Override public int getSizeInventory() { return this.incubatorItemStacks.length; }

@@ -2,6 +2,7 @@ package MMC.neocraft.item;
 
 import MMC.neocraft.NeoCraftTab;
 import MMC.neocraft.lib.Reference;
+import MMC.neocraft.lib.handlers.ConfigHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -28,36 +29,36 @@ public class NCitem extends Item
 	
 	public static void init()
 	{
-		fruitOrange = new FruitOrange(9900).setUnlocalizedName("fruitOrange");
-		knifePruning = new KnifePruning(9901).setUnlocalizedName("knifePruning");
-		rindOrange = new RindOrange(9902).setUnlocalizedName("rindOrange");
-		pulpOrange = new PulpOrange(9903, 2, 0.5f).setUnlocalizedName("pulpOrange");
-		seedOrange = new SeedOrange(9904).setUnlocalizedName("seedOrange");
-		teaOrange = new TeaOrange(9905, 1, 0.1f).setPotionEffect(1, 10, 0, 1).setAlwaysEdible().setUnlocalizedName("teaOrange");
-		yeast = new ItemYeast(9906).setUnlocalizedName("yeast");
-		dough = new ItemDough(9907).setUnlocalizedName("dough");
-		flour = new ItemFlour(9908).setUnlocalizedName("flour");
+		fruitOrange = new FruitOrange(ConfigHandler.idFruitOrange).setUnlocalizedName("fruitOrange");
+		knifePruning = new KnifePruning(ConfigHandler.idKnifePruning).setUnlocalizedName("knifePruning");
+		rindOrange = new RindOrange(ConfigHandler.idRindOrange).setUnlocalizedName("rindOrange");
+		pulpOrange = new PulpOrange(ConfigHandler.idPulpOrange, 2, 0.5f).setUnlocalizedName("pulpOrange");
+		seedOrange = new SeedOrange(ConfigHandler.idSeedOrange).setUnlocalizedName("seedOrange");
+		teaOrange = new TeaOrange(ConfigHandler.idTeaOrange, 1, 0.1f).setPotionEffect(1, 10, 0, 1).setAlwaysEdible().setUnlocalizedName("teaOrange");
+		yeast = new ItemYeast(ConfigHandler.idYeast).setUnlocalizedName("yeast");
+		dough = new ItemDough(ConfigHandler.idDough).setUnlocalizedName("dough");
+		flour = new ItemFlour(ConfigHandler.idFlour).setUnlocalizedName("flour");
 		
-		fuelBox = new ItemFuelBox(9909).setUnlocalizedName("fuelBox");
-		capsuleEmpty = new CapsuleEmpty(9910).setUnlocalizedName("capsuleEmpty");
-		capsuleAlcohol = new CapsuleAlcohol(9911).setUnlocalizedName("capsuleAlcohol");
-		capsuleSugar = new CapsuleSugar(9912).setUnlocalizedName("capsuleSugar");
-		scorchedSinensium = new ScorchedSinensium(9913).setUnlocalizedName("scorchedSinensium");
-		pyroniumChunk = new PyroniumChunk(9914).setUnlocalizedName("pyroniumChunk");
+		fuelBox = new ItemFuelBox(ConfigHandler.idFuelBox).setUnlocalizedName("fuelBox");
+		capsuleEmpty = new CapsuleEmpty(ConfigHandler.idCapsuleEmpty).setUnlocalizedName("capsuleEmpty");
+		capsuleAlcohol = new CapsuleAlcohol(ConfigHandler.idCapsuleAlcohol).setUnlocalizedName("capsuleAlcohol");
+		capsuleSugar = new CapsuleSugar(ConfigHandler.idCapsuleSugar).setUnlocalizedName("capsuleSugar");
+		scorchedSinensium = new ScorchedSinensium(ConfigHandler.idScorchedSinensium).setUnlocalizedName("scorchedSinensium");
+		pyroniumChunk = new PyroniumChunk(ConfigHandler.idPyroniumChunk).setUnlocalizedName("pyroniumChunk");
 		
-		ingotTitanium = new IngotTitanium(9915).setUnlocalizedName("ingotTitanium");
-		ingotAluminum = new IngotAluminum(9916).setUnlocalizedName("ingotAluminum");
+		ingotTitanium = new IngotTitanium(ConfigHandler.idIngotTitanium).setUnlocalizedName("ingotTitanium");
+		ingotAluminum = new IngotAluminum(ConfigHandler.idIngotAluminum).setUnlocalizedName("ingotAluminum");
 		
-		elementSinensium = new ElementSinensium(10001, 1, 1).setUnlocalizedName("elementSinensium");
-		elementPyronium = new ElementPyronium(10002, 1, 2).setUnlocalizedName("elementPyronium");
-		elementSiliscene = new ElementSiliscene(10003, 2, 1).setUnlocalizedName("elementSiliscene");
+		elementSinensium = new ElementSinensium(ConfigHandler.idElementSinensium, 1, 1).setUnlocalizedName("elementSinensium");
+		elementPyronium = new ElementPyronium(ConfigHandler.idElementPyronium, 1, 2).setUnlocalizedName("elementPyronium");
+		elementSiliscene = new ElementSiliscene(ConfigHandler.idElementSiliscene, 2, 1).setUnlocalizedName("elementSiliscene");
 		
-		conglomerateSinensium = new ConglomerateSinensium(10101, (MagicElement)elementSinensium).setUnlocalizedName("conglomerateSinensium");
-		conglomeratePyronium = new ConglomeratePyronium(10102, (MagicElement)elementPyronium).setUnlocalizedName("conglomeratePyronium");
-		conglomerateSiliscene = new ConglomerateSiliscene(10103, (MagicElement)elementSiliscene).setUnlocalizedName("conglomerateSiliscene");
+		conglomerateSinensium = new ConglomerateSinensium(ConfigHandler.idConglomerateSinensium, (MagicElement)elementSinensium).setUnlocalizedName("conglomerateSinensium");
+		conglomeratePyronium = new ConglomeratePyronium(ConfigHandler.idConglomeratePyronium, (MagicElement)elementPyronium).setUnlocalizedName("conglomeratePyronium");
+		conglomerateSiliscene = new ConglomerateSiliscene(ConfigHandler.idConglomerateSiliscene, (MagicElement)elementSiliscene).setUnlocalizedName("conglomerateSiliscene");
 
-		staveSinensium = new StaveSinensium(10201, (MagicElement)elementSinensium).setUnlocalizedName("staveSinensium");
-		stavePyronium = new StavePyronium(10202, (MagicElement)elementPyronium).setUnlocalizedName("stavePyronium");
-		staveSiliscene = new StaveSiliscene(10203, (MagicElement)elementSiliscene).setUnlocalizedName("staveSiliscene");
+		staveSinensium = new StaveSinensium(ConfigHandler.idStaveSinensium, (MagicElement)elementSinensium).setUnlocalizedName("staveSinensium");
+		stavePyronium = new StavePyronium(ConfigHandler.idStavePyronium, (MagicElement)elementPyronium).setUnlocalizedName("stavePyronium");
+		staveSiliscene = new StaveSiliscene(ConfigHandler.idStaveSiliscene, (MagicElement)elementSiliscene).setUnlocalizedName("staveSiliscene");
 	}
 }

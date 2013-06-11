@@ -4,7 +4,7 @@
   "name": "NeoCraft",
   "description": 
   		"NeoCraft's mission is to combine the realms of Magic and Technology, bringing the future to Minecraft, one block at a time",
-  "version": "0.1.1",
+  "version": "@VERSION@",
   "url": "",
   "updateUrl": "",
   "authorList": [
