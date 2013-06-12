@@ -14,11 +14,7 @@ import MMC.neocraft.gen.NCgenerator;
 import MMC.neocraft.gui.NCguiHandler;
 import MMC.neocraft.item.NCitem;
 import MMC.neocraft.lib.*;
-import MMC.neocraft.lib.handlers.AddonHandler;
-import MMC.neocraft.lib.handlers.ConfigHandler;
-import MMC.neocraft.lib.handlers.LocalizationHandler;
-import MMC.neocraft.lib.handlers.LogHandler;
-import MMC.neocraft.lib.handlers.VersionHandler;
+import MMC.neocraft.lib.handlers.*;
 import MMC.neocraft.recipe.NCcrafter;
 import MMC.neocraft.recipe.RecipeRegistry;
 import MMC.neocraft.registry.*;
@@ -79,4 +75,8 @@ public class NeoCraft
 	{
 		AddonHandler.init();
 	}
+	@ServerStarting public void serverStarting(FMLServerStartingEvent ssi) { CommandHandler.init(ssi); }
+	@FingerprintWarning public void invalidFingerprint(FMLFingerprintViolationEvent fve) { LogHandler.severe(INVALID_FINGERPRINT_MESSAGE); }
+	
+	public static final String INVALID_FINGERPRINT_MESSAGE = "You are currently running a modified version of NeoCraft. We are not responsible for anything that may happen as a result of this modification. Please re-download the original version of the mod";
 }

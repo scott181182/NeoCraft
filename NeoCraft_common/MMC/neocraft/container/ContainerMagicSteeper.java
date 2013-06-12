@@ -73,7 +73,7 @@ public class ContainerMagicSteeper extends NCcontainer
                 if (!this.mergeItemStack(fromStack, 10, 46, true)) { return null; }
                 slot.onSlotChange(fromStack, toStack);
             }
-            else if (par2 != 7 && par2 != 6 && par2 != 5 && par2 != 4 && par2 != 3 || par2 != 2 && par2 != 1 && par2 != 0)
+            else if (par2 > 8)
             {
                 if (TileEntityMagicSteeper.isItemFuel(fromStack))
                 {

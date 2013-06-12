@@ -20,7 +20,7 @@ public class NCitem extends Item
 	
 	public NCitem(int par1)
 	{
-		super(par1);
+		super(par1 - 256);
 		setCreativeTab(NeoCraftTab.neoCraftTab);
 	}
 	@Override

@@ -62,7 +62,7 @@ public class VersionHandler implements Runnable
 	private static String getVersionForCheck()
 	{
 		String[] versionTokens = Reference.VERSION.split(" ");
-		if(versionTokens.length >= 1) { return versionTokens[0]; }
+		if(versionTokens.length > 0) { return versionTokens[0]; }
 		else { return Reference.VERSION; }
 	}
 	public static void logResult()

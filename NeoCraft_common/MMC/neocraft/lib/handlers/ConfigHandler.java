@@ -65,8 +65,8 @@ public class ConfigHandler
 			//Baking & Smelting Stuff
 			idYeast = config.getItem("id_Yeast", idYeast).getInt(idYeast);
 			idDough = config.getItem("id_Dough", idDough).getInt(idDough);
-			idFlour = config.getItem("id_Dough", idFlour).getInt(idFlour);
-			idFuelBox = config.getItem("id_Dough", idFuelBox).getInt(idFuelBox);
+			idFlour = config.getItem("id_Flour", idFlour).getInt(idFlour);
+			idFuelBox = config.getItem("id_FuelBox", idFuelBox).getInt(idFuelBox);
 			idCapsuleEmpty = config.getItem("id_CapsuleEmpty", idCapsuleEmpty).getInt(idCapsuleEmpty);
 			idCapsuleAlcohol = config.getItem("id_CapsuleAlcohol", idCapsuleAlcohol).getInt(idCapsuleAlcohol);
 			idCapsuleSugar = config.getItem("id_CapsuleSugar", idCapsuleSugar).getInt(idCapsuleSugar);
@@ -77,7 +77,7 @@ public class ConfigHandler
 			//Magic Elements
 			idElementSinensium = config.getItem("id_ElementSinensium", idElementSinensium).getInt(idElementSinensium);
 			idElementPyronium = config.getItem("id_ElementPyronium", idElementPyronium).getInt(idElementPyronium);
-			idElementSiliscene = config.getItem("id_ElementPyronium", idElementSiliscene).getInt(idElementSiliscene);
+			idElementSiliscene = config.getItem("id_ElementSiliscene", idElementSiliscene).getInt(idElementSiliscene);
 			//Magic Conglomerates
 			idConglomerateSinensium = config.getItem("id_ConglomerateSinensium", idConglomerateSinensium).getInt(idConglomerateSinensium);
 			idConglomeratePyronium = config.getItem("id_ConglomeratePyronium", idConglomeratePyronium).getInt(idConglomeratePyronium);

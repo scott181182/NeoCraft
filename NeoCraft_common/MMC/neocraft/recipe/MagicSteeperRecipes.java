@@ -24,6 +24,7 @@ public class MagicSteeperRecipes
     
     List<Integer> pyroniumInput = Arrays.asList(NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID);
     List<Integer> silisceneInput = Arrays.asList(NCitem.elementPyronium.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID);
+    List<Integer> sinensiumInput = Arrays.asList(NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID);
     /**
      * Used to call methods addSmelting and getSmeltingResult.
      */
@@ -34,6 +35,7 @@ public class MagicSteeperRecipes
     	addMagicSteeping(pyroniumInput, new ItemStack(NCitem.pyroniumChunk), 0, 800);
     	addMagicSteeping(Arrays.asList(NCitem.pyroniumChunk.itemID, NCitem.pyroniumChunk.itemID), new ItemStack(NCitem.conglomeratePyronium), 1.0f, 800);
     	addMagicSteeping(silisceneInput, new ItemStack(NCitem.elementSiliscene), 0, 200);
+    	addMagicSteeping(sinensiumInput, new ItemStack(NCitem.elementSinensium), 0, 400);
     }
 
     public void addMagicSteeping(List<Integer> input, ItemStack result, float experience, int time)
