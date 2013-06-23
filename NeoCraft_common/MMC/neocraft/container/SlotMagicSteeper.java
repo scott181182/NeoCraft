@@ -58,5 +58,4 @@ public class SlotMagicSteeper extends NCslot
         }
         this.expAmount = 0;
     }
-
 }

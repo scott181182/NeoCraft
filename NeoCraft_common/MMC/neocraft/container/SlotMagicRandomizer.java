@@ -1,19 +1,17 @@
 package MMC.neocraft.container;
 
-import MMC.neocraft.NeoCraftAchievement;
-import MMC.neocraft.item.NCitem;
-import MMC.neocraft.recipe.SteeperRecipes;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
+import MMC.neocraft.recipe.MagicRandomizerRecipes;
 
-public class SlotSteeper extends NCslot
+public class SlotMagicRandomizer extends NCslot
 {
 	EntityPlayer player;
 	private int expAmount;
-	public SlotSteeper(EntityPlayer player, IInventory inv, int par1, int par2, int par3)
+	public SlotMagicRandomizer(EntityPlayer player, IInventory inv, int par1, int par2, int par3)
 	{
 		super(inv, par1, par2, par3);
 		this.player = player;
@@ -41,7 +39,7 @@ public class SlotSteeper extends NCslot
         if (!this.player.worldObj.isRemote)
         {
             int multiple = this.expAmount;
-            float exp = SteeperRecipes.steeping().getExperience(par1ItemStack);
+            float exp = MagicRandomizerRecipes.randomizing().getExperience(par1ItemStack);
             int j;
 
             if (exp == 0.0F) { multiple = 0; }
@@ -59,10 +57,5 @@ public class SlotSteeper extends NCslot
             }
         }
         this.expAmount = 0;
-        
-        if (par1ItemStack.itemID == NCitem.teaOrange.itemID)
-        {
-            this.player.addStat(NeoCraftAchievement.teaAchieve, 1);
-        }
     }
 }

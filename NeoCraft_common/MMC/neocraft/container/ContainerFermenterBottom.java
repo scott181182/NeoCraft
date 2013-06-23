@@ -20,9 +20,9 @@ public class ContainerFermenterBottom extends NCcontainer
     public ContainerFermenterBottom(InventoryPlayer inv, TileEntityFermenterBottom te)
 	{
 		fermenter = te;
-        this.addSlotToContainer(new Slot(te, 0, 56, 17));
-        this.addSlotToContainer(new Slot(te, 1, 56, 53));
-        this.addSlotToContainer(new SlotFermenterBottom(inv.player, te, 2, 116, 35));
+        this.addSlotToContainer(new Slot(te, 0, 50, 13));
+        this.addSlotToContainer(new Slot(te, 1, 50, 37));
+        this.addSlotToContainer(new SlotFermenterBottom(inv.player, te, 2, 115, 25));
 		super.addInventory(inv, 0, 0);
 	}
     
@@ -102,8 +102,5 @@ public class ContainerFermenterBottom extends NCcontainer
         }
         return toStack;
     }
-    
 	@Override public boolean canInteractWith(EntityPlayer player) { return fermenter.isUseableByPlayer(player); }
-    
-    
 }

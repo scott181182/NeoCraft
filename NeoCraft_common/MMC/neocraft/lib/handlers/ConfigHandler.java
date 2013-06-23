@@ -14,19 +14,20 @@ public class ConfigHandler
 	//Block IDs
 	public static int idOreTitanium = 1609, idOreBauxite = 1610;
 	public static int idWoodOrange = 1611, idLeavesOrange = 1612, idSaplingOrange = 1613;
-	public static int idPlankOrange = 1614, idSteeperTea = 1615, idSteeperMagic = 1616;
+	public static int idPlankOrange = 1614, idSteeperTea = 1615, idSteeperMagic = 1616, idMagicRandomizer = 1626;
 	public static int idKilnCore = 1617, idKilnBakery = 1618, idKilnSmeltery = 1619;
 	public static int idFermenterWhole = 1620, idFermenterBottom = 1621, idFermenterTop = 1622;
 	public static int idIncubator = 1623;
+	public static int idBactaFlowing = 1624, idBactaStill = 1625;
 	
 	//Item IDs
 	public static int idFruitOrange = 9001, idSeedOrange = 9002, idRindOrange = 9003, idPulpOrange = 9004, idTeaOrange = 9005, idYeast = 9006, idDough = 9007, idFlour = 9008, idKnifePruning = 9009;
 	public static int idFuelBox = 9010, idCapsuleEmpty = 9011, idCapsuleAlcohol = 9012, idCapsuleSugar = 9013;
 	public static int idScorchedSinensium = 9014, idPyroniumChunk = 9015;
 	public static int idIngotTitanium = 9016, idIngotAluminum = 9017;
-	public static int idElementSinensium = 10001, idElementPyronium = 10002, idElementSiliscene = 10003;
-	public static int idConglomerateSinensium = 10101, idConglomeratePyronium = 10102, idConglomerateSiliscene = 10103;
-	public static int idStaveSinensium = 10201, idStavePyronium = 10202, idStaveSiliscene = 10203;
+	public static int idElementSinensium = 10001, idElementPyronium = 10002, idElementSiliscene = 10003, idElementMalusene = 10004, idElementQuerbon = 10005, idElementSucrozene = 10006, idElementPetrak = 10007, idElementTimbrium = 10008;
+	public static int idConglomerateSinensium = 10101, idConglomeratePyronium = 10102, idConglomerateSiliscene = 10103, idConglomerateMalusene = 10104, idConglomerateQuerbon = 10105;
+	public static int idStaveSinensium = 10201, idStavePyronium = 10202, idStaveSiliscene = 10203, idStaveMalusene = 10204, idStaveQuerbon = 10205;
 	
 	public static void init(File configFile)
 	{
@@ -54,6 +55,9 @@ public class ConfigHandler
 			idFermenterBottom = config.getBlock("id_FermenterBottom", idFermenterBottom).getInt(idFermenterBottom);
 			idFermenterTop = config.getBlock("id_FermenterTop", idFermenterTop).getInt(idFermenterTop);
 			idIncubator = config.getBlock("id_Incubator", idIncubator).getInt(idIncubator);
+			idBactaStill = config.getBlock("id_BactaStill", idBactaStill).getInt(idBactaStill);
+			idBactaFlowing = config.getBlock("id_BactaFlowing", idBactaFlowing).getInt(idBactaFlowing);
+			idMagicRandomizer = config.getBlock("id_MagicRandomizer", idMagicRandomizer).getInt(idMagicRandomizer);
 			
 			//Orange Stuff
 			idFruitOrange = config.getItem("id_FruitOrange", idFruitOrange).getInt(idFruitOrange);
@@ -78,14 +82,23 @@ public class ConfigHandler
 			idElementSinensium = config.getItem("id_ElementSinensium", idElementSinensium).getInt(idElementSinensium);
 			idElementPyronium = config.getItem("id_ElementPyronium", idElementPyronium).getInt(idElementPyronium);
 			idElementSiliscene = config.getItem("id_ElementSiliscene", idElementSiliscene).getInt(idElementSiliscene);
+			idElementMalusene = config.getItem("id_ElementMalusene", idElementMalusene).getInt(idElementMalusene);
+			idElementQuerbon = config.getItem("id_ElementQuerbon", idElementQuerbon).getInt(idElementQuerbon);
+			idElementSucrozene = config.getItem("id_ElementSucrozene", idElementSucrozene).getInt(idElementSucrozene);
+			idElementPetrak = config.getItem("id_ElementPetrak", idElementPetrak).getInt(idElementPetrak);
+			idElementTimbrium = config.getItem("id_ElementTimbrium", idElementTimbrium).getInt(idElementTimbrium);
 			//Magic Conglomerates
 			idConglomerateSinensium = config.getItem("id_ConglomerateSinensium", idConglomerateSinensium).getInt(idConglomerateSinensium);
 			idConglomeratePyronium = config.getItem("id_ConglomeratePyronium", idConglomeratePyronium).getInt(idConglomeratePyronium);
 			idConglomerateSiliscene = config.getItem("id_ConglomerateSiliscene", idConglomerateSiliscene).getInt(idConglomerateSiliscene);
+			idConglomerateMalusene = config.getItem("id_ConglomerateMalusene", idConglomerateMalusene).getInt(idConglomerateMalusene);
+			idConglomerateQuerbon = config.getItem("id_ConglomerateQuerbon", idConglomerateQuerbon).getInt(idConglomerateQuerbon);
 			//Magic Staves
 			idStaveSinensium = config.getItem("id_StaveSinensium", idStaveSinensium).getInt(idStaveSinensium);
 			idStavePyronium = config.getItem("id_StavePyronium", idStavePyronium).getInt(idStavePyronium);
 			idStaveSiliscene = config.getItem("id_StaveSiliscene", idStaveSiliscene).getInt(idStaveSiliscene);
+			idStaveMalusene = config.getItem("id_StaveMalusene", idStaveMalusene).getInt(idStaveMalusene);
+			idStaveQuerbon = config.getItem("id_StaveQuerbon", idStaveQuerbon).getInt(idStaveQuerbon);
 		}
 		catch(Exception e) { FMLLog.log(Level.SEVERE, e, Reference.MOD_NAME + " incountered a problem while loading configurations"); }
 		finally { config.save(); }

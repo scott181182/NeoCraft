@@ -1,4 +1,4 @@
-package MMC.neocraft.item;
+package MMC.neocraft.item.magic.stave;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import MMC.neocraft.block.NCblock;
 import MMC.neocraft.block.SaplingOrange;
+import MMC.neocraft.item.magic.element.MagicElement;
 
 public class StaveSinensium extends MagicStave
 {

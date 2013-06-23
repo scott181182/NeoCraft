@@ -1,4 +1,6 @@
-package MMC.neocraft.item;
+package MMC.neocraft.item.magic.conglomerate;
+
+import MMC.neocraft.item.magic.element.MagicElement;
 
 public class MagicConglomerate extends MagicElement
 {

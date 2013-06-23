@@ -38,6 +38,7 @@ public class NeoCraft
 	NCgenerator worldGen = new NCgenerator();
 	NCcrafter crafter = new NCcrafter();
 	NCguiHandler guiHandler = new NCguiHandler();
+	PickupHandler pickupHandler = new PickupHandler();
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent pie)
@@ -61,12 +62,15 @@ public class NeoCraft
 		RecipeRegistry.registerRecipes();
 		RecipeRegistry.registerShapelessRecipes();
 		RecipeRegistry.registerSmeltingRecipes();
+
+		NeoCraftAchievement.init();
 	}
 	@Init
 	public void init(FMLInitializationEvent ie)
 	{
 		GameRegistry.registerWorldGenerator(worldGen);
 		GameRegistry.registerCraftingHandler(crafter);
+		GameRegistry.registerPickupHandler(pickupHandler);
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 		proxy.registerRenderers();
 	}

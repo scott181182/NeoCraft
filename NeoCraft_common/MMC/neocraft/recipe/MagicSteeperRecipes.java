@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import MMC.neocraft.item.NCitem;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -25,6 +26,9 @@ public class MagicSteeperRecipes
     List<Integer> pyroniumInput = Arrays.asList(NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID, NCitem.scorchedSinensium.itemID);
     List<Integer> silisceneInput = Arrays.asList(NCitem.elementPyronium.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID, Item.flint.itemID);
     List<Integer> sinensiumInput = Arrays.asList(NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID, NCitem.fruitOrange.itemID);
+    List<Integer> maluseneInput = Arrays.asList(NCitem.elementSinensium.itemID, NCitem.elementSinensium.itemID, Item.appleRed.itemID, Item.appleRed.itemID, Item.appleRed.itemID, Item.appleRed.itemID, Item.appleRed.itemID, Item.appleRed.itemID);
+    List<Integer> sucrozeneInput = Arrays.asList(NCitem.elementMalusene.itemID, NCitem.elementPyronium.itemID, NCitem.capsuleSugar.itemID, NCitem.capsuleSugar.itemID, NCitem.capsuleSugar.itemID, NCitem.capsuleSugar.itemID, NCitem.capsuleSugar.itemID, NCitem.elementPyronium.itemID);
+    List<Integer> petrakInput = Arrays.asList(NCitem.elementMalusene.itemID, NCitem.elementSiliscene.itemID, Block.cobblestone.blockID, Block.cobblestone.blockID, Block.cobblestone.blockID, Block.cobblestone.blockID, Block.cobblestone.blockID, NCitem.elementSiliscene.itemID);
     /**
      * Used to call methods addSmelting and getSmeltingResult.
      */
@@ -33,9 +37,12 @@ public class MagicSteeperRecipes
     private MagicSteeperRecipes()
     {
     	addMagicSteeping(pyroniumInput, new ItemStack(NCitem.pyroniumChunk), 0, 800);
-    	addMagicSteeping(Arrays.asList(NCitem.pyroniumChunk.itemID, NCitem.pyroniumChunk.itemID), new ItemStack(NCitem.conglomeratePyronium), 1.0f, 800);
-    	addMagicSteeping(silisceneInput, new ItemStack(NCitem.elementSiliscene), 0, 200);
+    	addMagicSteeping(Arrays.asList(NCitem.pyroniumChunk.itemID, NCitem.pyroniumChunk.itemID), new ItemStack(NCitem.conglomeratePyronium), 4.5f, 800);
+    	addMagicSteeping(silisceneInput, new ItemStack(NCitem.elementSiliscene), 0.5f, 200);
     	addMagicSteeping(sinensiumInput, new ItemStack(NCitem.elementSinensium), 0, 400);
+    	addMagicSteeping(maluseneInput, new ItemStack(NCitem.elementMalusene), 1.0f, 800);
+    	addMagicSteeping(sucrozeneInput, new ItemStack(NCitem.elementSucrozene, 2), 1.5f, 400);
+    	addMagicSteeping(petrakInput, new ItemStack(NCitem.elementPetrak, 2), 1.5f, 400);
     }
 
     public void addMagicSteeping(List<Integer> input, ItemStack result, float experience, int time)

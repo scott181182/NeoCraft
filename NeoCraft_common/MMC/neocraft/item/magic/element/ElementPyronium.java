@@ -1,4 +1,5 @@
-package MMC.neocraft.item;
+package MMC.neocraft.item.magic.element;
+
 
 public class ElementPyronium extends MagicElement
 {

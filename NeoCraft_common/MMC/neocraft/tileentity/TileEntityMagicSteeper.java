@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import MMC.neocraft.block.BlockMagicSteeper;
-import MMC.neocraft.item.MagicStave;
+import MMC.neocraft.item.magic.stave.MagicStave;
 import MMC.neocraft.recipe.MagicSteeperRecipes;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

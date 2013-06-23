@@ -15,6 +15,7 @@ public class NCguiHandler implements IGuiHandler
 	public static final int smelteryID = 3;
 	public static final int fermenterBottomID = 4;
 	public static final int incubatorID = 5;
+	public static final int randomizerID = 6;
 	
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -28,6 +29,7 @@ public class NCguiHandler implements IGuiHandler
 			case smelteryID: return new ContainerKilnSmeltery(player.inventory, (TileEntityKilnSmeltery)te);
 			case fermenterBottomID: return new ContainerFermenterBottom(player.inventory, (TileEntityFermenterBottom)te);
 			case incubatorID: return new ContainerIncubator(player.inventory, (TileEntityIncubator)te);
+			case randomizerID: return new ContainerMagicRandomizer(player.inventory, (TileEntityMagicRandomizer)te);
 			
 			default: return null;
 		}
@@ -44,6 +46,7 @@ public class NCguiHandler implements IGuiHandler
 			case smelteryID: return new GuiKilnSmeltery(player.inventory, (TileEntityKilnSmeltery)te);
 			case fermenterBottomID: return new GuiFermenterBottom(player.inventory, (TileEntityFermenterBottom)te);
 			case incubatorID: return new GuiIncubator(player.inventory, (TileEntityIncubator)te);
+			case randomizerID: return new GuiMagicRandomizer(player.inventory, (TileEntityMagicRandomizer)te);
 			
 			default: return null;
 		}

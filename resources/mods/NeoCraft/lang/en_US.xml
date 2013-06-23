@@ -26,14 +26,23 @@
 	<entry key="item.elementSinensium.name">Sinensium</entry>
 	<entry key="item.elementPyronium.name">Pyronium</entry>
 	<entry key="item.elementSiliscene.name">Siliscene</entry>
+	<entry key="item.elementMalusene.name">Malusene</entry>
+	<entry key="item.elementQuerbon.name">Querbon</entry>
+	<entry key="item.elementSucrozene.name">Sucrozene</entry>
+	<entry key="item.elementPetrak.name">Petrak</entry>
+	<entry key="item.elementTimbrium.name">Timbrium</entry>
 	
 	<entry key="item.conglomerateSinensium.name">Sinensium Conglomerate</entry>
 	<entry key="item.conglomeratePyronium.name">Pyronium Conglomerate</entry>
 	<entry key="item.conglomerateSiliscene.name">Siliscene Conglomerate</entry>
+	<entry key="item.conglomerateMalusene.name">Malusene Conglomerate</entry>
+	<entry key="item.conglomerateQuerbon.name">Querbon Conglomerate</entry>
 	
 	<entry key="item.staveSinensium.name">Sinensium Staff</entry>
 	<entry key="item.stavePyronium.name">Pyronium Staff</entry>
 	<entry key="item.staveSiliscene.name">Siliscene Staff</entry>
+	<entry key="item.staveMalusene.name">Malusene Staff</entry>
+	<entry key="item.staveQuerbon.name">Querbon Staff</entry>
 	
 	
 	
@@ -47,12 +56,16 @@
 	
 	<entry key="tile.teaSteeper.name">Tea Steeper</entry>
 	<entry key="tile.magicSteeper.name">Magic Steeper</entry>
+	<entry key="tile.magicRandomizer.name">Magic Randomizer</entry>
 	
 	<entry key="tile.kilnCore.name">Kiln Core</entry>
 	<entry key="tile.kilnBakery.name">Bakery Kiln</entry>
 	<entry key="tile.kilnSmeltery.name">Smeltery Kiln</entry>
 	<entry key="tile.fermenterWhole.name">Fermenter</entry>
 	<entry key="tile.incubator.name">Incubator</entry>
+	
+	<entry key="tile.bactaStill.name">Bacta</entry>
+	<entry key="tile.bactaFlowing.name">Bacta</entry>
 	
 	
 	
@@ -62,6 +75,18 @@
 	<entry key="container.kilnSmeltery">Smeltery Kiln</entry>
 	<entry key="container.fermenter">Fermenter</entry>
 	<entry key="container.incubator">Incubator</entry>
+	<entry key="container.magicRandomizer">Magic Randomizer</entry>
+	
+	
+	
+	<entry key="achievement.orange">Orange you glad?</entry>
+	<entry key="achievement.orange.desc">Pretty orange...</entry>
+	<entry key="achievement.sinensium">Your a wizard Harry</entry>
+	<entry key="achievement.sinensium.desc">Magic oranges, eh?</entry>
+	<entry key="achievement.tea">Who needs coffee?</entry>
+	<entry key="achievement.tea.desc">Quite civilized of you</entry>
+	<entry key="achievement.kilnCore">It's getting hot in here</entry>
+	<entry key="achievement.kilnCore.desc">so take off all your clothes</entry>
 	
 	
 	

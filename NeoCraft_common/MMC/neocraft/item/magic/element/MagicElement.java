@@ -1,4 +1,6 @@
-package MMC.neocraft.item;
+package MMC.neocraft.item.magic.element;
+
+import MMC.neocraft.item.NCitem;
 
 public class MagicElement extends NCitem
 {

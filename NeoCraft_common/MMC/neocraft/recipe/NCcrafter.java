@@ -1,5 +1,6 @@
 package MMC.neocraft.recipe;
 
+import MMC.neocraft.NeoCraftAchievement;
 import MMC.neocraft.block.NCblock;
 import MMC.neocraft.item.NCitem;
 import net.minecraft.entity.item.EntityItem;
@@ -38,6 +39,7 @@ public class NCcrafter implements ICraftingHandler
 		else if(item.itemID == NCitem.elementSinensium.itemID) { this.findAndDamage(NCitem.staveSinensium.itemID, 1, craftMatrix); }
 		else if(item.itemID == NCitem.elementPyronium.itemID) { this.findAndDamage(NCitem.staveSinensium.itemID, 1, craftMatrix); }
 		else if(item.itemID == NCitem.elementSiliscene.itemID) { this.findAndDamage(NCitem.staveSinensium.itemID, 1, craftMatrix); }
+		else if(item.itemID == NCblock.kilnCore.blockID) { player.addStat(NeoCraftAchievement.kilnAchieve, 1); }
 	}
 	@Override
 	public void onSmelting(EntityPlayer player, ItemStack item)

@@ -11,7 +11,12 @@ import net.minecraft.client.renderer.texture.IconRegister;
 
 public class NCblock extends Block
 {
-	public static Block oreTitanium, oreBauxite, orangeWood, orangePlank, orangeLeaves, saplingOrange, teaSteeper, magicSteeper, kilnCore, kilnBakery, kilnSmeltery, fermenterBottom, fermenterTop, fermenterWhole, incubator;
+	public static Block oreTitanium, oreBauxite, orangeWood, orangePlank, orangeLeaves, saplingOrange;
+	public static Block teaSteeper, magicSteeper, magicRandomizer, kilnCore, kilnBakery, kilnSmeltery, fermenterBottom, fermenterTop, fermenterWhole, incubator;
+	public static NCfluid bactaFlowing;
+	public static Block bactaStill;
+	
+	public static Block testBlock;
 	
 	public NCblock(int id, Material material)
 	{
@@ -33,6 +38,7 @@ public class NCblock extends Block
 	    orangePlank = new BlockOrangePlank(ConfigHandler.idPlankOrange, Material.wood).setHardness(2.0F).setResistance(5.0F).setStepSound(soundWoodFootstep).setUnlocalizedName("orangePlank");
 	    teaSteeper = new BlockSteeper(ConfigHandler.idSteeperTea, Material.glass).setHardness(1.5F).setStepSound(soundGlassFootstep).setUnlocalizedName("teaSteeper");
 	    magicSteeper = new BlockMagicSteeper(ConfigHandler.idSteeperMagic, Material.glass).setHardness(1.5F).setStepSound(soundGlassFootstep).setUnlocalizedName("magicSteeper");
+	    magicRandomizer = new BlockMagicRandomizer(ConfigHandler.idMagicRandomizer, Material.iron).setHardness(2.5F).setStepSound(soundMetalFootstep).setUnlocalizedName("magicRandomizer");
 	   
 	    kilnCore = new KilnCore(ConfigHandler.idKilnCore, Material.rock).setHardness(2F).setStepSound(soundStoneFootstep).setUnlocalizedName("kilnCore");
 	    kilnBakery = new KilnBakery(ConfigHandler.idKilnBakery, Material.rock).setHardness(2.5F).setStepSound(soundStoneFootstep).setUnlocalizedName("kilnBakery");
@@ -42,5 +48,10 @@ public class NCblock extends Block
 	    fermenterTop = new BlockFermenterTop(ConfigHandler.idFermenterTop, Material.iron).setHardness(3F).setStepSound(soundMetalFootstep).setUnlocalizedName("blockFermenterTop");
 	    fermenterWhole = new BlockFermenterWhole(ConfigHandler.idFermenterWhole, Material.iron).setHardness(3F).setStepSound(soundMetalFootstep).setUnlocalizedName("fermenterWhole");
 	    incubator = new BlockIncubator(ConfigHandler.idIncubator, Material.iron).setHardness(2F).setStepSound(soundMetalFootstep).setUnlocalizedName("incubator");
+
+	    bactaFlowing = (NCfluid)(new LiquidBactaFlowing(ConfigHandler.idBactaFlowing)).setHardness(100.0F).setLightOpacity(3).setUnlocalizedName("bactaFlowing");
+	    bactaStill = new LiquidBactaStill(ConfigHandler.idBactaStill).setHardness(100.0F).setLightOpacity(3).setUnlocalizedName("bactaStill");
+	    
+	    testBlock = new BlockTest(2000, Material.rock).setUnlocalizedName("testBlock");
 	}
 }

@@ -24,5 +24,10 @@ public class BlockRegistry
 		GameRegistry.registerBlock(NCblock.incubator, Reference.MOD_ID + "@" + NCblock.incubator.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.oreTitanium, Reference.MOD_ID + "@" + NCblock.oreTitanium.getUnlocalizedName().substring(5));
 		GameRegistry.registerBlock(NCblock.oreBauxite, Reference.MOD_ID + "@" + NCblock.oreBauxite.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(NCblock.bactaStill, Reference.MOD_ID + "@" + NCblock.bactaStill.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(NCblock.bactaFlowing, Reference.MOD_ID + "@" + NCblock.bactaFlowing.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(NCblock.magicRandomizer, Reference.MOD_ID + "@" + NCblock.magicRandomizer.getUnlocalizedName().substring(5));
+
+		GameRegistry.registerBlock(NCblock.testBlock, Reference.MOD_ID + "@" + NCblock.testBlock.getUnlocalizedName().substring(5));
 	}
 }

@@ -1,4 +1,7 @@
-package MMC.neocraft.item;
+package MMC.neocraft.item.magic.stave;
+
+import MMC.neocraft.item.NCitem;
+import MMC.neocraft.item.magic.element.MagicElement;
 
 public class MagicStave extends NCitem
 {
