@@ -40,11 +40,10 @@ public class NeoCraft
 	NCguiHandler guiHandler = new NCguiHandler();
 	PickupHandler pickupHandler = new PickupHandler();
 	
-	@PreInit
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent pie)
 	{
 		LogHandler.init();
-		LocalizationHandler.loadLanguages();
 		ConfigHandler.init(new File(pie.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.CHANNEL_NAME + File.separator + Reference.MOD_ID + ".cfg"));
 		VersionHandler.execute();
 		
@@ -65,7 +64,7 @@ public class NeoCraft
 
 		NeoCraftAchievement.init();
 	}
-	@Init
+	@EventHandler
 	public void init(FMLInitializationEvent ie)
 	{
 		GameRegistry.registerWorldGenerator(worldGen);
@@ -74,13 +73,13 @@ public class NeoCraft
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 		proxy.registerRenderers();
 	}
-	@PostInit
+	@EventHandler
 	public void postInit(FMLPostInitializationEvent pie)
 	{
 		AddonHandler.init();
 	}
-	@ServerStarting public void serverStarting(FMLServerStartingEvent ssi) { CommandHandler.init(ssi); }
-	@FingerprintWarning public void invalidFingerprint(FMLFingerprintViolationEvent fve) { LogHandler.severe(INVALID_FINGERPRINT_MESSAGE); }
+	@EventHandler public void serverStarting(FMLServerStartingEvent ssi) { CommandHandler.init(ssi); }
+	@EventHandler public void invalidFingerprint(FMLFingerprintViolationEvent fve) { LogHandler.severe(INVALID_FINGERPRINT_MESSAGE); }
 	
 	public static final String INVALID_FINGERPRINT_MESSAGE = "You are currently running a modified version of NeoCraft. We are not responsible for anything that may happen as a result of this modification. Please re-download the original version of the mod";
 }

@@ -1,0 +1,115 @@
+# English (en_US) Localization File
+
+
+
+# Items
+
+item.neocraft:fruitOrange.name=Orange
+item.neocraft:rindOrange.name=Orange Rind
+item.neocraft:pulpOrange.name=Orange Pulp
+item.neocraft:teaOrange.name=Orange Tea
+item.neocraft:seedOrange.name=Orange Seed
+item.neocraft:knifePruning.name=Pruning Knife
+
+item.neocraft:yeast.name=Yeast
+item.neocraft:dough.name=Bread Dough
+item.neocraft:flour.name=Flour
+item.neocraft:scorchedSinensium.name=Scorched Sinensium
+item.neocraft:pyroniumChunk.name=Pyronium Chunk
+
+item.neocraft:fuelBox.name=Fuel Box
+item.neocraft:capsuleEmpty.name=Empty Capsule
+item.neocraft:capsuleAlcohol.name=Alcohol Capsule
+item.neocraft:capsuleSugar.name=Sugar Capsule
+item.neocraft:ingotTitanium.name=Titanium Ingot
+item.neocraft:ingotAluminum.name=Aluminum Ingot
+
+item.neocraft:elementSinensium.name=Sinensium
+item.neocraft:elementPyronium.name=Pyronium
+item.neocraft:elementSiliscene.name=Siliscene
+item.neocraft:elementMalusene.name=Malusene
+item.neocraft:elementQuerbon.name=Querbon
+item.neocraft:elementSucrozene.name=Sucrozene
+item.neocraft:elementPetrak.name=Petrak
+item.neocraft:elementTimbrium.name=Timbrium
+
+item.neocraft:conglomerateSinensium.name=Sinensium Conglomerate
+item.neocraft:conglomeratePyronium.name=Pyronium Conglomerate
+item.neocraft:conglomerateSiliscene.name=Siliscene Conglomerate
+item.neocraft:conglomerateMalusene.name=Malusene Conglomerate
+item.neocraft:conglomerateQuerbon.name=Querbon Conglomerate
+
+item.neocraft:staveSinensium.name=Sinensium Staff
+item.neocraft:stavePyronium.name=Pyronium Staff
+item.neocraft:staveSiliscene.name=Siliscene Staff
+item.neocraft:staveMalusene.name=Malusene Staff
+item.neocraft:staveQuerbon.name=Querbon Staff
+
+
+
+# Blocks
+
+tile.neocraft:oreTitanium.name=Titanium Ore
+tile.neocraft:oreBauxite.name=Bauxite Ore
+tile.neocraft:orangeWood.name=Orange Wood
+tile.neocraft:orangeLeaves.empty.name=Orange Leaves
+tile.neocraft:orangeLeaves.oranges.name=Orange Leaves
+tile.neocraft:orangePlank.name=Orange Planks
+tile.neocraft:orangeSapling.name=Orange Tree Sapling
+
+tile.neocraft:teaSteeper.name=Tea Steeper
+tile.neocraft:magicSteeper.name=Magic Steeper
+tile.neocraft:magicRandomizer.name=Magic Randomizer
+	
+tile.neocraft:kilnCore.name=Kiln Core
+tile.neocraft:kilnBakery.name=Bakery Kiln
+tile.neocraft:kilnSmeltery.name=Smeltery Kiln
+tile.neocraft:fermenterWhole.name=Fermenter
+tile.neocraft:incubator.name=Incubator
+
+tile.neocraft:generatorSteam.name=Steam Generator
+
+tile.neocraft:testBlock.name=Test Block
+
+
+
+# Containers
+
+container.neocraft:teaSteeper=Tea Steeper
+container.neocraft:magicSteeper=Magic Steeper
+container.neocraft:kilnBakery=Bakery Kiln
+container.neocraft:kilnSmeltery=Smeltery Kiln
+container.neocraft:fermenter=Fermenter
+container.neocraft:incubator=Incubator
+container.neocraft:magicRandomizer=Magic Randomizer
+
+
+
+# Creative Tab(s)
+
+itemGroup.neocraft:neocraft
+
+
+
+# Achievements
+
+achievement.neocraft:orange=Orange you glad?
+achievement.neocraft:orange.desc=Prune an orange from a tree
+achievement.neocraft:sinensium=You're a wizard Harry
+achievement.neocraft:sinensium.desc=Create Sinensium from Oranges
+achievement.neocraft:tea=Who needs coffee?
+achievement.neocraft:tea.desc=Steep some tea
+achievement.neocraft:kilnCore=It's getting hot in here
+achievement.neocraft:kilnCore.desc=Craft a Kiln Core
+
+
+
+# Version
+
+version.neocraft:check_init=Remote Version Check initialized, located at
+version.neocraft:uninitialized=Remote Version Check failed to initialize properly
+version.neocraft:current=Currently using the most recent version of neocraft (@REMOTE_VERSION@) for @MC_VERSION@
+version.neocraft:outdated=You are using an outdated version of @MOD_NAME@. The latest version is @REMOTE_VERSION@ for @MC_VERSION@
+version.neocraft:error=Error connecting to remote version repository; trying again
+version.neocraft:final_error=Aborting Remote Version Check, failed 3 times out of 3
+version.neocraft:mc_version_not_found=Cannot find a version of @MOD_NAME@ for @MC_VERSION@ in the remote version repository

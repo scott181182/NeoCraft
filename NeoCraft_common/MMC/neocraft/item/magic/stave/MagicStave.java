@@ -12,6 +12,8 @@ public class MagicStave extends NCitem
 		super(id);
 		this.base = base;
 		this.setMaxStackSize(1);
+		this.setNoRepair();
 	}
 	public MagicElement getBase() { return this.base; }
+	
 }

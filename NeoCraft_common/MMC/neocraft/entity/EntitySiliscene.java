@@ -1,6 +1,6 @@
 package MMC.neocraft.entity;
 
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
@@ -13,7 +13,7 @@ public class EntitySiliscene extends EntityThrowable
 		super(world);
 		this.setSize(0.25f, 0.25f);
 	}
-	public EntitySiliscene(World world, EntityLiving entity)
+	public EntitySiliscene(World world, EntityLivingBase entity)
 	{
 		super(world, entity);
 		this.setSize(0.25f, 0.25f);
@@ -23,9 +23,7 @@ public class EntitySiliscene extends EntityThrowable
 		super(world, x, y, z);
 		this.setSize(0.25f, 0.25f);
 	}
-	@Override public String getTexture() { return "/mods/NeoCraft/textures/items/conglomeratePyronium.png"; }
-	@Override
-	protected void onImpact(MovingObjectPosition obj)
+	@Override protected void onImpact(MovingObjectPosition obj)
 	{
 		if(obj.entityHit != null) { obj.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 2); }
 		if(!this.worldObj.isRemote) { this.setDead(); }

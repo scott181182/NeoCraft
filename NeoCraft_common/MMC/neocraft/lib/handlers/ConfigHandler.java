@@ -15,7 +15,7 @@ public class ConfigHandler
 	public static int idOreTitanium = 1609, idOreBauxite = 1610;
 	public static int idWoodOrange = 1611, idLeavesOrange = 1612, idSaplingOrange = 1613;
 	public static int idPlankOrange = 1614, idSteeperTea = 1615, idSteeperMagic = 1616, idMagicRandomizer = 1626;
-	public static int idKilnCore = 1617, idKilnBakery = 1618, idKilnSmeltery = 1619;
+	public static int idKilnCore = 1617, idKilnBakery = 1618, idKilnSmeltery = 1619, idGeneratorSteam = 1627;
 	public static int idFermenterWhole = 1620, idFermenterBottom = 1621, idFermenterTop = 1622;
 	public static int idIncubator = 1623;
 	public static int idBactaFlowing = 1624, idBactaStill = 1625;
@@ -57,10 +57,11 @@ public class ConfigHandler
 			idIncubator = config.getBlock("id_Incubator", idIncubator).getInt(idIncubator);
 			idBactaStill = config.getBlock("id_BactaStill", idBactaStill).getInt(idBactaStill);
 			idBactaFlowing = config.getBlock("id_BactaFlowing", idBactaFlowing).getInt(idBactaFlowing);
-			idMagicRandomizer = config.getBlock("id_MagicRandomizer", idMagicRandomizer).getInt(idMagicRandomizer);
+			idMagicRandomizer = getBlock(idMagicRandomizer, "id_MagicRandomizer");
+			idGeneratorSteam = getBlock(idGeneratorSteam, "id_GeneratorSteam");
 			
 			//Orange Stuff
-			idFruitOrange = config.getItem("id_FruitOrange", idFruitOrange).getInt(idFruitOrange);
+			idFruitOrange = getItem(idFruitOrange, "id_FruitOrange");
 			idSeedOrange = config.getItem("id_SeedOrange", idSeedOrange).getInt(idSeedOrange);
 			idRindOrange = config.getItem("id_RindOrange", idRindOrange).getInt(idRindOrange);
 			idPulpOrange = config.getItem("id_PulpOrange", idPulpOrange).getInt(idPulpOrange);
@@ -115,6 +116,8 @@ public class ConfigHandler
 		}
 		config.save();
 	}
+	private static int getBlock(int id, String name) { return config.getBlock(name, id).getInt(id); }
+	private static int getItem(int id, String name) { return config.getItem(name, id).getInt(id); }
 	
 	public static boolean DISPLAY_VERSION_RESULT = true;
 	public static String LAST_VERSION = "";

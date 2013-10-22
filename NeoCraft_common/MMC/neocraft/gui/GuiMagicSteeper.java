@@ -4,6 +4,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 import MMC.neocraft.container.ContainerMagicSteeper;
+import MMC.neocraft.lib.Textures;
 import MMC.neocraft.tileentity.TileEntityMagicSteeper;
 
 public class GuiMagicSteeper extends NCgui
@@ -17,14 +18,14 @@ public class GuiMagicSteeper extends NCgui
     @Override protected void drawGuiContainerForegroundLayer(int par1, int par2)
     {
         String s = this.steeperInv.isInvNameLocalized() ? this.steeperInv.getInvName() : StatCollector.translateToLocal(this.steeperInv.getInvName());
-        this.fontRenderer.drawString(s, (this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2) + 10, 6, 4210752);
+        this.fontRenderer.drawString(s, (this.xSize / 2 - this.fontRenderer.getStringWidth(s) / 2), 6, 4210752);
         s = StatCollector.translateToLocal("container.inventory");
         this.fontRenderer.drawString(s, this.xSize - this.fontRenderer.getStringWidth(s) - 5, this.ySize - 96 + 12, 4210752);
     }
     @Override protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.renderEngine.bindTexture("/mods/NeoCraft/textures/gui/magicSteeper.png");
+        this.mc.getTextureManager().bindTexture(Textures.GUI_MAGIC_STEEPER);
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize + 10);

@@ -22,7 +22,7 @@ public class TileEntityKilnSmeltery extends NCtileentity
     
     public TileEntityKilnSmeltery()
     {
-    	this.unlocalizedName = "container.kilnSmeltery";
+    	this.setUnlocalizedName("kilnSmeltery");
     }
 
 	@Override public int getSizeInventory() { return this.smelteryItemStacks.length; }
@@ -196,7 +196,7 @@ public class TileEntityKilnSmeltery extends NCtileentity
     @Override public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) { return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D; }
     @Override public void openChest() {  }
     @Override public void closeChest() {  }
-    @Override public boolean isStackValidForSlot(int par1, ItemStack par2ItemStack) { return par1 == 2 ? false : (par1 == 1 ? isItemFuel(par2ItemStack) : true); }
+    @Override public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack) { return par1 == 2 ? false : (par1 == 1 ? isItemFuel(par2ItemStack) : true); }
     @Override public int[] getAccessibleSlotsFromSide(int par1)
     {
     	if(par1 == 0 || par1 == 1) { return par1 == 0 ? new int[]{ 2 } : new int[]{ 0 }; }
@@ -210,7 +210,7 @@ public class TileEntityKilnSmeltery extends NCtileentity
     @Override public boolean canInsertItem(int par1, ItemStack par2ItemStack, int par3)
     {
     	if(par1 == 3) { return false; }
-        return this.isStackValidForSlot(par1, par2ItemStack);
+        return this.isItemValidForSlot(par1, par2ItemStack);
     }
 
     /**

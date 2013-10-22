@@ -1,11 +1,17 @@
 package MMC.neocraft.block;
 
+import MMC.neocraft.NeoCraft;
+import MMC.neocraft.gui.NCguiHandler;
+import MMC.neocraft.lib.Reference;
+import MMC.neocraft.tileentity.TileEntityGeneratorSteam;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -13,19 +19,13 @@ import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
-import MMC.neocraft.NeoCraft;
-import MMC.neocraft.gui.NCguiHandler;
-import MMC.neocraft.lib.Reference;
-import MMC.neocraft.tileentity.TileEntityIncubator;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockIncubator extends NCcontainerBlock
+public class GeneratorSteam extends NCcontainerBlock
 {
-	private static boolean keepIncubatorInventory = false;
+	private static boolean keepGeneratorInventory = false;
     @SideOnly(Side.CLIENT) private Icon iconSide, iconTop, iconFrontOn, iconFrontOff;
     
-	public BlockIncubator(int par1, Material material)
+	public GeneratorSteam(int par1, Material material)
 	{
 		super(par1, material);
 	}
@@ -64,10 +64,10 @@ public class BlockIncubator extends NCcontainerBlock
     @SideOnly(Side.CLIENT) @Override
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.iconSide = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "incubatorSide");
-        this.iconTop = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "incubatorTop");
-        this.iconFrontOff = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "incubatorFrontOff");
-        this.iconFrontOn = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "incubatorFrontOn");
+        this.iconSide = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "genSteamSide");
+        this.iconTop = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "genSteamTop");
+        this.iconFrontOff = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "genSteamFrontOff");
+        this.iconFrontOn = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "genSteamFrontOn");
     }
 	
     @Override
@@ -75,27 +75,25 @@ public class BlockIncubator extends NCcontainerBlock
     {
 		TileEntity te = par1World.getBlockTileEntity(x, y, z);
 		if(te == null || player.isSneaking()) { return false; }
-		player.openGui(NeoCraft.instance, NCguiHandler.incubatorID, par1World, x, y, z);
+		player.openGui(NeoCraft.instance, NCguiHandler.genSteamID, par1World, x, y, z);
 		return true;
     }
-    
-    public static void updateIncubatorBlockState(boolean par0, World par1World, int par2, int par3, int par4)
+    public static void updateGeneratorBlockState(boolean par0, World par1World, int par2, int par3, int par4)
     {
     	int meta = par1World.getBlockMetadata(par2, par3, par4);
         TileEntity tileentity = par1World.getBlockTileEntity(par2, par3, par4);
-        keepIncubatorInventory = true;
+        keepGeneratorInventory = true;
 
         if (par0) {  par1World.setBlockMetadataWithNotify(par2, par3, par4, meta | 8, 3); }
         else { par1World.setBlockMetadataWithNotify(par2, par3, par4, meta & -9, 3); }
 
-        keepIncubatorInventory = false;
+        keepGeneratorInventory = false;
         if (tileentity != null)
         {
             tileentity.validate();
             par1World.setBlockTileEntity(par2, par3, par4, tileentity);
         }
     }
-    
     @Override
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLiving, ItemStack par6ItemStack)
     {
@@ -108,19 +106,19 @@ public class BlockIncubator extends NCcontainerBlock
     	else { facing = 2; }
         par1World.setBlockMetadataWithNotify(par2, par3, par4, facing, 3);
         TileEntity te = par1World.getBlockTileEntity(par2, par3, par4);
-        if(te != null) { ((TileEntityIncubator)te).setOrientation(facing); }
+        if(te != null) { ((TileEntityGeneratorSteam)te).setOrientation(facing); }
         if (par6ItemStack.hasDisplayName())
         {
-            ((TileEntityIncubator)par1World.getBlockTileEntity(par2, par3, par4)).setCustomName(par6ItemStack.getDisplayName());
+            ((TileEntityGeneratorSteam)par1World.getBlockTileEntity(par2, par3, par4)).setCustomName(par6ItemStack.getDisplayName());
         }
     }
     
     @Override
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
     {
-        if (!keepIncubatorInventory)
+        if (!keepGeneratorInventory)
         {
-        	TileEntityIncubator tileEntity = (TileEntityIncubator)par1World.getBlockTileEntity(par2, par3, par4);
+        	TileEntityGeneratorSteam tileEntity = (TileEntityGeneratorSteam)par1World.getBlockTileEntity(par2, par3, par4);
 
             if (tileEntity != null)
             {
@@ -165,5 +163,5 @@ public class BlockIncubator extends NCcontainerBlock
         }
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
-	@Override public TileEntity createNewTileEntity(World world) { return new TileEntityIncubator(); }
+	@Override public TileEntity createNewTileEntity(World world) { return new TileEntityGeneratorSteam(); }
 }

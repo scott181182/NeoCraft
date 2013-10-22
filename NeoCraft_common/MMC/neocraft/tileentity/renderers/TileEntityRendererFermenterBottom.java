@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import org.lwjgl.opengl.GL11;
 import MMC.neocraft.block.models.ModelFermenterBottom;
+import MMC.neocraft.lib.Textures;
 import MMC.neocraft.tileentity.TileEntityFermenterBottom;
 
 public class TileEntityRendererFermenterBottom extends TileEntitySpecialRenderer
@@ -17,7 +18,7 @@ public class TileEntityRendererFermenterBottom extends TileEntitySpecialRenderer
 	{
 		int rotation = 0;
 		if(te.worldObj != null) { rotation = te.getBlockMetadata(); }
-		this.bindTextureByName("/mods/NeoCraft/textures/models/fermenterBottom.png");
+		this.bindTexture(Textures.MODEL_FERMENTER_BOTTOM);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + .5f, (float)y + .5f, (float)z + .5f);
 		GL11.glScalef(1f, -1f, -1f);

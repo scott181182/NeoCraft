@@ -79,7 +79,7 @@ public class BlockOrangeWood extends NCblock
 	public void registerIcons(IconRegister register)
 	{
 		icons = new Icon[2];
-		for(int i = 0; i < icons.length; i ++) { icons[i] = register.registerIcon(Reference.MOD_ID + ":" + this.getUnlocalizedName().substring(5) + "-" + i); }
+		for(int i = 0; i < icons.length; i ++) { icons[i] = register.registerIcon(String.format("%s:%s", Reference.MOD_ID, "orangeWood-" + i)); }
 	}
 	@Override
 	@SideOnly(Side.CLIENT)

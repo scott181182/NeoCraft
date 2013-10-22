@@ -26,10 +26,22 @@ public class NCitem extends Item
 		super(par1 - 256);
 		setCreativeTab(NeoCraftTab.neoCraftTab);
 	}
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister register) { this.itemIcon = register.registerIcon(Reference.MOD_ID + ":" + (this.getUnlocalizedName().substring(5))); }
-	
+	@Override @SideOnly(Side.CLIENT)
+    public void registerIcons(IconRegister iconRegister) 
+	{
+		itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1)); 
+	}
+	@Override public Item setUnlocalizedName(String name)
+	{
+		super.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + name);
+		return this;
+	}
+	/* protected String getUnwrappedUnlocalizedName(String unlocalizedName) { return unlocalizedName.substring(unlocalizedName.indexOf(":") + 1); }
+    @Override public String getUnlocalizedName() 
+    {  
+    	String name = super.getUnlocalizedName().substring(5);
+    	return "item." + Reference.MOD_ID.toLowerCase() + ":" + name;
+    } */
 	public static void init()
 	{
 		fruitOrange = new FruitOrange(ConfigHandler.idFruitOrange).setUnlocalizedName("fruitOrange");

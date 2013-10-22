@@ -259,7 +259,7 @@ public class BlockOrangeLeaves extends NCblock implements IShearable
     public void registerIcons(IconRegister register)
     {
     	icons = new Icon[2];
-		for(int i = 0; i < icons.length; i ++) { icons[i] = register.registerIcon(Reference.MOD_ID + ":" + this.getUnlocalizedName().substring(5) + "-" + i); }
+		for(int i = 0; i < icons.length; i ++) { icons[i] = register.registerIcon(String.format("%s:%s", Reference.MOD_ID, "orangeLeaves-" + i)); }
     }
     @Override public boolean isShearable(ItemStack item, World world, int x, int y, int z) { return true; }
     @Override

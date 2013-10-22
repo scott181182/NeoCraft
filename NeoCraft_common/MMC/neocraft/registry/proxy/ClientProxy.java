@@ -24,6 +24,5 @@ public class ClientProxy extends CommonProxy
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityPyronium.class, new RenderProjectile(NCitem.conglomeratePyronium, 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySiliscene.class, new RenderProjectile(NCitem.conglomerateSiliscene, 0));
-		RenderingRegistry.registerBlockHandler(new BlockRendererFluid());
 	}
 }

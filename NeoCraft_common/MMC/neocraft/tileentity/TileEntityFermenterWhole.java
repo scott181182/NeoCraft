@@ -91,7 +91,7 @@ public class TileEntityFermenterWhole extends NCtileentity
 	}
 
 	@Override
-	public boolean isStackValidForSlot(int i, ItemStack itemstack)
+	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
 		// TODO Auto-generated method stub
 		return false;

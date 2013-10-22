@@ -31,7 +31,7 @@ public class TileEntitySteeper extends NCtileentity
     
     public TileEntitySteeper()
     {
-    	this.unlocalizedName = "container.teaSteeper";
+    	this.setUnlocalizedName("teaSteeper");
     }
     
     public int getSizeInventory() { return this.steeperItemStacks.length; }
@@ -235,7 +235,7 @@ public class TileEntitySteeper extends NCtileentity
     @Override public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) { return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D; }
     @Override public void openChest() {  }
     @Override public void closeChest() {  }
-    @Override public boolean isStackValidForSlot(int par1, ItemStack par2ItemStack) { return par1 == 3 ? false : (par1 == 2 ? isItemFuel(par2ItemStack) : par1 == 1 ? par2ItemStack.itemID == Item.bucketWater.itemID : true); }
+    @Override public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack) { return par1 == 3 ? false : (par1 == 2 ? isItemFuel(par2ItemStack) : par1 == 1 ? par2ItemStack.itemID == Item.bucketWater.itemID : true); }
     @Override public int[] getAccessibleSlotsFromSide(int par1)
     {
     	if(par1 == 0 || par1 == 1) { return par1 == 0 ? new int[]{ 2 } : new int[]{ 0 }; }
@@ -249,7 +249,7 @@ public class TileEntitySteeper extends NCtileentity
     @Override public boolean canInsertItem(int par1, ItemStack par2ItemStack, int par3)
     {
     	if(par1 == 3) { return false; }
-        return this.isStackValidForSlot(par1, par2ItemStack);
+        return this.isItemValidForSlot(par1, par2ItemStack);
     }
 
     /**

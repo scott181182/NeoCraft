@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import org.lwjgl.opengl.GL11;
 import MMC.neocraft.block.models.ModelFermenterTop;
+import MMC.neocraft.lib.Textures;
 import MMC.neocraft.tileentity.TileEntityFermenterTop;
 
 public class TileEntityRendererFermenterTop extends TileEntitySpecialRenderer
@@ -17,7 +18,7 @@ public class TileEntityRendererFermenterTop extends TileEntitySpecialRenderer
 	{
 		int rotation = 0;
 		if(te.worldObj != null) { rotation = te.getBlockMetadata(); }
-		this.bindTextureByName("/mods/NeoCraft/textures/models/fermenterTop.png");
+		this.bindTexture(Textures.MODEL_FERMENTER_TOP);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + .5f, (float)y + .5f, (float)z + .5f);
 		GL11.glScalef(1f, -1f, -1f);

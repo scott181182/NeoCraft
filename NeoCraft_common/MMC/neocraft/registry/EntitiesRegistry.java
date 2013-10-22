@@ -20,6 +20,7 @@ public class EntitiesRegistry
 		GameRegistry.registerTileEntity(TileEntityFermenterWhole.class, Reference.MOD_ID + "@" + "tileentity.fermenterWhole");
 		GameRegistry.registerTileEntity(TileEntityIncubator.class, Reference.MOD_ID + "@" + "tileentity.incubator");
 		GameRegistry.registerTileEntity(TileEntityMagicRandomizer.class, Reference.MOD_ID + "@" + "tileentity.magicRandomizer");
+		GameRegistry.registerTileEntity(TileEntityGeneratorSteam.class, Reference.MOD_ID + "@" + "tileentity.generatorSteam");
 	}
 	public static void registerEntities()
 	{

@@ -20,7 +20,7 @@ public class TileEntityMagicRandomizer extends NCtileentity
     
     public TileEntityMagicRandomizer()
     {
-    	this.unlocalizedName = "container.magicRandomizer";
+    	this.setUnlocalizedName("magicRandomizer");
     }
 
 	@Override public int getSizeInventory() { return this.randomizerItemStacks.length; }
@@ -199,7 +199,7 @@ public class TileEntityMagicRandomizer extends NCtileentity
     @Override public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) { return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D; }
     @Override public void openChest() {  }
     @Override public void closeChest() {  }
-    @Override public boolean isStackValidForSlot(int par1, ItemStack par2ItemStack) { return par1 == 5 ? false : true; }
+    @Override public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack) { return par1 == 5 ? false : true; }
     @Override public int[] getAccessibleSlotsFromSide(int par1) { return null; }
     /** Returns true if automation can insert the given item in the given slot from the given side. Args: Slot, item, side */
     @Override public boolean canInsertItem(int par1, ItemStack par2ItemStack, int par3) { return false; }

@@ -6,6 +6,7 @@ import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 import MMC.neocraft.container.ContainerFermenterBottom;
+import MMC.neocraft.lib.Textures;
 import MMC.neocraft.tileentity.TileEntityFermenterBottom;
 
 public class GuiFermenterBottom extends NCgui
@@ -26,7 +27,7 @@ public class GuiFermenterBottom extends NCgui
     @Override protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.renderEngine.bindTexture("/mods/NeoCraft/textures/gui/fermenter.png");
+        this.mc.getTextureManager().bindTexture(Textures.GUI_FERMENTER);
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);

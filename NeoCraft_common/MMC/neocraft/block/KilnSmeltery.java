@@ -9,7 +9,7 @@ import MMC.neocraft.tileentity.TileEntityKilnSmeltery;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -96,7 +96,7 @@ public class KilnSmeltery extends NCcontainerBlock
         }
     }
     @Override
-    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving, ItemStack par6ItemStack)
+    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLiving, ItemStack par6ItemStack)
     {
         int yaw = MathHelper.floor_double((double)(par5EntityLiving.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
         int facing = 0;
@@ -108,7 +108,7 @@ public class KilnSmeltery extends NCcontainerBlock
         par1World.setBlockMetadataWithNotify(par2, par3, par4, facing, 3);
         if (par6ItemStack.hasDisplayName())
         {
-            ((TileEntityKilnSmeltery)par1World.getBlockTileEntity(par2, par3, par4)).setInvName(par6ItemStack.getDisplayName());
+            ((TileEntityKilnSmeltery)par1World.getBlockTileEntity(par2, par3, par4)).setCustomName(par6ItemStack.getDisplayName());
         }
     }
     @Override

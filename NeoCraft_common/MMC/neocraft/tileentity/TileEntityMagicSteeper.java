@@ -25,7 +25,7 @@ public class TileEntityMagicSteeper extends NCtileentity
     
     public TileEntityMagicSteeper()
     {
-    	this.unlocalizedName = "container.magicSteeper";
+    	this.setUnlocalizedName("magicSteeper");
     	tick = 0;
     }
     
@@ -234,7 +234,7 @@ public class TileEntityMagicSteeper extends NCtileentity
     @Override public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) { return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D; }
     @Override public void openChest() {  }
     @Override public void closeChest() {  }
-    @Override public boolean isStackValidForSlot(int par1, ItemStack par2ItemStack) { return par1 == 9 ? false : (par1 == 8 ? isItemFuel(par2ItemStack) : true); }
+    @Override public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack) { return par1 == 9 ? false : (par1 == 8 ? isItemFuel(par2ItemStack) : true); }
     @Override public int[] getAccessibleSlotsFromSide(int par1)
     {
     	return null;

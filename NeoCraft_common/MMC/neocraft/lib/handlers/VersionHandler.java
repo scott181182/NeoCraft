@@ -4,12 +4,20 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
 import MMC.neocraft.lib.Reference;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class VersionHandler implements Runnable
 {
+	public static final String VERSION_CHECK_INIT_MESSAGE = "version." + Reference.MOD_ID.toLowerCase() + ":check_init";
+	public static final String UNINITIALIZED_MESSAGE = "version." + Reference.MOD_ID.toLowerCase() + ":uninitialized";
+	public static final String CURRENT_MESSAGE = "version." + Reference.MOD_ID.toLowerCase() + ":current";
+	public static final String OUTDATED_MESSAGE = "version." + Reference.MOD_ID.toLowerCase() + ":outdated";
+	public static final String ERROR_MESSAGE = "version." + Reference.MOD_ID.toLowerCase() + ":error";
+	public static final String FINAL_ERROR_MESSAGE = "version." + Reference.MOD_ID.toLowerCase() + ":final_error";
+	public static final String MC_VERSION_NOT_FOUND_MESSAGE = "version." + Reference.MOD_ID.toLowerCase() + ":mc_version_not_found";
+	
 	private static VersionHandler instance = new VersionHandler();
 	private static final String REMOTE_FILE = "https://raw.github.com/scott181182/NeoCraft/master/version.xml";
 	
@@ -72,28 +80,28 @@ public class VersionHandler implements Runnable
 	}
 	public static String getResultMessage()
 	{
-		if(result == UNINITIALIZED) { return LanguageRegistry.instance().getStringLocalization(CURRENT_MESSAGE); }
+		if(result == UNINITIALIZED) { return StatCollector.translateToLocal(CURRENT_MESSAGE); }
 		else if(result == CURRENT) 
 		{
-			String ret = LanguageRegistry.instance().getStringLocalization(CURRENT_MESSAGE);
+			String ret = StatCollector.translateToLocal(CURRENT_MESSAGE);
 			ret = ret.replace("@REMOTE_VERSION@", remoteVersion);
 			ret = ret.replace("@MC_VERSION@", Loader.instance().getMCVersionString());
 			return ret;
 		}
 		else if(result == OUTDATED && remoteVersion != null /* && remoteVersionLocation != null */)
 		{
-			String ret = LanguageRegistry.instance().getStringLocalization(OUTDATED_MESSAGE);
+			String ret = StatCollector.translateToLocal(OUTDATED_MESSAGE);
 			ret = ret.replace("@MOD_NAME@", Reference.MOD_NAME);
 			ret = ret.replace("@REMOTE_VERSION@", remoteVersion);
 			ret = ret.replace("@MC_VERSION@", Loader.instance().getMCVersionString());
 			//ret = ret.replace("@UPDATE_LOCATION@", remoteVersionLocation);
 			return ret;
 		}
-		else if(result == ERROR) { return LanguageRegistry.instance().getStringLocalization(ERROR_MESSAGE); }
-		else if(result == FINAL_ERROR) { return LanguageRegistry.instance().getStringLocalization(FINAL_ERROR_MESSAGE); }
+		else if(result == ERROR) { return StatCollector.translateToLocal(ERROR_MESSAGE); }
+		else if(result == FINAL_ERROR) { return StatCollector.translateToLocal(FINAL_ERROR_MESSAGE); }
 		else if(result == MC_VERSION_NOT_FOUND)
 		{
-			String ret = LanguageRegistry.instance().getStringLocalization(MC_VERSION_NOT_FOUND_MESSAGE);
+			String ret = StatCollector.translateToLocal(MC_VERSION_NOT_FOUND_MESSAGE);
 			ret = ret.replace("@MOD_NAME@", Reference.MOD_NAME);
 			ret = ret.replace("@MC_VERSION@", Loader.instance().getMCVersionString());
 			return ret;
@@ -101,12 +109,12 @@ public class VersionHandler implements Runnable
 		else 
 		{
 			result = ERROR;
-			return LanguageRegistry.instance().getStringLocalization(ERROR_MESSAGE);
+			return StatCollector.translateToLocal(ERROR_MESSAGE);
 		}
 	}
 	public static String getResultMessageForClient()
 	{
-		String ret = LanguageRegistry.instance().getStringLocalization(OUTDATED_MESSAGE);
+		String ret = StatCollector.translateToLocal(OUTDATED_MESSAGE);
 		ret = ret.replace("@MOD_NAME@", Reference.MOD_NAME);
 		ret = ret.replace("@REMOTE_VERSION@", remoteVersion);
 		ret = ret.replace("@MC_VERSION@", Loader.instance().getMCVersionString());
@@ -117,7 +125,7 @@ public class VersionHandler implements Runnable
 	@Override public void run()
 	{
 		int count = 0;
-		LogHandler.info(LanguageRegistry.instance().getStringLocalization(VERSION_CHECK_INIT_MESSAGE + REMOTE_FILE));
+		LogHandler.info(StatCollector.translateToLocal(VERSION_CHECK_INIT_MESSAGE + REMOTE_FILE));
 		try
 		{
 			while(count < 3 - 1 && (result == UNINITIALIZED || result == ERROR))
@@ -131,12 +139,4 @@ public class VersionHandler implements Runnable
 		} catch(InterruptedException ie) { ie.printStackTrace(); }
 	}
 	public static void execute() { new Thread(instance).start(); }
-	
-	public static final String VERSION_CHECK_INIT_MESSAGE = "version.check_init";
-	public static final String UNINITIALIZED_MESSAGE = "version.uninitialized";
-	public static final String CURRENT_MESSAGE = "version.current";
-	public static final String OUTDATED_MESSAGE = "version.outdated";
-	public static final String ERROR_MESSAGE = "version.error";
-	public static final String FINAL_ERROR_MESSAGE = "version.final_error";
-	public static final String MC_VERSION_NOT_FOUND_MESSAGE = "version.mc_version_not_found";
 }

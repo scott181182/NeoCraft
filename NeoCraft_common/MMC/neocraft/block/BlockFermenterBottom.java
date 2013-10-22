@@ -7,6 +7,7 @@ import net.minecraft.world.World;
 import MMC.neocraft.tileentity.TileEntityFermenterBottom;
 import MMC.neocraft.NeoCraft;
 import MMC.neocraft.gui.NCguiHandler;
+import MMC.neocraft.lib.Reference;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -20,6 +21,10 @@ public class BlockFermenterBottom extends NCcontainerBlock
 		super(id, material);
 		this.setCreativeTab(null);
 		this.setBlockBounds(0, 0, 0, 1, 2, 1);
+	}
+	@Override public String getUnlocalizedName() 
+	{ 
+		 return "tile." + Reference.MOD_ID.toLowerCase() + ":" + "";
 	}
 	
 	@Override public int idDropped(int par1, Random rand, int par2) { return NCblock.fermenterWhole.blockID; }

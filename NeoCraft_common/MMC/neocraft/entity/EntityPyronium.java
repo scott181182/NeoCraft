@@ -2,7 +2,7 @@ package MMC.neocraft.entity;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -14,7 +14,7 @@ public class EntityPyronium extends EntityThrowable
 		super(world);
 		this.setSize(0.3125f, 0.3125f);
 	}
-	public EntityPyronium(World world, EntityLiving entity)
+	public EntityPyronium(World world, EntityLivingBase entity)
 	{
 		super(world, entity);
 		this.setSize(0.3125f, 0.3125f);
@@ -24,7 +24,6 @@ public class EntityPyronium extends EntityThrowable
 		super(world, x, y, z);
 		this.setSize(0.3125f, 0.3125f);
 	}
-	@Override public String getTexture() { return "/mods/NeoCraft/textures/items/conglomeratePyronium.png"; }
 	@Override
 	protected void onImpact(MovingObjectPosition obj)
 	{

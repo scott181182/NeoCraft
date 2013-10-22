@@ -16,6 +16,8 @@ public class NCguiHandler implements IGuiHandler
 	public static final int fermenterBottomID = 4;
 	public static final int incubatorID = 5;
 	public static final int randomizerID = 6;
+	public static final int genSteamID = 7;
+	public static final int genEnergyID = 8;
 	
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -30,6 +32,8 @@ public class NCguiHandler implements IGuiHandler
 			case fermenterBottomID: return new ContainerFermenterBottom(player.inventory, (TileEntityFermenterBottom)te);
 			case incubatorID: return new ContainerIncubator(player.inventory, (TileEntityIncubator)te);
 			case randomizerID: return new ContainerMagicRandomizer(player.inventory, (TileEntityMagicRandomizer)te);
+			case genSteamID: return new ContainerGeneratorSteam(player.inventory, (TileEntityGeneratorSteam)te);
+			//case genEnergyID: return new ContainerGeneratorEnergy(player.inventory, (TileEntityGeneratorEnergy)te);
 			
 			default: return null;
 		}
@@ -47,6 +51,8 @@ public class NCguiHandler implements IGuiHandler
 			case fermenterBottomID: return new GuiFermenterBottom(player.inventory, (TileEntityFermenterBottom)te);
 			case incubatorID: return new GuiIncubator(player.inventory, (TileEntityIncubator)te);
 			case randomizerID: return new GuiMagicRandomizer(player.inventory, (TileEntityMagicRandomizer)te);
+			case genSteamID: return new GuiGeneratorSteam(player.inventory, (TileEntityGeneratorSteam)te);
+			//case genEnergyID: return new GuiGeneratorEnergy(player.inventory, (TileEntityGeneratorEnergy)te);
 			
 			default: return null;
 		}

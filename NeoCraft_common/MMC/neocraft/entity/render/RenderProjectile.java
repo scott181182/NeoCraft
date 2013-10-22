@@ -2,11 +2,16 @@ package MMC.neocraft.entity.render;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
+import MMC.neocraft.entity.*;
+import MMC.neocraft.lib.Textures;
+
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.util.Icon;
+import net.minecraft.util.ResourceLocation;
 
 public class RenderProjectile extends Render
 {
@@ -26,7 +31,7 @@ public class RenderProjectile extends Render
         float f2 = 0.5F;
         GL11.glScalef(f2 / 1.0F, f2 / 1.0F, f2 / 1.0F);
         Icon icon = this.item.getIconFromDamage(this.meta);
-        this.loadTexture("/gui/items.png");
+        this.bindTexture(Textures.VANILLA_ITEMS);
         Tessellator tessellator = Tessellator.instance;
         float f3 = icon.getMinU();
         float f4 = icon.getMaxU();
@@ -46,5 +51,11 @@ public class RenderProjectile extends Render
         tessellator.draw();
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         GL11.glPopMatrix();
+	}
+	@Override protected ResourceLocation getEntityTexture(Entity entity) 
+	{ 
+		if(entity instanceof EntityPyronium) { return Textures.getResourceLocation("textures/items/conglomeratePyronium.png"); }
+		else if(entity instanceof EntitySiliscene) { return Textures.getResourceLocation("textures/items/conglomerateSiliscene.png"); }
+		else { return null; }
 	}
 }
