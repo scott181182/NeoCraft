@@ -1,0 +1,115 @@
+# English (en_US) Localization File
+
+
+
+# Items
+
+item.neocraft:fruitOrange.name= Naranja
+item.neocraft:rindOrange.name=Corteza de Naranja
+item.neocraft:pulpOrange.name=Pulpa de Naranja
+item.neocraft:teaOrange.name=Té Naranja
+item.neocraft:seedOrange.name=Semillas de Naranja
+item.neocraft:knifePruning.name=Podadera
+
+item.neocraft:yeast.name=Levadura
+item.neocraft:dough.name=Masa de Pan
+item.neocraft:flour.name=Harina
+item.neocraft:scorchedSinensium.name=Sinensium Quemado
+item.neocraft:pyroniumChunk.name=Pyronium Pedazo
+
+item.neocraft:fuelBox.name=Caja de Combustible
+item.neocraft:capsuleEmpty.name=Cápsula Vacía
+item.neocraft:capsuleAlcohol.name=Cápsula de Alcohol
+item.neocraft:capsuleSugar.name=Cápsula de Azúcar
+item.neocraft:ingotTitanium.name=Lingote de Titanio
+item.neocraft:ingotAluminum.name=Lingote de Aluminio
+
+item.neocraft:elementSinensium.name=Sinensium
+item.neocraft:elementPyronium.name=Pyronium
+item.neocraft:elementSiliscene.name=Siliscene
+item.neocraft:elementMalusene.name=Malusene
+item.neocraft:elementQuerbon.name=Querbon
+item.neocraft:elementSucrozene.name=Sucrozene
+item.neocraft:elementPetrak.name=Petrak
+item.neocraft:elementTimbrium.name=Timbrium
+
+item.neocraft:conglomerateSinensium.name=Conglomerado Sinensium
+item.neocraft:conglomeratePyronium.name=Conglomerado Pyronium
+item.neocraft:conglomerateSiliscene.name=Conglomerado Siliscene
+item.neocraft:conglomerateMalusene.name=Conglomerado Malusene
+item.neocraft:conglomerateQuerbon.name=Conglomerado Querbon
+
+item.neocraft:staveSinensium.name=Pentagrama de Sinensium
+item.neocraft:stavePyronium.name=Pentagrama de Pyronium
+item.neocraft:staveSiliscene.name=Pentagrama de Siliscene
+item.neocraft:staveMalusene.name=Pentagrama de Malusene
+item.neocraft:staveQuerbon.name=Pentagrama de Querbon
+
+
+
+# Blocks
+
+tile.neocraft:oreTitanium.name=Mena de Titanio
+tile.neocraft:oreBauxite.name=Mena de Bauxita
+tile.neocraft:orangeWood.name=Madera de Naranja
+tile.neocraft:orangeLeaves.empty.name=Hojas de Naranja
+tile.neocraft:orangeLeaves.oranges.name=Hojas de Naranja
+tile.neocraft:orangePlank.name=Tablas de Naranja
+tile.neocraft:orangeSapling.name=Brote de Naranja
+
+tile.neocraft:teaSteeper.name=Tetera
+tile.neocraft:magicSteeper.name=Infusor de Magia
+tile.neocraft:magicRandomizer.name=Aleatorizador de Magia
+	
+tile.neocraft:kilnCore.name=Nucléo de Horno
+tile.neocraft:kilnBakery.name=Horno de Panadería
+tile.neocraft:kilnSmeltery.name=Horno de Fundición
+tile.neocraft:fermenterWhole.name=Fermentador
+tile.neocraft:incubator.name=Incubadora
+
+tile.neocraft:generatorSteam.name=Steam Generator
+
+tile.neocraft:testBlock.name=Test Block
+
+
+
+# Containers
+
+container.neocraft:teaSteeper=Tetera
+container.neocraft:magicSteeper=Infusor de Magia
+container.neocraft:kilnBakery=Horno de Panadería
+container.neocraft:kilnSmeltery=Horno de Fundición
+container.neocraft:fermenter=Fermentador
+container.neocraft:incubator=Incubadora
+container.neocraft:magicRandomizer=Aleatorizador de Magia
+
+
+
+# Creative Tab(s)
+
+itemGroup.neocraft:NeoCraft
+
+
+
+# Achievements
+
+achievement.neocraft:orange=Orange you glad?
+achievement.neocraft:orange.desc=Prune an orange from a tree
+achievement.neocraft:sinensium=You're a wizard Harry
+achievement.neocraft:sinensium.desc=Create Sinensium from Oranges
+achievement.neocraft:tea=Who needs coffee?
+achievement.neocraft:tea.desc=Steep some tea
+achievement.neocraft:kilnCore=It's getting hot in here
+achievement.neocraft:kilnCore.desc=Craft a Kiln Core
+
+
+
+# Version
+
+version.neocraft:check_init=Remote Version Check initialized, located at
+version.neocraft:uninitialized=Remote Version Check failed to initialize properly
+version.neocraft:current=Currently using the most recent version of neocraft (@REMOTE_VERSION@) for @MC_VERSION@
+version.neocraft:outdated=You are using an outdated version of @MOD_NAME@. The latest version is @REMOTE_VERSION@ for @MC_VERSION@
+version.neocraft:error=Error connecting to remote version repository; trying again
+version.neocraft:final_error=Aborting Remote Version Check, failed 3 times out of 3
+version.neocraft:mc_version_not_found=Cannot find a version of @MOD_NAME@ for @MC_VERSION@ in the remote version repository
