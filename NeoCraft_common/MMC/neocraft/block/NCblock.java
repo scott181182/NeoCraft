@@ -3,6 +3,7 @@ package MMC.neocraft.block;
 import MMC.neocraft.NeoCraftTab;
 import MMC.neocraft.lib.Reference;
 import MMC.neocraft.lib.handlers.ConfigHandler;
+import MMC.neocraft.registry.BlockRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -24,6 +25,8 @@ public class NCblock extends Block
 	{
 		super(id, material);
 		setCreativeTab(NeoCraftTab.neoCraftTab);
+		
+		BlockRegistry.ncBlocks.add(this);
 	}
 	@Override @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister iconRegister) 
@@ -35,6 +38,11 @@ public class NCblock extends Block
     {  
     	String name = super.getUnlocalizedName().substring(5);
     	return "tile." + Reference.MOD_ID.toLowerCase() + ":" + name;
+    }
+    @Override public NCblock disableStats()
+    {
+        this.enableStats = false;
+        return this;
     }
 	public static void init()
 	{

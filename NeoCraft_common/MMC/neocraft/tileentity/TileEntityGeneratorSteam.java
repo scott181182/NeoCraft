@@ -11,13 +11,21 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTank;
+import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.fluids.IFluidHandler;
 import MMC.neocraft.block.GeneratorSteam;
+import MMC.neocraft.block.NCblock;
 import MMC.neocraft.util.energy.IChargable;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class TileEntityGeneratorSteam extends NCtileentity
+public class TileEntityGeneratorSteam extends NCtileentity implements IFluidHandler
 {
 	public static final int TANK_CAP = 4000;
     
@@ -32,11 +40,13 @@ public class TileEntityGeneratorSteam extends NCtileentity
     public boolean isCharging = false;
     /** The amount of power that this block is currently storing */
     public int powerLevel = 0;
+
+    public FluidTank waterTank = new FluidTank(FluidRegistry.WATER, 0, TANK_CAP);
     
     public TileEntityGeneratorSteam()
     {
     	this.setUnlocalizedName("generatorSteam");
-    	//this.myTank.setTankPressure(-1);
+    	//this.waterTank.setTankPressure(-1);
     }
 
     //public NCtank getTank() { return this.myTank; }
@@ -81,7 +91,6 @@ public class TileEntityGeneratorSteam extends NCtileentity
     @Override public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
-        //this.myTank.setLiquid(LiquidStack.loadLiquidStackFromNBT(par1NBTTagCompound));
         this.powerLevel = par1NBTTagCompound.getShort("PowerLevel");
         
         NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
@@ -95,11 +104,11 @@ public class TileEntityGeneratorSteam extends NCtileentity
         this.generatorBurnTime = par1NBTTagCompound.getShort("BurnTime");
         this.generatorBoilTime = par1NBTTagCompound.getShort("CookTime");
         this.currentItemBurnTime = getItemBurnTime(this.generatorItemStacks[1]);
+        waterTank.readFromNBT(par1NBTTagCompound);
     }
     @Override public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
-        //this.myTank.getLiquidNoCopy().writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setShort("PowerLevel", (short)this.powerLevel);
         par1NBTTagCompound.setShort("BurnTime", (short)this.generatorBurnTime);
         par1NBTTagCompound.setShort("CookTime", (short)this.generatorBoilTime);
@@ -116,9 +125,11 @@ public class TileEntityGeneratorSteam extends NCtileentity
             }
         }
         par1NBTTagCompound.setTag("Items", nbttaglist);
+        waterTank.writeToNBT(par1NBTTagCompound);
     }
     @Override public int getInventoryStackLimit() { return 64; }
     @SideOnly(Side.CLIENT) public int getPowerScaled(int par1) { return this.powerLevel * par1 / 4000; }
+    @SideOnly(Side.CLIENT) public int getFluidScaled(int par1) { return this.waterTank.getFluidAmount() * par1 / 4000; }
     @SideOnly(Side.CLIENT)
     public int getBurnTimeRemainingScaled(int par1)
     {
@@ -135,8 +146,7 @@ public class TileEntityGeneratorSteam extends NCtileentity
         if (this.generatorBurnTime > 0) { --this.generatorBurnTime; }
         if (!this.worldObj.isRemote)
         {
-            //int tankLevel = this.myTank.getLiquidAmount();
-            
+            int tankLevel = this.waterTank.getFluidAmount();
             if (this.generatorBurnTime == 0 && this.canBoil())
             {
                 this.currentItemBurnTime = this.generatorBurnTime = getItemBurnTime(this.generatorItemStacks[1]);
@@ -155,7 +165,7 @@ public class TileEntityGeneratorSteam extends NCtileentity
             }
             if (this.isBurning() && this.canBoil())
             {
-                //tankLevel -= 5;
+                tankLevel -= 5;
                 this.powerLevel += 1;
                 hasChanged = true;
             }
@@ -163,19 +173,17 @@ public class TileEntityGeneratorSteam extends NCtileentity
             if (wasBurning != this.generatorBurnTime > 0)
             {
             	hasChanged = true;
-                GeneratorSteam.updateGeneratorBlockState(this.generatorBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                ((GeneratorSteam)NCblock.generatorSteam).updateGeneratorBlockState(this.generatorBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
             
             if(generatorItemStacks[0] != null)
             {
-            	/*
-	            if(generatorItemStacks[0].itemID == Item.bucketWater.itemID && (this.myTank.getLiquidAmount() + 1000) <= this.myTank.getCapacity())
+	            if(generatorItemStacks[0].itemID == Item.bucketWater.itemID && (this.waterTank.getFluidAmount() + 1000) <= this.waterTank.getCapacity())
 	            {
 	            	this.generatorItemStacks[0] = this.generatorItemStacks[0].getItem().getContainerItemStack(generatorItemStacks[0]);
 	            	tankLevel += 1000;
 	            	hasChanged = true;
 	            }
-	            */
             }
             if(generatorItemStacks[2] != null)
             {
@@ -191,18 +199,19 @@ public class TileEntityGeneratorSteam extends NCtileentity
 	            	} else { isCharging = false; }
 	            } else { isCharging = false; }
             } else { isCharging = false; }
-
-            System.out.println("TE - " + this.powerLevel);
-            //this.myTank.setLiquidAmount(tankLevel);
+            
+            if(tankLevel != waterTank.getFluidAmount())
+            {
+                this.waterTank.setFluid(new FluidStack(waterTank.getFluid().fluidID, tankLevel, waterTank.getFluid().tag));
+            	hasChanged = true;
+            }
         }
         if (hasChanged) { this.onInventoryChanged(); }
-        
     }
     private boolean canBoil()
     {
-        //if (this.myTank.getLiquidAmount() <= 5 || this.powerLevel >= 4000) { return false; }
-        //else { return true; }
-    	return false;
+        if (this.waterTank.getFluidAmount() < 5 || this.powerLevel >= 4000) { return false; }
+        else { return true; }
     }
     public static int getItemBurnTime(ItemStack fuel)
     {
@@ -233,9 +242,25 @@ public class TileEntityGeneratorSteam extends NCtileentity
     @Override public void openChest() {  }
     @Override public void closeChest() {  }
     @Override public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack) { return par1 == 2 ? par2ItemStack.getItem() instanceof IChargable : par1 == 1 ? isItemFuel(par2ItemStack) : true; }
+    
     @Override public int[] getAccessibleSlotsFromSide(int par1) { return new int[0]; }
     /** Returns true if automation can insert the given item in the given slot from the given side. Args: Slot, item, side */
     @Override public boolean canInsertItem(int par1, ItemStack par2ItemStack, int par3) { return this.isItemValidForSlot(par1, par2ItemStack); }
     /** Returns true if automation can extract the given item in the given slot from the given side. Args: Slot, item, side */
     @Override public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3) { return par1 == 2; }
+
+    /* IFluidHandler */
+    @Override public int fill(ForgeDirection from, FluidStack resource, boolean doFill) { return waterTank.fill(resource, doFill); }
+    @Override public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain)
+    {
+        if (resource == null || !resource.isFluidEqual(waterTank.getFluid()))
+        {
+            return null;
+        }
+        return waterTank.drain(resource.amount, doDrain);
+    }
+    @Override public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) { return waterTank.drain(maxDrain, doDrain); }
+    @Override public boolean canFill(ForgeDirection from, Fluid fluid) { return true; }
+    @Override public boolean canDrain(ForgeDirection from, Fluid fluid) { return false; }
+    @Override public FluidTankInfo[] getTankInfo(ForgeDirection from) { return new FluidTankInfo[] { waterTank.getInfo() }; }
 }

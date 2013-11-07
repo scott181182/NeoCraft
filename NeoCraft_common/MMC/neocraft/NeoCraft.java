@@ -10,11 +10,12 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 import MMC.neocraft.block.NCblock;
+import MMC.neocraft.client.gui.NCguiHandler;
 import MMC.neocraft.gen.NCgenerator;
-import MMC.neocraft.gui.NCguiHandler;
 import MMC.neocraft.item.NCitem;
 import MMC.neocraft.lib.*;
 import MMC.neocraft.lib.handlers.*;
+import MMC.neocraft.liquid.NCfluid;
 import MMC.neocraft.recipe.NCcrafter;
 import MMC.neocraft.recipe.RecipeRegistry;
 import MMC.neocraft.registry.*;
@@ -49,6 +50,7 @@ public class NeoCraft
 		
 		NCblock.init();
 		NCitem.init();
+		NCfluid.init();
 		
 		BlockRegistry.registerBlocks();
 

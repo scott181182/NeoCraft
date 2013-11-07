@@ -1,6 +1,7 @@
 package MMC.neocraft.tileentity;
 
 import MMC.neocraft.block.KilnBakery;
+import MMC.neocraft.block.NCblock;
 import MMC.neocraft.item.NCitem;
 import MMC.neocraft.recipe.KilnBakeryRecipes;
 import cpw.mods.fml.relauncher.Side;
@@ -167,7 +168,7 @@ public class TileEntityKilnBakery extends NCtileentity
 	            if (wasBurning != this.bakeryBurnTime > 0)
 	            {
 	            	hasChanged = true;
-	                KilnBakery.updateBakeryBlockState(this.bakeryBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+	                ((KilnBakery)NCblock.kilnBakery).updateBakeryBlockState(this.bakeryBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 	            }
 	        }
 	        if (hasChanged) { this.onInventoryChanged(); }

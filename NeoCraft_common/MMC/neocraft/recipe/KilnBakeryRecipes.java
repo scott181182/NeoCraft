@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import MMC.neocraft.item.NCitem;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -25,8 +26,15 @@ public class KilnBakeryRecipes
 
 	    private KilnBakeryRecipes()
 	    {
-	        this.addBaking(NCitem.dough.itemID, new ItemStack(Item.bread, 2), 0.1F);
-	        this.addBaking(NCitem.elementSinensium.itemID, new ItemStack(NCitem.scorchedSinensium, 1), 0.0F);
+	    	addBaking(Item.porkRaw.itemID, new ItemStack(Item.porkCooked), 0.35F);
+	    	addBaking(Item.beefRaw.itemID, new ItemStack(Item.beefCooked), 0.35F);
+	    	addBaking(Item.chickenRaw.itemID, new ItemStack(Item.chickenCooked), 0.35F);
+	    	addBaking(Item.fishRaw.itemID, new ItemStack(Item.fishCooked), 0.35F);
+	    	addBaking(Block.cactus.blockID, new ItemStack(Item.dyePowder, 1, 2), 0.2F);
+	    	addBaking(Item.potato.itemID, new ItemStack(Item.bakedPotato), 0.35F);
+	        
+	        addBaking(NCitem.dough.itemID, new ItemStack(Item.bread, 2), 0.1F);
+	        addBaking(NCitem.elementSinensium.itemID, new ItemStack(NCitem.scorchedSinensium, 1), 0.0F);
 	    }
 
 	    public void addBaking(int par1, ItemStack result, float experience)

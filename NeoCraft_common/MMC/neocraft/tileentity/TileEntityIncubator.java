@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import MMC.neocraft.block.BlockIncubator;
+import MMC.neocraft.block.NCblock;
 import MMC.neocraft.item.NCitem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -149,7 +150,7 @@ public class TileEntityIncubator extends NCtileentity
             if (wasBurning != this.incubatorIncubateTime > 0)
             {
             	hasChanged = true;
-                BlockIncubator.updateIncubatorBlockState(this.incubatorHeatTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                ((BlockIncubator)NCblock.incubator).updateIncubatorBlockState(this.incubatorHeatTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
         if (hasChanged) { this.onInventoryChanged(); }

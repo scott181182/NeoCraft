@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import MMC.neocraft.block.BlockMagicRandomizer;
+import MMC.neocraft.block.NCblock;
 import MMC.neocraft.recipe.MagicRandomizerRecipes;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -111,21 +112,6 @@ public class TileEntityMagicRandomizer extends NCtileentity
         boolean hasChanged = false;
         if (!this.worldObj.isRemote)
         {
-            /* if (this.smelteryBurnTime == 0 && this.canSmelt())
-            {
-                this.currentItemSmeltTime = this.smelteryBurnTime = getItemBurnTime(this.smelteryItemStacks[1]);
-                if (this.smelteryBurnTime > 0)
-                {
-                	hasChanged = true;
-                    if (this.smelteryItemStacks[1] != null)
-                    {
-                        if (this.smelteryItemStacks[1].getItemDamage() >= this.smelteryItemStacks[1].getMaxDamage())
-                        {
-                            this.smelteryItemStacks[1] = new ItemStack(NCitem.capsuleEmpty);
-                        }
-                    }
-                }
-            } */
             if (this.canRandomize())
             {
                 ++this.randomizerCookTime;
@@ -142,7 +128,7 @@ public class TileEntityMagicRandomizer extends NCtileentity
             if (wasCooking != this.randomizerCookTime > 0)
             {
             	hasChanged = true;
-                BlockMagicRandomizer.updateRandomizerBlockState(this.randomizerCookTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                ((BlockMagicRandomizer)NCblock.magicRandomizer).updateRandomizerBlockState(this.randomizerCookTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
         if (hasChanged) { this.onInventoryChanged(); }

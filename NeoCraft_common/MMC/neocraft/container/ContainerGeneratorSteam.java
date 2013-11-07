@@ -6,6 +6,8 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import MMC.neocraft.tileentity.TileEntityGeneratorSteam;
 import MMC.neocraft.util.energy.IChargable;
 import cpw.mods.fml.relauncher.Side;
@@ -17,14 +19,17 @@ public class ContainerGeneratorSteam extends NCcontainer
     private int lastCookTime = 0;
     private int lastBurnTime = 0;
     private int lastItemSmeltTime = 0;
+    private int lastFluidID = FluidRegistry.WATER.getID();
+    private int lastFluidLevel = 0;
+    private int lastPowerLevel = 0;
 
 	public ContainerGeneratorSteam(InventoryPlayer inv, TileEntityGeneratorSteam te)
 	{
 		generator = te;
-        this.addSlotToContainer(new Slot(te, 0, 31, 17));
-        this.addSlotToContainer(new Slot(te, 1, 62, 61));
-        this.addSlotToContainer(new Slot(te, 2, 108, 42));
-		super.addInventory(inv, 0, 0);
+        this.addSlotToContainer(new Slot(te, 0, 31, 27));
+        this.addSlotToContainer(new Slot(te, 1, 62, 71));
+        this.addSlotToContainer(new Slot(te, 2, 108, 52));
+		super.addInventory(inv, 0, 10);
 	}
 	@Override
     public void addCraftingToCrafters(ICrafting par1ICrafting)
@@ -33,6 +38,9 @@ public class ContainerGeneratorSteam extends NCcontainer
         par1ICrafting.sendProgressBarUpdate(this, 0, this.generator.generatorBoilTime);
         par1ICrafting.sendProgressBarUpdate(this, 1, this.generator.generatorBurnTime);
         par1ICrafting.sendProgressBarUpdate(this, 2, this.generator.currentItemBurnTime);
+        par1ICrafting.sendProgressBarUpdate(this, 3, this.generator.waterTank.getFluid().fluidID);
+        par1ICrafting.sendProgressBarUpdate(this, 4, this.generator.waterTank.getFluidAmount());
+        par1ICrafting.sendProgressBarUpdate(this, 5, this.generator.powerLevel);
     }
 	@Override
     public void detectAndSendChanges()
@@ -45,10 +53,16 @@ public class ContainerGeneratorSteam extends NCcontainer
             if (this.lastCookTime != this.generator.generatorBoilTime) { icrafting.sendProgressBarUpdate(this, 0, this.generator.generatorBoilTime); }
             if (this.lastBurnTime != this.generator.generatorBurnTime) { icrafting.sendProgressBarUpdate(this, 1, this.generator.generatorBurnTime); }
             if (this.lastItemSmeltTime != this.generator.currentItemBurnTime) { icrafting.sendProgressBarUpdate(this, 2, this.generator.currentItemBurnTime); }
+            if (this.lastFluidID != this.generator.waterTank.getFluid().fluidID) { icrafting.sendProgressBarUpdate(this, 3, this.generator.waterTank.getFluid().fluidID); }
+            if (this.lastFluidLevel != this.generator.waterTank.getFluidAmount()) { icrafting.sendProgressBarUpdate(this, 4, this.generator.waterTank.getFluidAmount()); }
+            if (this.lastPowerLevel != this.generator.powerLevel) { icrafting.sendProgressBarUpdate(this, 5, this.generator.powerLevel); }
         }
         this.lastCookTime = this.generator.generatorBoilTime;
         this.lastBurnTime = this.generator.generatorBurnTime;
         this.lastItemSmeltTime = this.generator.currentItemBurnTime;
+        this.lastFluidID = this.generator.waterTank.getFluid().fluidID;
+        this.lastFluidID = this.generator.waterTank.getFluidAmount();
+        this.lastPowerLevel = this.generator.powerLevel;
     }
     @SideOnly(Side.CLIENT) @Override
     public void updateProgressBar(int par1, int par2)
@@ -56,6 +70,9 @@ public class ContainerGeneratorSteam extends NCcontainer
         if (par1 == 0) { this.generator.generatorBoilTime = par2; }
         if (par1 == 1) { this.generator.generatorBurnTime = par2; }
         if (par1 == 2) { this.generator.currentItemBurnTime = par2; }
+        if (par1 == 3) { this.generator.waterTank.setFluid(new FluidStack(par2, this.generator.waterTank.getFluid().amount, this.generator.waterTank.getFluid().tag)); }
+        if (par1 == 4) { this.generator.waterTank.setFluid(new FluidStack(this.generator.waterTank.getFluid().fluidID, par2, this.generator.waterTank.getFluid().tag)); }
+        if (par1 == 5) { this.generator.powerLevel = par2; }
     }
     @Override
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)

@@ -71,6 +71,15 @@ tile.neocraft:generatorSteam.name=Steam Generator
 
 tile.neocraft:testBlock.name=Test Block
 
+# Liquids
+
+tile.neocraft:bacta.name=Bacta
+
+# Special Blocks
+
+tile.neocraft:blockFermenterBottom.name=Fermenter
+tile.neocraft:blockFermenterTop.name=Fermenter
+
 
 
 # Containers
@@ -82,12 +91,21 @@ container.neocraft:kilnSmeltery=Smeltery Kiln
 container.neocraft:fermenter=Fermenter
 container.neocraft:incubator=Incubator
 container.neocraft:magicRandomizer=Magic Randomizer
+container.neocraft:generatorSteam=Steam Generator
 
 
 
 # Creative Tab(s)
 
 itemGroup.neocraft:neocraft
+
+
+
+# Recipe
+nei.recipe.steeper=Steeper
+nei.recipe.kilnSmeltery=Smeltery Kiln
+nei.recipe.kilnBakery=Bakery Kiln
+nei.recipe.kilnFuel=Kiln Fuel
 
 
 

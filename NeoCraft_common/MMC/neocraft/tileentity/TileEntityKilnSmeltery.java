@@ -1,6 +1,7 @@
 package MMC.neocraft.tileentity;
 
 import MMC.neocraft.block.KilnSmeltery;
+import MMC.neocraft.block.NCblock;
 import MMC.neocraft.item.NCitem;
 import MMC.neocraft.recipe.KilnSmelteryRecipes;
 import cpw.mods.fml.relauncher.Side;
@@ -140,7 +141,7 @@ public class TileEntityKilnSmeltery extends NCtileentity
             {
                 ++this.smelteryCookTime;
 
-                if (this.smelteryCookTime == 200)
+                if (this.smelteryCookTime == 120)
                 {
                     this.smelteryCookTime = 0;
                     this.smeltItem();
@@ -152,7 +153,7 @@ public class TileEntityKilnSmeltery extends NCtileentity
             if (wasBurning != this.smelteryBurnTime > 0)
             {
             	hasChanged = true;
-                KilnSmeltery.updateSmelteryBlockState(this.smelteryBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                ((KilnSmeltery)NCblock.kilnSmeltery).updateSmelteryBlockState(this.smelteryBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
         if (hasChanged) { this.onInventoryChanged(); }

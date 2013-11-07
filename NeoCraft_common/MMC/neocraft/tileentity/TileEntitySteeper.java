@@ -1,6 +1,7 @@
 package MMC.neocraft.tileentity;
 
 import MMC.neocraft.block.BlockSteeper;
+import MMC.neocraft.block.NCblock;
 import MMC.neocraft.recipe.SteeperRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -167,7 +168,7 @@ public class TileEntitySteeper extends NCtileentity
             if (wasBurning != this.steeperBurnTime > 0 || wasFull != isFull())
             {
             	hasChanged = true;
-                BlockSteeper.updateSteeperBlockState(this.steeperBurnTime > 0, this.isFull(), this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                ((BlockSteeper)NCblock.teaSteeper).updateSteeperBlockState(this.steeperBurnTime > 0, this.isFull(), this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
         if (hasChanged) { this.onInventoryChanged(); }

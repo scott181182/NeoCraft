@@ -28,6 +28,7 @@ public class BlockFermenterWhole extends NCcontainerBlock
     {
         return super.canPlaceBlockAt(par1World, par2, par3 + 1, par4) && super.canPlaceBlockAt(par1World, par2, par3, par4);
     }
+	@Override public void onBlockAdded(World par1World, int par2, int par3, int par4) {  }
     @Override
     public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLiving, ItemStack par6ItemStack)
     {

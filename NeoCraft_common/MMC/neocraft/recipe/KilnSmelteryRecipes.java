@@ -27,8 +27,19 @@ public class KilnSmelteryRecipes
 
     private KilnSmelteryRecipes()
     {
-    	addSmelting(Block.oreIron.blockID, new ItemStack(Item.ingotIron, 2), 1F);
-    	addSmelting(Block.oreGold.blockID, new ItemStack(Item.ingotGold, 2), 1F);
+    	addSmelting(Block.oreIron.blockID, new ItemStack(Item.ingotIron, 1), 1F);
+    	addSmelting(Block.oreGold.blockID, new ItemStack(Item.ingotGold, 1), 1F);
+        addSmelting(Block.oreDiamond.blockID, new ItemStack(Item.diamond), 1.0F);
+        addSmelting(Block.sand.blockID, new ItemStack(Block.glass), 0.1F);
+        addSmelting(Block.cobblestone.blockID, new ItemStack(Block.stone), 0.1F);
+        addSmelting(Item.clay.itemID, new ItemStack(Item.brick), 0.3F);
+        addSmelting(Block.oreEmerald.blockID, new ItemStack(Item.emerald), 1.0F);
+        addSmelting(Block.netherrack.blockID, new ItemStack(Item.netherrackBrick), 0.1F);
+        addSmelting(Block.oreCoal.blockID, new ItemStack(Item.coal), 0.1F);
+        addSmelting(Block.oreRedstone.blockID, new ItemStack(Item.redstone), 0.7F);
+        addSmelting(Block.oreLapis.blockID, new ItemStack(Item.dyePowder, 1, 4), 0.2F);
+        addSmelting(Block.oreNetherQuartz.blockID, new ItemStack(Item.netherQuartz), 0.2F);
+        
     	addSmelting(NCblock.oreTitanium.blockID, new ItemStack(NCitem.ingotTitanium, 1), 0.7F);
     	addSmelting(NCblock.oreBauxite.blockID, new ItemStack(NCitem.ingotAluminum, 1), 0.7F);
     }

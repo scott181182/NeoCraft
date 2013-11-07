@@ -20,7 +20,9 @@ public class BlockFermenterTop extends NCcontainerBlock
 	@Override public int getRenderType() { return -2; }
 	@Override public boolean isOpaqueCube() { return false; }
 	@Override public boolean renderAsNormalBlock() { return false; }
-	@Override public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) { return false; } 
+	@Override public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) { return false; }
+	@Override public void onBlockAdded(World par1World, int par2, int par3, int par4) {  }
+	
 	@Override
 	public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
     {

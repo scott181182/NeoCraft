@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import MMC.neocraft.block.BlockMagicSteeper;
+import MMC.neocraft.block.NCblock;
 import MMC.neocraft.item.magic.stave.MagicStave;
 import MMC.neocraft.recipe.MagicSteeperRecipes;
 import cpw.mods.fml.relauncher.Side;
@@ -151,7 +152,7 @@ public class TileEntityMagicSteeper extends NCtileentity
             if (wasSteeping != isBurning || wasSteeping != isSteeping())
             {
             	hasChanged = true;
-                BlockMagicSteeper.updateSteeperBlockState(this.isSteeping(), this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                ((BlockMagicSteeper)NCblock.magicSteeper).updateSteeperBlockState(this.isSteeping(), this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
         if (hasChanged) { this.onInventoryChanged(); }
