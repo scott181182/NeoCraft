@@ -20,7 +20,7 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import MMC.neocraft.block.GeneratorSteam;
 import MMC.neocraft.block.NCblock;
-import MMC.neocraft.util.energy.IChargable;
+import MMC.neocraft.item.energy.IChargeable;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -133,7 +133,7 @@ public class TileEntityGeneratorSteam extends NCtileentity implements IFluidHand
     @SideOnly(Side.CLIENT)
     public int getBurnTimeRemainingScaled(int par1)
     {
-        if (this.currentItemBurnTime == 0) { this.currentItemBurnTime = 200; }
+        if (this.currentItemBurnTime == 0) { this.currentItemBurnTime = 50; }
         return this.generatorBurnTime * par1 / this.currentItemBurnTime;
     }
     public boolean isBurning() { return this.generatorBurnTime > 0; }
@@ -187,13 +187,12 @@ public class TileEntityGeneratorSteam extends NCtileentity implements IFluidHand
             }
             if(generatorItemStacks[2] != null)
             {
-	            if(generatorItemStacks[2].getItem() instanceof IChargable)
+	            if(generatorItemStacks[2].getItem() instanceof IChargeable)
 	            {
-	            	IChargable battery = (IChargable)generatorItemStacks[1].getItem();
-	            	if(battery.currentCharge() <= battery.maxCharge() && this.powerLevel > 0)
+	            	if(generatorItemStacks[2].getItemDamage() > 0 && this.powerLevel > 0)
 	            	{
-	            		battery.modifyCharge(1);
-	            		powerLevel -= 1;
+	            		generatorItemStacks[2].setItemDamage(generatorItemStacks[2].getItemDamage() - 1);
+            			powerLevel -= 1;
 	            		isCharging = true;
 	            		hasChanged = true;
 	            	} else { isCharging = false; }
@@ -215,7 +214,8 @@ public class TileEntityGeneratorSteam extends NCtileentity implements IFluidHand
     }
     public static int getItemBurnTime(ItemStack fuel)
     {
-        if (fuel == null) { return 0; }
+    	int ret = 0;
+        if (fuel == null) { return ret; }
         else
         {
             int i = fuel.getItem().itemID;
@@ -223,25 +223,26 @@ public class TileEntityGeneratorSteam extends NCtileentity implements IFluidHand
             if (fuel.getItem() instanceof ItemBlock && Block.blocksList[i] != null)
             {
                 Block block = Block.blocksList[i];
-                if (block == Block.woodSingleSlab) { return 150; }
-                if (block.blockMaterial == Material.wood) { return 300; }
+                if (block == Block.woodSingleSlab) { ret = 150; }
+                if (block.blockMaterial == Material.wood) { ret = 300; }
             }
-            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
-            if (i == Item.stick.itemID) return 100;
-            if (i == Item.coal.itemID) return 1600;
-            if (i == Item.bucketLava.itemID) return 20000;
-            if (i == Block.sapling.blockID) return 100;
-            if (i == Item.blazeRod.itemID) return 2400;
-            return GameRegistry.getFuelValue(fuel);
+            else if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) ret = 200;
+            else if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) ret = 200;
+            else if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) ret = 200;
+            else if (i == Item.stick.itemID) ret = 100;
+            else if (i == Item.coal.itemID) ret = 1600;
+            else if (i == Item.bucketLava.itemID) ret = 20000;
+            else if (i == Block.sapling.blockID) ret = 100;
+            else if (i == Item.blazeRod.itemID) ret = 2400;
+            else { ret = GameRegistry.getFuelValue(fuel); }
+            return ret / 4;
         }
     }
     public static boolean isItemFuel(ItemStack par0ItemStack) { return getItemBurnTime(par0ItemStack) > 0; }
     @Override public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) { return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D; }
     @Override public void openChest() {  }
     @Override public void closeChest() {  }
-    @Override public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack) { return par1 == 2 ? par2ItemStack.getItem() instanceof IChargable : par1 == 1 ? isItemFuel(par2ItemStack) : true; }
+    @Override public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack) { return par1 == 2 ? par2ItemStack.getItem() instanceof IChargeable : par1 == 1 ? isItemFuel(par2ItemStack) : true; }
     
     @Override public int[] getAccessibleSlotsFromSide(int par1) { return new int[0]; }
     /** Returns true if automation can insert the given item in the given slot from the given side. Args: Slot, item, side */

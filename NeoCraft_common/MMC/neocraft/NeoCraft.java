@@ -11,11 +11,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 import MMC.neocraft.block.NCblock;
 import MMC.neocraft.client.gui.NCguiHandler;
+import MMC.neocraft.fluid.NCfluid;
 import MMC.neocraft.gen.NCgenerator;
 import MMC.neocraft.item.NCitem;
 import MMC.neocraft.lib.*;
 import MMC.neocraft.lib.handlers.*;
-import MMC.neocraft.liquid.NCfluid;
 import MMC.neocraft.recipe.NCcrafter;
 import MMC.neocraft.recipe.RecipeRegistry;
 import MMC.neocraft.registry.*;

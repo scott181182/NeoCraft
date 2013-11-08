@@ -19,6 +19,7 @@ public class Textures
 	public static final ResourceLocation GUI_KILN_SMELTERY = getResourceLocation(GUI_LOCATION + "smeltery.png");
 	public static final ResourceLocation GUI_MAGIC_RANDOMIZER = getResourceLocation(GUI_LOCATION + "magicRandomizer.png");
 	public static final ResourceLocation GUI_MAGIC_STEEPER = getResourceLocation(GUI_LOCATION + "magicSteeper.png");
+	public static final ResourceLocation GUI_HYDROLYZER = getResourceLocation(GUI_LOCATION + "hydrolyzer.png");
 	
 	public static final ResourceLocation MODEL_FERMENTER_BOTTOM = getResourceLocation(MODEL_LOCATION + "fermenterBottom.png");
 	public static final ResourceLocation MODEL_FERMENTER_TOP = getResourceLocation(MODEL_LOCATION + "fermenterTop.png");

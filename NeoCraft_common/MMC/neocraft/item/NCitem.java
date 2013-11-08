@@ -1,5 +1,6 @@
 package MMC.neocraft.item;
 
+import MMC.neocraft.item.energy.ItemBattery;
 import MMC.neocraft.item.magic.element.*;
 import MMC.neocraft.item.magic.conglomerate.*;
 import MMC.neocraft.item.magic.stave.*;
@@ -17,6 +18,10 @@ public class NCitem extends Item
 	public static Item fuelBox, capsuleEmpty, capsuleAlcohol, capsuleSugar;
 	public static Item scorchedSinensium, pyroniumChunk;
 	public static Item ingotTitanium, ingotAluminum;
+	public static Item leanMeat;
+	
+	public static Item battery;
+	
 	public static Item elementSinensium, elementPyronium, elementSiliscene, elementMalusene, elementQuerbon, elementSucrozene, elementPetrak, elementTimbrium;
 	public static Item conglomerateSinensium, conglomeratePyronium, conglomerateSiliscene, conglomerateMalusene, conglomerateQuerbon, conglomerateSucrozene, conglomeratePetrak, conglomerateTimbrium;
 	public static Item staveSinensium, stavePyronium, staveSiliscene, staveMalusene, staveQuerbon;
@@ -36,12 +41,6 @@ public class NCitem extends Item
 		super.setUnlocalizedName(Reference.MOD_ID.toLowerCase() + ":" + name);
 		return this;
 	}
-	/* protected String getUnwrappedUnlocalizedName(String unlocalizedName) { return unlocalizedName.substring(unlocalizedName.indexOf(":") + 1); }
-    @Override public String getUnlocalizedName() 
-    {  
-    	String name = super.getUnlocalizedName().substring(5);
-    	return "item." + Reference.MOD_ID.toLowerCase() + ":" + name;
-    } */
 	public static void init()
 	{
 		fruitOrange = new FruitOrange(ConfigHandler.idFruitOrange).setUnlocalizedName("fruitOrange");
@@ -63,6 +62,14 @@ public class NCitem extends Item
 		
 		ingotTitanium = new IngotTitanium(ConfigHandler.idIngotTitanium).setUnlocalizedName("ingotTitanium");
 		ingotAluminum = new IngotAluminum(ConfigHandler.idIngotAluminum).setUnlocalizedName("ingotAluminum");
+		
+		leanMeat = new ItemLeanMeat(ConfigHandler.idLeanMeat, 1, 0, false, true).setUnlocalizedName("leanMeat");
+		
+		
+		
+		battery = new ItemBattery(ConfigHandler.idBattery).setUnlocalizedName("battery");
+		
+		
 		
 		elementSinensium = new ElementSinensium(ConfigHandler.idElementSinensium, 1, 1).setUnlocalizedName("elementSinensium");
 		elementPyronium = new ElementPyronium(ConfigHandler.idElementPyronium, 1, 2).setUnlocalizedName("elementPyronium");

@@ -16,6 +16,7 @@ public class NCblock extends Block
 	public static Block teaSteeper, magicSteeper, magicRandomizer;
 	public static Block kilnCore, kilnBakery, kilnSmeltery, generatorSteam;
 	public static Block fermenterBottom, fermenterTop, fermenterWhole, incubator;
+	public static Block hydrolyzer;
 	
 	public static Block testBlock;
 	
@@ -66,6 +67,8 @@ public class NCblock extends Block
 	    fermenterTop = new BlockFermenterTop(ConfigHandler.idFermenterTop, Material.iron).setHardness(3F).setStepSound(soundMetalFootstep).setUnlocalizedName("blockFermenterTop");
 	    fermenterWhole = new BlockFermenterWhole(ConfigHandler.idFermenterWhole, Material.iron).setHardness(3F).setStepSound(soundMetalFootstep).setUnlocalizedName("fermenterWhole");
 	    incubator = new BlockIncubator(ConfigHandler.idIncubator, Material.iron).setHardness(2F).setStepSound(soundMetalFootstep).setUnlocalizedName("incubator");
+	    
+	    hydrolyzer = new BlockHydrolyzer(ConfigHandler.idHydrolyzer, Material.iron).setHardness(2F).setStepSound(soundMetalFootstep).setUnlocalizedName("hydrolyzer");
 	    
 	    testBlock = new BlockTest(2000, Material.rock).setUnlocalizedName("testBlock");
 	}

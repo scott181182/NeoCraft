@@ -3,6 +3,7 @@ package MMC.neocraft.block;
 import MMC.neocraft.NeoCraft;
 import MMC.neocraft.client.gui.NCguiHandler;
 import MMC.neocraft.lib.Reference;
+import MMC.neocraft.tileentity.TileEntityHydrolyzer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
@@ -44,7 +45,7 @@ public class BlockHydrolyzer extends NCcontainerBlock
     {
 		TileEntity te = par1World.getBlockTileEntity(x, y, z);
 		if(te == null || player.isSneaking()) { return false; }
-		player.openGui(NeoCraft.instance, NCguiHandler.genSteamID, par1World, x, y, z);
+		player.openGui(NeoCraft.instance, NCguiHandler.hydrolyzerID, par1World, x, y, z);
 		return true;
     }
     public void updateHydrolyzerBlockState(boolean par0, World par1World, int par2, int par3, int par4)
@@ -63,5 +64,5 @@ public class BlockHydrolyzer extends NCcontainerBlock
             par1World.setBlockTileEntity(par2, par3, par4, tileentity);
         }
     }
-	@Override public TileEntity createNewTileEntity(World world) { return /*new TileEntityHydrolyzer();*/ null; }
+	@Override public TileEntity createNewTileEntity(World world) { return new TileEntityHydrolyzer(); }
 }

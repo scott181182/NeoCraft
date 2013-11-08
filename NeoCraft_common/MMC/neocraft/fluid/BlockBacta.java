@@ -1,4 +1,4 @@
-package MMC.neocraft.liquid;
+package MMC.neocraft.fluid;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;

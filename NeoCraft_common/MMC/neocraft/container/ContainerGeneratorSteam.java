@@ -8,8 +8,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import MMC.neocraft.item.energy.IChargeable;
 import MMC.neocraft.tileentity.TileEntityGeneratorSteam;
-import MMC.neocraft.util.energy.IChargable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -99,7 +99,7 @@ public class ContainerGeneratorSteam extends NCcontainer
                 {
                     if (!this.mergeItemStack(fromStack, 1, 2, false)) { return null; }
                 }
-                else if(fromStack.getItem() instanceof IChargable)
+                else if(fromStack.getItem() instanceof IChargeable)
                 {
                     if (!this.mergeItemStack(fromStack, 2, 3, false)) { return null; }  	
                 }

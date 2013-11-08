@@ -68,6 +68,7 @@ tile.neocraft:fermenterWhole.name=Fermenter
 tile.neocraft:incubator.name=Incubator
 
 tile.neocraft:generatorSteam.name=Steam Generator
+tile.neocraft:hydrolyzer.name=Hydrolyzer
 
 tile.neocraft:testBlock.name=Test Block
 
@@ -92,6 +93,7 @@ container.neocraft:fermenter=Fermenter
 container.neocraft:incubator=Incubator
 container.neocraft:magicRandomizer=Magic Randomizer
 container.neocraft:generatorSteam=Steam Generator
+container.neocraft:hydrolyzer=Hydrolyzer
 
 
 

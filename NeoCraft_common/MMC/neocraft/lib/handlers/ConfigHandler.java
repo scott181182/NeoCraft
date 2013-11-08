@@ -17,7 +17,7 @@ public class ConfigHandler
 	public static int idPlankOrange = 1614, idSteeperTea = 1615, idSteeperMagic = 1616, idMagicRandomizer = 1626;
 	public static int idKilnCore = 1617, idKilnBakery = 1618, idKilnSmeltery = 1619, idGeneratorSteam = 1627;
 	public static int idFermenterWhole = 1620, idFermenterBottom = 1621, idFermenterTop = 1622;
-	public static int idIncubator = 1623;
+	public static int idIncubator = 1623, idHydrolyzer = 1626;
 	public static int idBactaFlowing = 1624, idBactaStill = 1625;
 	
 	//Item IDs
@@ -25,6 +25,10 @@ public class ConfigHandler
 	public static int idFuelBox = 9010, idCapsuleEmpty = 9011, idCapsuleAlcohol = 9012, idCapsuleSugar = 9013;
 	public static int idScorchedSinensium = 9014, idPyroniumChunk = 9015;
 	public static int idIngotTitanium = 9016, idIngotAluminum = 9017;
+	public static int idLeanMeat = 9018;
+	
+	public static int idBattery = 9019;
+	
 	public static int idElementSinensium = 10001, idElementPyronium = 10002, idElementSiliscene = 10003, idElementMalusene = 10004, idElementQuerbon = 10005, idElementSucrozene = 10006, idElementPetrak = 10007, idElementTimbrium = 10008;
 	public static int idConglomerateSinensium = 10101, idConglomeratePyronium = 10102, idConglomerateSiliscene = 10103, idConglomerateMalusene = 10104, idConglomerateQuerbon = 10105;
 	public static int idStaveSinensium = 10201, idStavePyronium = 10202, idStaveSiliscene = 10203, idStaveMalusene = 10204, idStaveQuerbon = 10205;
@@ -59,6 +63,7 @@ public class ConfigHandler
 			idBactaFlowing = config.getBlock("id_BactaFlowing", idBactaFlowing).getInt(idBactaFlowing);
 			idMagicRandomizer = getBlock(idMagicRandomizer, "id_MagicRandomizer");
 			idGeneratorSteam = getBlock(idGeneratorSteam, "id_GeneratorSteam");
+			idHydrolyzer = getBlock(idHydrolyzer, "id_Hydrolyzer");
 			
 			//Orange Stuff
 			idFruitOrange = getItem(idFruitOrange, "id_FruitOrange");
@@ -79,6 +84,11 @@ public class ConfigHandler
 			idPyroniumChunk = config.getItem("id_PyroniumChunk", idPyroniumChunk).getInt(idPyroniumChunk);
 			idIngotTitanium = config.getItem("id_IngotTitanium", idIngotTitanium).getInt(idIngotTitanium);
 			idIngotAluminum = config.getItem("id_IngotAluminum", idIngotAluminum).getInt(idIngotAluminum);
+			idLeanMeat = getItem(idLeanMeat, "id_LeanMeat");
+			
+			//Technological Items
+			idBattery = getItem(idBattery, "id_Battery");
+			
 			//Magic Elements
 			idElementSinensium = config.getItem("id_ElementSinensium", idElementSinensium).getInt(idElementSinensium);
 			idElementPyronium = config.getItem("id_ElementPyronium", idElementPyronium).getInt(idElementPyronium);
