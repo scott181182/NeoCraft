@@ -11,33 +11,55 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockHydrolyzer extends NCcontainerBlock
 {
-    @SideOnly(Side.CLIENT) private Icon iconSide, iconTop, iconFrontOn, iconFrontOff;
+    @SideOnly(Side.CLIENT) private Icon iconSide, iconTop; //, iconBottom;
+    @SideOnly(Side.CLIENT) private Icon[] iconFrontOn, iconFrontOff;
 
 	public BlockHydrolyzer(int id, Material material) 
 	{
 		super(id, material);
 	}
 
+	@SideOnly(Side.CLIENT) @Override 
+	public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+    {
+		int meta = par1IBlockAccess.getBlockMetadata(par2, par3, par4);
+		TileEntityHydrolyzer te = (TileEntityHydrolyzer)par1IBlockAccess.getBlockTileEntity(par2, par3, par4);
+		
+		int facing = 3;
+		if(meta != 0) { facing = meta; }
+		if(par5 != (facing & -9) || te == null) { return this.getIcon(par5, meta); }
+		else
+		{
+			int i = te.getWaterTankScaled(8);
+			return (facing & 8) == 8 ? iconFrontOn[i] : iconFrontOff[i];
+		}
+    }
 	@SideOnly(Side.CLIENT) @Override
 	public Icon getIcon(int side, int meta)
     {
 		int facing = 3;
 		if(meta != 0) { facing = meta; }
     	if(side == 1) { return iconTop; }
-    	else if(side == (facing & -9)) { return (facing & 8) == 8 ? iconFrontOn : iconFrontOff; }
+    	else if(side == (facing & -9)) { return (facing & 8) == 8 ? iconFrontOn[0] : iconFrontOff[0]; }
     	else { return iconSide; }
     }
     @SideOnly(Side.CLIENT) @Override
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.iconSide = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "genSteamSide");
-        this.iconTop = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "genSteamTop");
-        this.iconFrontOff = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "genSteamFrontOff");
-        this.iconFrontOn = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "genSteamFrontOn");
+        this.iconSide = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "hydrolyzerSide");
+        this.iconTop = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "hydrolyzerTop");
+        //this.iconBottom = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "hydrolyzerBottom");
+        iconFrontOn = new Icon[9]; iconFrontOff = new Icon[9];
+        for(int i = 0; i < iconFrontOn.length; i++)
+        {
+        	iconFrontOn[i] = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "hydrolyzerFrontOn" + i);
+        	iconFrontOff[i] = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + "hydrolyzerFrontOff" + i);
+        }
     }
 	
     @Override

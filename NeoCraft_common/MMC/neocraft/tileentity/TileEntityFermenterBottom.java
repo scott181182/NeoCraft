@@ -235,4 +235,5 @@ public class TileEntityFermenterBottom extends NCtileentity
     {
         return par1 == 3;
     }
+	@Override public Class<? extends NCtileentity> getTileEntityClass() { return TileEntityFermenterBottom.class; }
 }

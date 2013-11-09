@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import MMC.neocraft.fluid.NCfluid;
+import MMC.neocraft.fluid.NCfluidmanager;
 import MMC.neocraft.item.NCitem;
 
 import net.minecraft.item.Item;
@@ -27,10 +27,10 @@ public class HydrolysisRecipes
 
     private HydrolysisRecipes()
     {
-    	this.addHydrolysis(1000, Item.beefRaw.itemID, new ItemStack(NCitem.leanMeat, 1), new FluidStack(NCfluid.glycerinFluid, 200));
-    	this.addHydrolysis(1000, Item.porkRaw.itemID, new ItemStack(NCitem.leanMeat, 1), new FluidStack(NCfluid.glycerinFluid, 200));
-    	this.addHydrolysis(1000, Item.chickenRaw.itemID, new ItemStack(NCitem.leanMeat, 1), new FluidStack(NCfluid.glycerinFluid, 100));
-    	this.addHydrolysis(1000, Item.fishRaw.itemID, new ItemStack(NCitem.leanMeat, 1), new FluidStack(NCfluid.glycerinFluid, 100));
+    	this.addHydrolysis(1000, Item.beefRaw.itemID, new ItemStack(NCitem.leanMeat, 1), new FluidStack(NCfluidmanager.glycerinFluid, 200));
+    	this.addHydrolysis(1000, Item.porkRaw.itemID, new ItemStack(NCitem.leanMeat, 1), new FluidStack(NCfluidmanager.glycerinFluid, 200));
+    	this.addHydrolysis(1000, Item.chickenRaw.itemID, new ItemStack(NCitem.leanMeat, 1), new FluidStack(NCfluidmanager.glycerinFluid, 100));
+    	this.addHydrolysis(1000, Item.fishRaw.itemID, new ItemStack(NCitem.leanMeat, 1), new FluidStack(NCfluidmanager.glycerinFluid, 100));
     }
 
     public void addHydrolysis(int waterAmount, int inputID, ItemStack leftovers, FluidStack output)
@@ -49,6 +49,7 @@ public class HydrolysisRecipes
     public ItemStack getHydrolysisLeftovers(ItemStack par1) 
     {
         if (par1 == null) { return null; }
+        if(this.waterRequired.get(par1.itemID) == null) { return null; }
         int waterAmount = this.waterRequired.get(par1.itemID);
         List<Object> result = metaHydrolysisList.get(Arrays.asList(waterAmount, par1.itemID, par1.getItemDamage()));
         if (result != null && result.get(0) instanceof ItemStack) 
@@ -65,6 +66,7 @@ public class HydrolysisRecipes
     public FluidStack getHydrolysisOutput(ItemStack par1) 
     {
         if (par1 == null) { return null; }
+        if(this.waterRequired.get(par1.itemID) == null) { return null; }
         int waterAmount = this.waterRequired.get(par1.itemID);
         List<Object> result = metaHydrolysisList.get(Arrays.asList(waterAmount, par1.itemID, par1.getItemDamage()));
         if (result != null && result.get(1) instanceof FluidStack) 

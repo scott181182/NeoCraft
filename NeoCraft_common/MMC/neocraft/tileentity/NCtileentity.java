@@ -1,5 +1,7 @@
 package MMC.neocraft.tileentity;
 
+import java.util.ArrayList;
+
 import MMC.neocraft.lib.Reference;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,10 +13,13 @@ public abstract class NCtileentity extends TileEntity implements ISidedInventory
     protected String unlocalizedName, customName;
     protected ForgeDirection orientation;
     
+    public static ArrayList<NCtileentity> tileEntities = new ArrayList<NCtileentity>();
+    
     public NCtileentity()
     {
     	orientation = ForgeDirection.SOUTH;
     	unlocalizedName = "invalid_name";
+    	tileEntities.add(this);
     }
     public ForgeDirection getOrientation() { return orientation; }
     public void setOrientation(ForgeDirection orientation) { this.orientation = orientation; }
@@ -38,4 +43,6 @@ public abstract class NCtileentity extends TileEntity implements ISidedInventory
     public String getCustomName() { return customName; }
     public void setCustomName(String customName) { this.customName = customName; }
     public void setUnlocalizedName(String name) { this.unlocalizedName = "container." + Reference.MOD_ID.toLowerCase() + ":" + name; }
+    public String getUnUnlocalizedName() { return this.unlocalizedName.substring(this.unlocalizedName.indexOf(":") + 1); }
+    public abstract Class<? extends NCtileentity> getTileEntityClass();
 }

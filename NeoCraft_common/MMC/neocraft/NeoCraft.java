@@ -1,6 +1,8 @@
 package MMC.neocraft;
 
 import java.io.File;
+
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.*;
@@ -11,7 +13,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 import MMC.neocraft.block.NCblock;
 import MMC.neocraft.client.gui.NCguiHandler;
-import MMC.neocraft.fluid.NCfluid;
+import MMC.neocraft.fluid.NCfluidmanager;
 import MMC.neocraft.gen.NCgenerator;
 import MMC.neocraft.item.NCitem;
 import MMC.neocraft.lib.*;
@@ -50,7 +52,7 @@ public class NeoCraft
 		
 		NCblock.init();
 		NCitem.init();
-		NCfluid.init();
+		NCfluidmanager.init();
 		
 		BlockRegistry.registerBlocks();
 
@@ -65,6 +67,8 @@ public class NeoCraft
 		RecipeRegistry.registerSmeltingRecipes();
 
 		NeoCraftAchievement.init();
+		
+		MinecraftForge.EVENT_BUS.register(new NCfluidmanager());
 	}
 	@EventHandler
 	public void init(FMLInitializationEvent ie)

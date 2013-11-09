@@ -44,7 +44,8 @@ public class TileEntityHydrolyzer extends NCtileentity implements IFluidHandler
     {
     	this.setUnlocalizedName("hydrolyzer");
     }
-    
+
+	@Override public Class<? extends NCtileentity> getTileEntityClass() { return TileEntityHydrolyzer.class; }
     public int getSizeInventory() { return this.hydrolyzerItemStacks.length; }
     public ItemStack getStackInSlot(int par1) { return this.hydrolyzerItemStacks[par1]; }
     /** Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack. */

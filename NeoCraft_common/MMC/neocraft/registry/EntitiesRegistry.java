@@ -11,6 +11,12 @@ public class EntitiesRegistry
 {
 	public static void registerTileEntities()
 	{
+		/*
+		for(NCtileentity te : NCtileentity.tileEntities)
+		{
+			GameRegistry.registerTileEntity(te.getTileEntityClass(), Reference.MOD_ID + "@" + "tileentity." + te.getUnUnlocalizedName());
+		}
+		*/
 		GameRegistry.registerTileEntity(TileEntitySteeper.class, Reference.MOD_ID + "@" + "tileentity.teaSteeper");
 		GameRegistry.registerTileEntity(TileEntityMagicSteeper.class, Reference.MOD_ID + "@" + "tileentity.magicSteeper");
 		GameRegistry.registerTileEntity(TileEntityKilnSmeltery.class, Reference.MOD_ID + "@" + "tileentity.kilnSmeltery");

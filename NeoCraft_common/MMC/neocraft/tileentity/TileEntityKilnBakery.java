@@ -25,6 +25,8 @@ public class TileEntityKilnBakery extends NCtileentity
     {
     	this.setUnlocalizedName("kilnBakery");
     }
+    
+	@Override public Class<? extends NCtileentity> getTileEntityClass() { return TileEntityKilnBakery.class; }
     @Override public int getSizeInventory() { return this.bakeryItemStacks.length; }
     @Override public ItemStack getStackInSlot(int par1) { return this.bakeryItemStacks[par1]; }
     /** Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack. */

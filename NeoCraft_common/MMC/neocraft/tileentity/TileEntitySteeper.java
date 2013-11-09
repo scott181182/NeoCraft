@@ -34,7 +34,8 @@ public class TileEntitySteeper extends NCtileentity
     {
     	this.setUnlocalizedName("teaSteeper");
     }
-    
+
+	@Override public Class<? extends NCtileentity> getTileEntityClass() { return TileEntitySteeper.class; }
     public int getSizeInventory() { return this.steeperItemStacks.length; }
     public ItemStack getStackInSlot(int par1) { return this.steeperItemStacks[par1]; }
     /** Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack. */

@@ -49,7 +49,7 @@ public class TileEntityGeneratorSteam extends NCtileentity implements IFluidHand
     	//this.waterTank.setTankPressure(-1);
     }
 
-    //public NCtank getTank() { return this.myTank; }
+	@Override public Class<? extends NCtileentity> getTileEntityClass() { return TileEntityGeneratorSteam.class; }
 	@Override public int getSizeInventory() { return this.generatorItemStacks.length; }
 	@Override public ItemStack getStackInSlot(int i) { return this.generatorItemStacks[i]; }
     /** Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack. */

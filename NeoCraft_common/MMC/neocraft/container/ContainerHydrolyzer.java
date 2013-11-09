@@ -24,12 +24,12 @@ public class ContainerHydrolyzer extends NCcontainer
 	public ContainerHydrolyzer(InventoryPlayer inv, TileEntityHydrolyzer te)
 	{
 		hydrolyzer = te;
-        this.addSlotToContainer(new SlotItem(te, Item.bucketWater, 0, 16, 12));
-        this.addSlotToContainer(new Slot(te, 1, 54, 29));
-        this.addSlotToContainer(new SlotHydrolyzer(te, 2, 54, 57));
-        this.addSlotToContainer(new SlotItem(te, Item.bucketEmpty, 3, 86, 57));
-        this.addSlotToContainer(new SlotBattery(te, 4, 112, 41));
-		super.addInventory(inv, 0, 0);
+        this.addSlotToContainer(new SlotItem(te, Item.bucketWater, 0, 16, 17));
+        this.addSlotToContainer(new Slot(te, 1, 54, 34));
+        this.addSlotToContainer(new SlotHydrolyzer(te, 2, 54, 62));
+        this.addSlotToContainer(new SlotItem(te, Item.bucketEmpty, 3, 86, 62));
+        this.addSlotToContainer(new SlotBattery(te, 4, 112, 46));
+		super.addInventory(inv, 0, 10);
 	}
 	@Override
     public void addCraftingToCrafters(ICrafting par1ICrafting)
@@ -106,7 +106,7 @@ public class ContainerHydrolyzer extends NCcontainer
                 {
                     if(!this.mergeItemStack(fromStack, 0, 1, false)) { return null; }
                 }
-            	else if(HydrolysisRecipes.hydrolyzing().getHydrolysisOutput(fromStack) != null)
+            	else if(HydrolysisRecipes.hydrolyzing().getHydrolysisLeftovers(fromStack) != null)
             	{
                     if(!this.mergeItemStack(fromStack, 1, 2, false)) { return null; }
             	}

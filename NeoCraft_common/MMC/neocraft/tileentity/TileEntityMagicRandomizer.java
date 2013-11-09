@@ -24,6 +24,7 @@ public class TileEntityMagicRandomizer extends NCtileentity
     	this.setUnlocalizedName("magicRandomizer");
     }
 
+	@Override public Class<? extends NCtileentity> getTileEntityClass() { return TileEntityMagicRandomizer.class; }
 	@Override public int getSizeInventory() { return this.randomizerItemStacks.length; }
 	@Override public ItemStack getStackInSlot(int i) { return this.randomizerItemStacks[i]; }
     /** Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack. */

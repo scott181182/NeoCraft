@@ -26,6 +26,7 @@ public class TileEntityIncubator extends NCtileentity
     	this.setUnlocalizedName("incubator");
     }
 
+	@Override public Class<? extends NCtileentity> getTileEntityClass() { return TileEntityIncubator.class; }
 	@Override public int getSizeInventory() { return this.incubatorItemStacks.length; }
 	@Override public ItemStack getStackInSlot(int i) { return this.incubatorItemStacks[i]; }
     /** Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack. */

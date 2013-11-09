@@ -33,8 +33,8 @@ public class NCfluidBlock extends BlockFluidClassic
 				};
 		fluidIcons = new Icon[]
 				{
-					iconRegister.registerIcon(String.format("%s:%s", Reference.MOD_ID, this.getUnwrappedUnlocalizedName(NCfluid.glycerinFluid.getUnlocalizedName()) + "Still")),
-					iconRegister.registerIcon(String.format("%s:%s", Reference.MOD_ID, this.getUnwrappedUnlocalizedName(NCfluid.glycerinFluid.getUnlocalizedName()) + "Flowing"))
+					iconRegister.registerIcon(String.format("%s:%s", Reference.MOD_ID, this.getUnwrappedUnlocalizedName(NCfluidmanager.glycerinFluid.getUnlocalizedName()) + "Still")),
+					iconRegister.registerIcon(String.format("%s:%s", Reference.MOD_ID, this.getUnwrappedUnlocalizedName(NCfluidmanager.glycerinFluid.getUnlocalizedName()) + "Flowing"))
 				};
 	}
 	@Override public Icon getIcon(int side, int meta) { return side != 0 && side != 1 ? this.icons[1] : this.icons[0]; }
