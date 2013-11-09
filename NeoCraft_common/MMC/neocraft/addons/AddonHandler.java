@@ -7,10 +7,6 @@ import MMC.neocraft.lib.handlers.LogHandler;
 
 public class AddonHandler
 {
-	private static KilnSmelteryNEI kilnSmelteryNEI = new KilnSmelteryNEI();
-	private static KilnBakeryNEI kilnBakeryNEI = new KilnBakeryNEI();
-	private static KilnFuelNEI kilnFuelNEI = new KilnFuelNEI();
-	
 	public static void init()
 	{
 		initNEI();
@@ -33,6 +29,10 @@ public class AddonHandler
 			if(registerRecipe == null || registerUsage == null) { throw new NoSuchMethodException(); }
 			
 			registerRecipe.setAccessible(true); registerUsage.setAccessible(true);
+
+			KilnSmelteryNEI kilnSmelteryNEI = new KilnSmelteryNEI();
+			KilnBakeryNEI kilnBakeryNEI = new KilnBakeryNEI();
+			KilnFuelNEI kilnFuelNEI = new KilnFuelNEI();
 			
 			registerRecipe.invoke(null, kilnSmelteryNEI);
 			registerRecipe.invoke(null, kilnBakeryNEI);
