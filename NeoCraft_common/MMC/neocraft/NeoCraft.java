@@ -11,6 +11,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
+import MMC.neocraft.addons.AddonHandler;
 import MMC.neocraft.block.NCblock;
 import MMC.neocraft.client.gui.NCguiHandler;
 import MMC.neocraft.fluid.NCfluidmanager;
