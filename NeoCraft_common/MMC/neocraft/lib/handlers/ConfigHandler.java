@@ -28,6 +28,7 @@ public class ConfigHandler
 	public static int idLeanMeat = 9018;
 	
 	public static int idBattery = 9019;
+	public static int idVasEmpty = 9020, idVasGlycerin = 9021, idVasBacta = 9022;
 	
 	public static int idElementSinensium = 10001, idElementPyronium = 10002, idElementSiliscene = 10003, idElementMalusene = 10004, idElementQuerbon = 10005, idElementSucrozene = 10006, idElementPetrak = 10007, idElementTimbrium = 10008;
 	public static int idConglomerateSinensium = 10101, idConglomeratePyronium = 10102, idConglomerateSiliscene = 10103, idConglomerateMalusene = 10104, idConglomerateQuerbon = 10105;
@@ -88,6 +89,9 @@ public class ConfigHandler
 			
 			//Technological Items
 			idBattery = getItem(idBattery, "id_Battery");
+			idVasEmpty = getItem(idVasEmpty, "id_VasEmpty");
+			idVasBacta = getItem(idVasBacta, "id_VasBacta");
+			idVasGlycerin = getItem(idVasGlycerin, "id_VacGlycerin");
 			
 			//Magic Elements
 			idElementSinensium = config.getItem("id_ElementSinensium", idElementSinensium).getInt(idElementSinensium);

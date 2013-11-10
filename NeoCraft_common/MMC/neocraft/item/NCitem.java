@@ -25,6 +25,8 @@ public class NCitem extends Item
 	public static Item elementSinensium, elementPyronium, elementSiliscene, elementMalusene, elementQuerbon, elementSucrozene, elementPetrak, elementTimbrium;
 	public static Item conglomerateSinensium, conglomeratePyronium, conglomerateSiliscene, conglomerateMalusene, conglomerateQuerbon, conglomerateSucrozene, conglomeratePetrak, conglomerateTimbrium;
 	public static Item staveSinensium, stavePyronium, staveSiliscene, staveMalusene, staveQuerbon;
+
+	public static Item vasEmpty, vasGlycerin, vasBacta;
 	
 	public NCitem(int par1)
 	{
@@ -91,5 +93,9 @@ public class NCitem extends Item
 		staveSiliscene = new StaveSiliscene(ConfigHandler.idStaveSiliscene, (MagicElement)elementSiliscene).setUnlocalizedName("staveSiliscene");
 		staveMalusene = new StaveMalusene(ConfigHandler.idStaveMalusene, (MagicElement)elementMalusene).setUnlocalizedName("staveMalusene");
 		staveQuerbon = new StaveQuerbon(ConfigHandler.idStaveQuerbon, (MagicElement)elementQuerbon).setUnlocalizedName("staveQuerbon");
+		
+		vasEmpty = new ItemVas(ConfigHandler.idVasEmpty).setUnlocalizedName("vas");
+		vasGlycerin = new ItemVasGlycerin(ConfigHandler.idVasGlycerin).setContainerItem(vasEmpty).setUnlocalizedName("vasGlycerin");
+		vasBacta = new ItemVasBacta(ConfigHandler.idVasBacta).setContainerItem(vasEmpty).setUnlocalizedName("vasBacta");
 	}
 }

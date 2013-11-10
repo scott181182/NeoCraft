@@ -45,6 +45,9 @@ item.neocraft:staveSiliscene.name=Siliscene Staff
 item.neocraft:staveMalusene.name=Malusene Staff
 item.neocraft:staveQuerbon.name=Querbon Staff
 
+item.neocraft:vasEmpty.name=Vas
+item.neocraft:vasGlycerin.name=Glycerin Vas
+item.neocraft:vasBacta.name=Bacta Vas
 
 
 # Blocks
