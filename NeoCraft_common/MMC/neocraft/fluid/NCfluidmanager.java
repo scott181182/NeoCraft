@@ -16,7 +16,7 @@ public class NCfluidmanager
 {
 	public static Fluid bactaFluid = new Fluid("bacta").setViscosity(3000).setRarity(EnumRarity.rare).setUnlocalizedName("bacta");
 	public static Fluid glycerinFluid = new Fluid("glycerin").setViscosity(2000).setRarity(EnumRarity.uncommon).setUnlocalizedName("glycerin");
-	
+
 	public static NCfluidBlock bactaBlock;
 	
 	public static void init()

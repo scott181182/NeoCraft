@@ -18,7 +18,8 @@ public class ConfigHandler
 	public static int idKilnCore = 1617, idKilnBakery = 1618, idKilnSmeltery = 1619, idGeneratorSteam = 1627;
 	public static int idFermenterWhole = 1620, idFermenterBottom = 1621, idFermenterTop = 1622;
 	public static int idIncubator = 1623, idHydrolyzer = 1626;
-	public static int idBactaFlowing = 1624, idBactaStill = 1625;
+	public static int idBactaFlowing = 1624;
+	
 	
 	//Item IDs
 	public static int idFruitOrange = 9001, idSeedOrange = 9002, idRindOrange = 9003, idPulpOrange = 9004, idTeaOrange = 9005, idYeast = 9006, idDough = 9007, idFlour = 9008, idKnifePruning = 9009;
@@ -60,11 +61,11 @@ public class ConfigHandler
 			idFermenterBottom = config.getBlock("id_FermenterBottom", idFermenterBottom).getInt(idFermenterBottom);
 			idFermenterTop = config.getBlock("id_FermenterTop", idFermenterTop).getInt(idFermenterTop);
 			idIncubator = config.getBlock("id_Incubator", idIncubator).getInt(idIncubator);
-			idBactaStill = config.getBlock("id_BactaStill", idBactaStill).getInt(idBactaStill);
 			idBactaFlowing = config.getBlock("id_BactaFlowing", idBactaFlowing).getInt(idBactaFlowing);
 			idMagicRandomizer = getBlock(idMagicRandomizer, "id_MagicRandomizer");
 			idGeneratorSteam = getBlock(idGeneratorSteam, "id_GeneratorSteam");
 			idHydrolyzer = getBlock(idHydrolyzer, "id_Hydrolyzer");
+			
 			
 			//Orange Stuff
 			idFruitOrange = getItem(idFruitOrange, "id_FruitOrange");

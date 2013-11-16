@@ -68,7 +68,7 @@ public class NeoCraft
 		RecipeRegistry.registerSmeltingRecipes();
 
 		NeoCraftAchievement.init();
-		
+
 		MinecraftForge.EVENT_BUS.register(new NCfluidmanager());
 	}
 	@EventHandler
