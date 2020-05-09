@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "neocraft:item/ingot_aluminum"
+    }
+}
