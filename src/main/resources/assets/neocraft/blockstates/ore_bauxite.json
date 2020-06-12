@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "neocraft:block/ore_bauxite"
+        }
+    }
+}

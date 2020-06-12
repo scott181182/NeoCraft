@@ -6,11 +6,10 @@ import com.bixforddigital.neocraft.Constants;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 
 public class ModItemGroups
 {
-	public static final ItemGroup MOD_ITEM_GROUP = new ModItemGroup(Constants.MODID, () -> new ItemStack(ModItems.PARING_KNIFE));
+	public static final ItemGroup MOD_ITEM_GROUP = new ModItemGroup(Constants.MODID, () -> new ItemStack(ModItems.ELEMENT_SINENSIUM.get()));
 	
 	
 	public static class ModItemGroup extends ItemGroup

@@ -1,6 +1,12 @@
 {
     "itemGroup.neocraft": "NeoCraft",
 
+
+
+    "block.neocraft.ore_bauxite": "Bauxite Ore",
+
+
+    
     "item.neocraft.capsule_alcohol":        "Alcohol Capsule",
     "item.neocraft.capsule_empty":          "Empty Capsule",
     "item.neocraft.capsule_sugar":          "Sugar Capsule",
