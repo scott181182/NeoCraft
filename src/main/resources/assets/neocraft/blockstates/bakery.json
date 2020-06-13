@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "neocraft:block/bakery" },
+        "facing=east":  { "model": "neocraft:block/bakery", "y": 90  },
+        "facing=south": { "model": "neocraft:block/bakery", "y": 180 },
+        "facing=west":  { "model": "neocraft:block/bakery", "y": 270 }
+    }
+}
